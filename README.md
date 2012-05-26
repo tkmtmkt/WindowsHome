@@ -14,6 +14,7 @@ PowerShellの作業環境設定用のファイルです。
 コマンドラインツールのパス設定、コンソールの色設定、日常作業で使用する関数を定義しています。
 
 ### ツール（基本）
+"$Home\tool"フォルダに基本的なツールを置きます。
 
 * アーカイバ：
   [7-ZIP](http://sevenzip.sourceforge.jp/)
@@ -39,6 +40,7 @@ PowerShellの作業環境設定用のファイルです。
   [SQLite](http://www.sqlite.org/)
 
 ### ツール（オプション）
+"$Home\apps"フォルダに追加のツールを置きます。
 
 * 構成管理：
   [msysgit](http://code.google.com/p/msysgit/downloads/list),
@@ -61,10 +63,8 @@ PowerShellの作業環境設定用のファイルです。
 
 ### 関数定義
 
+* memo
 * Get-Hash
 * Get-Assemblies
-* today
-* memo
-* go
 
 <!-- vim: set ts=4 sw=4 et:-->
