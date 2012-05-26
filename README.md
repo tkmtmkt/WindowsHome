@@ -1,65 +1,65 @@
 WindowsPowerShell
 =================
-PowerShell‚Ìì‹ÆŠÂ‹«İ’è—p‚Ìƒtƒ@ƒCƒ‹‚Å‚·B
+PowerShellã®ä½œæ¥­ç’°å¢ƒè¨­å®šç”¨ã®ãƒ•ã‚¡ã‚¤ãƒ«ã§ã™ã€‚
 
-g‚¢•û
+ä½¿ã„æ–¹
 ------
-ƒŠƒ|ƒWƒgƒŠ‚ÌƒNƒ[ƒ“‚ğƒvƒƒtƒ@ƒCƒ‹‚ÌêŠ‚É’u‚­‚¾‚¯‚Å‚·B
+ãƒªãƒã‚¸ãƒˆãƒªã®ã‚¯ãƒ­ãƒ¼ãƒ³ã‚’ãƒ—ãƒ­ãƒ•ã‚¡ã‚¤ãƒ«ã®å ´æ‰€ã«ç½®ãã ã‘ã§ã™ã€‚
 
     git clone https://github.com/tkmtmkt/WindowsPowerShell.git (Split-Path $PROFILE)
 
 
-İ’è“à—e
+è¨­å®šå†…å®¹
 --------
-ƒRƒ}ƒ“ƒhƒ‰ƒCƒ“ƒc[ƒ‹‚ÌƒpƒXİ’èAƒRƒ“ƒ\[ƒ‹‚ÌFİ’èA“úíì‹Æ‚Åg—p‚·‚éŠÖ”‚ğ’è‹`‚µ‚Ä‚¢‚Ü‚·B
+ã‚³ãƒãƒ³ãƒ‰ãƒ©ã‚¤ãƒ³ãƒ„ãƒ¼ãƒ«ã®ãƒ‘ã‚¹è¨­å®šã€ã‚³ãƒ³ã‚½ãƒ¼ãƒ«ã®è‰²è¨­å®šã€æ—¥å¸¸ä½œæ¥­ã§ä½¿ç”¨ã™ã‚‹é–¢æ•°ã‚’å®šç¾©ã—ã¦ã„ã¾ã™ã€‚
 
-### ƒc[ƒ‹iŠî–{j
+### ãƒ„ãƒ¼ãƒ«ï¼ˆåŸºæœ¬ï¼‰
 
-* ƒA[ƒJƒCƒoF
+* ã‚¢ãƒ¼ã‚«ã‚¤ãƒï¼š
   [7-ZIP](http://sevenzip.sourceforge.jp/)
 
-* ƒGƒfƒBƒ^F
+* ã‚¨ãƒ‡ã‚£ã‚¿ï¼š
   [KaoriYa](http://www.kaoriya.net/)
 
-* ·•ªƒc[ƒ‹F
+* å·®åˆ†ãƒ„ãƒ¼ãƒ«ï¼š
   [WinMerge](http://winmerge.org/?lang=ja)
 
-* ƒŠƒ‚[ƒgÚ‘±F
+* ãƒªãƒ¢ãƒ¼ãƒˆæ¥ç¶šï¼š
   [Tera Term](http://sourceforge.jp/projects/ttssh2/),
   [WinSCP](http://winscp.net/eng/docs/lang:jp)
 
-* ƒVƒXƒeƒ€ŠÇ—F
+* ã‚·ã‚¹ãƒ†ãƒ ç®¡ç†ï¼š
   [SysinternalsSuite](http://technet.microsoft.com/ja-jp/sysinternals/bb842062.aspx),
   [Log Parser](http://technet.microsoft.com/ja-jp/scriptcenter/dd919274.aspx)
 
-* \¬ŠÇ—F
+* æ§‹æˆç®¡ç†ï¼š
   [Fossil](http://www.fossil-scm.org/)
 
-* ƒf[ƒ^ƒx[ƒXF
+* ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹ï¼š
   [SQLite](http://www.sqlite.org/)
 
-### ƒc[ƒ‹iƒIƒvƒVƒ‡ƒ“j
+### ãƒ„ãƒ¼ãƒ«ï¼ˆã‚ªãƒ—ã‚·ãƒ§ãƒ³ï¼‰
 
-* \¬ŠÇ—F
+* æ§‹æˆç®¡ç†ï¼š
   [msysgit](http://code.google.com/p/msysgit/downloads/list),
   [Subversion for Windows](http://sourceforge.net/projects/win32svn/),
   [Veracity](http://veracity-scm.com/)
 
-* ƒf[ƒ^ƒx[ƒXF
+* ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹ï¼š
   [MongoDB](http://www.mongodb.org/)
 
-* ƒvƒƒOƒ‰ƒ~ƒ“ƒOF
+* ãƒ—ãƒ­ã‚°ãƒ©ãƒŸãƒ³ã‚°ï¼š
   [Java SE](http://www.oracle.com/technetwork/java/javase/downloads/index.html),
   [Scala](http://www.scala-lang.org/),
   [Jython](http://www.jython.org/),
   [Clojure](http://clojure.org/),
   [RubyInsaller for Windows](http://rubyinstaller.org/)
 
-* ƒrƒ‹ƒhŠÇ—F
+* ãƒ“ãƒ«ãƒ‰ç®¡ç†ï¼š
   [Apache Ant](http://ant.apache.org/),
   [Apache Maven](http://maven.apache.org/)
 
-### ŠÖ”’è‹`
+### é–¢æ•°å®šç¾©
 
 * Get-Hash
 * Get-Assemblies

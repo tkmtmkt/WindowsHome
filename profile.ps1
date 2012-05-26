@@ -47,6 +47,7 @@ Function Get-Assemblies
     [Appdomain]::CurrentDomain.GetAssemblies()
 }
 
+
 ############################################################
 #
 # 環境設定（ツール）
@@ -82,23 +83,24 @@ Set-Alias fos "$TOOLDIR\fossil.exe"
 # データベース
 Set-Alias sql "$TOOLDIR\sqlite3.exe"
 
+
 ############################################################
 #
 # 環境設定（オプションツール）
 #
 ############################################################
-$OPTDIR = "$Home\opt"
+$APPSDIR = "$Home\apps"
 
-Add-Path "$OPTDIR\bin"
+Add-Path "$APPSDIR\bin"
 
 # 構成管理
-Add-Path "$OPTDIR\git"
-Add-Path "$OPTDIR\git\cmd"
-Add-Path "$OPTDIR\svn-win32\bin"
-Add-Path "$OPTDIR\veracity"
+Add-Path "$APPSDIR\git"
+Add-Path "$APPSDIR\git\cmd"
+Add-Path "$APPSDIR\svn-win32\bin"
+Add-Path "$APPSDIR\veracity"
 
 # データベース
-Add-Path "$OPTDIR\mongodb\bin"
+Add-Path "$APPSDIR\mongodb\bin"
 
 # プログラミング
 $tmp = "$Env:ProgramFiles\Java\jdk*"
@@ -107,14 +109,14 @@ If (Test-Path $tmp) {
     Add-Path "$Env:JAVA_HOME\bin"
 }
 
-Add-Path "$OPTDIR\scala\bin"
+Add-Path "$APPSDIR\scala\bin"
 
-Add-Path "$OPTDIR\jython"
+Add-Path "$APPSDIR\jython"
 
-$tmp = "$OPTDIR\clojure\clojure*.jar"
+$tmp = "$APPSDIR\clojure\clojure*.jar"
 If (Test-Path $tmp) {
     $CLOJURE = @(ls $tmp | sort)[0].FullName
-    $Env:CLOJURE_HOME = "$OPTDIR\clojure"
+    $Env:CLOJURE_HOME = "$APPSDIR\clojure"
     Function clojure
     {
         $OFA = " "
@@ -122,13 +124,15 @@ If (Test-Path $tmp) {
     }
 }
 
-Add-Path "$OPTDIR\ruby\bin"
+Add-Path "$APPSDIR\ruby\bin"
 
 # ビルド管理
-Add-Path "$OPTDIR\apache-ant\bin"
-Add-Path "$OPTDIR\apache-maven\bin"
+Add-Path "$APPSDIR\apache-ant\bin"
+Add-Path "$APPSDIR\apache-maven\bin"
 
-Add-Path "$Home"
+# その他
+Add-Path "$APPSDIR\Play20"
+
 
 ############################################################
 #
@@ -145,7 +149,10 @@ $Host.UI.RawUI.ForegroundColor="White"
 $Host.UI.RawUI.BackgroundColor="Black"
 cls
 
-# 作業ディレクトリに移動する
+<#
+.SYNOPSIS
+作業ディレクトリに移動します。
+#>
 $TODAYPATH = "$Home\work\$(Get-Date -f "yyyy\\MM\\yyyyMMdd")"
 Function today {
     If (-not (Test-Path $TODAYPATH)) {
@@ -158,7 +165,10 @@ Function today {
     cd today:
 }
 
-# 作業メモを開く
+<#
+.SYNOPSIS
+作業記録メモを開きます。
+#>
 Function memo
 {
     $memo_file = "$TODAYPATH.mkd"
@@ -216,7 +226,8 @@ $drives = @{
     work = "$Home\work"
     apps = "$Home\apps"
 }
-
+<#
+#>
 Function go
 {
     Param([string]$name)
