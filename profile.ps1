@@ -93,7 +93,7 @@ Function memo
 
 参考
 ----
-[1]: http://blog.2310.net/archives/6 "Markdownの文法"
+[Markdownの文法](http://blog.2310.net/archives/6)
 
 <!-- vim: set ft=markdown ts=4 sw=4 et:-->
 "@ | Out-File $memo_file -Encoding Default -Force
@@ -177,6 +177,9 @@ Add-Path "$TOOLDIR\WinMerge"
 # リモート接続
 Add-Path "$TOOLDIR\teraterm"
 Add-Path "$TOOLDIR\winscp"
+If (Test-Path "$TOOLDIR\vnc*") {
+    Set-Alias vnc @(ls "$TOOLDIR\vnc*" | sort)[0].FullName
+}
 
 # システム管理
 Add-Path "$TOOLDIR\SysinternalsSuite"

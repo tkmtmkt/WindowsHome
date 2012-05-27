@@ -27,7 +27,8 @@ PowerShellの作業環境設定用のファイルです。
 
 * リモート接続：
   [Tera Term](http://sourceforge.jp/projects/ttssh2/),
-  [WinSCP](http://winscp.net/eng/docs/lang:jp)
+  [WinSCP](http://winscp.net/eng/docs/lang:jp),
+  [RealVNC](http://www.realvnc.com/)
 
 * システム管理：
   [SysinternalsSuite](http://technet.microsoft.com/ja-jp/sysinternals/bb842062.aspx),
