@@ -10,7 +10,6 @@ $TODAYPATH = "$Home\work\$(Get-Date -f "yyyy\\MM\\yyyyMMdd")"
 # コンソール設定
 $tmp = $Host.UI.RawUI.WindowSize
 $tmp.Width  = 120
-$tmp.Height = 35
 $Host.UI.RawUI.WindowSize = $tmp
 $Host.UI.RawUI.ForegroundColor="White"
 $Host.UI.RawUI.BackgroundColor="Black"
@@ -37,7 +36,7 @@ $drives.Keys | %{
         If (-not (Test-Path $path)) {
             New-Item $path -Force -ItemType Directory | Out-Null
         }
-        if (-not (Test-Path $drive)) {
+        If (-not (Test-Path $drive)) {
             New-PSDrive $name FileSystem $path -Scope Global | Out-Null
         }
         cd $drive
@@ -103,6 +102,32 @@ Function memo
         gvim $memo_file
     } else {
         notepad $memo_file
+    }
+}
+
+<#
+.SYNOPSIS
+クリップボート内の画像をファイルに出力します。
+#>
+Function cap
+{
+    powershell -sta -command {
+    Add-Type -AssemblyName System.Windows.Forms
+    $cb = [Windows.Forms.Clipboard]
+    $img = $cb::GetImage()
+
+    if ($img -ne $null) {
+        $images = "$TODAYPATH\images"
+        If(-not (Test-Path $images)) {
+            New-Item $images -ItemType Directory -Force | Out-Null
+        }
+        [int]$fileno = ls $images | ?{$_.Name -match 'img(\d{3}).png'} |
+            sort | select -last 1 | %{$Matches[1]}
+        $out_file = "$images\img{0:000}.png" -f ($fileno + 1)
+
+        $img.Save($out_file)
+        $out_file
+    }
     }
 }
 
