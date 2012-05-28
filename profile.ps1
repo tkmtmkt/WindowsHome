@@ -8,9 +8,6 @@ $APPSDIR = "$Home\apps"
 $TODAYPATH = "$Home\work\$(Get-Date -f "yyyy\\MM\\yyyyMMdd")"
 
 # コンソール設定
-$tmp = $Host.UI.RawUI.WindowSize
-$tmp.Width  = 120
-$Host.UI.RawUI.WindowSize = $tmp
 $Host.UI.RawUI.ForegroundColor="White"
 $Host.UI.RawUI.BackgroundColor="Black"
 cls
@@ -20,6 +17,7 @@ $drives = @{
     prof = "$(Split-Path $PROFILE)"
     tool = "$TOOLDIR"
     apps = "$APPSDIR"
+    home = "$Home"
     work = "$Home\work"
     today = "$TODAYPATH"
 }
@@ -58,7 +56,7 @@ Function memo
     $memo_file = "$TODAYPATH.mkd"
     If (-not (Test-Path $memo_file)) {
         If (-not (Test-Path (Split-Path $memo_file))) {
-            New-Item (Split-Path $memo_file) -Force -ItemType Directory
+            New-Item (Split-Path $memo_file) -Force -ItemType Directory | Out-Null
         }
 @" 
 作業記録
@@ -69,12 +67,9 @@ Function memo
 予定
 ----
 * 
-* 
-* 
-* 
-* 
 
-詳細
+
+実績
 ----
 
 ### 
@@ -92,7 +87,7 @@ Function memo
 
 参考
 ----
-[Markdownの文法](http://blog.2310.net/archives/6)
+* [Markdownの文法](http://blog.2310.net/archives/6)
 
 <!-- vim: set ft=markdown ts=4 sw=4 et:-->
 "@ | Out-File $memo_file -Encoding Default -Force
@@ -126,9 +121,18 @@ Function cap
         $out_file = "$images\img{0:000}.png" -f ($fileno + 1)
 
         $img.Save($out_file)
-        $out_file
+        (Resolve-Path $out_file).Path
     }
     }
+}
+
+<#
+.SYNOPSIS
+カレントフォルダをエクスプローラで表示します。
+#>
+Function exp
+{
+    explorer .
 }
 
 <#
@@ -143,14 +147,14 @@ Function Get-Hash
         [parameter(Mandatory=$true)][string]$filePath
     )
 
-    $hashAlgorithm = [System.Security.Cryptography.MD5]::Create()
+    $hashAlgorithm = [Security.Cryptography.MD5]::Create()
 
     @(ls $filePath) | ?{-not $_.PSIsContainer} | %{
         $inputStream = New-Object IO.StreamReader $_
         $hash = $hashAlgorithm.ComputeHash($inputStream.BaseStream);
         $inputStream.Close()
 
-        $hashString = [System.BitConverter]::ToString($hash).ToLower().Replace("-","")
+        $hashString = [BitConverter]::ToString($hash).ToLower().Replace("-","")
 
         "MD5($_) = $hashString"
     }

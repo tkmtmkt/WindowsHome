@@ -40,6 +40,7 @@ PowerShellの作業環境設定用のファイルです。
 * データベース：
   [SQLite](http://www.sqlite.org/)
 
+
 ### ツール（オプション）
 "$Home\apps"フォルダに追加のツールを置きます。
 
@@ -62,10 +63,13 @@ PowerShellの作業環境設定用のファイルです。
   [Apache Ant](http://ant.apache.org/),
   [Apache Maven](http://maven.apache.org/)
 
+
 ### 関数定義
 
-* memo
-* Get-Hash
-* Get-Assemblies
+* memo - 作業記録用のテキストファイルを開きます。
+* cap - クリップボード内の画像を`today:images\img000.png`に保管します。
+* exp - カレントフォルダをエクスプローラで表示します。
+* Get-Hash - ファイルのMD5チェックサムを計算します。
+* Get-Assemblies - PowerShellセッションにロード済みのアセンブリを表示します。
 
 <!-- vim: set ts=4 sw=4 et:-->
