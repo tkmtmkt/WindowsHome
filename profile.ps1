@@ -3,22 +3,39 @@
 # 環境設定（ユーザ作業用）
 #
 ############################################################
-$TOOLDIR = "$Home\tool"
-$APPSDIR = "$Home\apps"
-$TODAYPATH = "$Home\work\$(Get-Date -f "yyyy\\MM\\yyyyMMdd")"
+if ($Env:HOME -eq $null) {
+    $Env:HOME = $Home
+} else {
+    if ($Env:HOME[-2] -ne ":") {
+        $Env:HOME = $Env:HOME.TrimEnd("\")
+    }
+}
+$TOOLDIR = "$Env:HOME\tool"
+$APPSDIR = "$Env:HOME\apps"
+$TODAYPATH = "$Env:HOME\work\$(Get-Date -f "yyyy\\MM\\yyyyMMdd")"
 
 # コンソール設定
-$Host.UI.RawUI.ForegroundColor="White"
-$Host.UI.RawUI.BackgroundColor="Black"
-cls
+$Host.UI.RawUI | %{
+    $tmp = $_.MaxPhysicalWindowSize
+    $tmpHeight = $tmp.Height - 1
+    $tmp.Width = 120
+    $tmp.Height = 3000
+    $_.BufferSize = $tmp
+    $tmp.Height = $tmpHeight
+    $_.WindowSize = $tmp
+
+    $_.ForegroundColor = "White"
+    $_.BackgroundColor = "Black"
+    cls
+}
 
 # フォルダへのショートカット用ドライブの設定
 $drives = @{
     prof = "$(Split-Path $PROFILE)"
     tool = "$TOOLDIR"
     apps = "$APPSDIR"
-    home = "$Home"
-    work = "$Home\work"
+    home = "$Env:HOME"
+    work = "$Env:HOME\work"
     today = "$TODAYPATH"
 }
 $drives.Keys | %{
@@ -40,6 +57,7 @@ $drives.Keys | %{
         cd $drive
     } | Out-Null
 }
+home:
 
 
 ############################################################
