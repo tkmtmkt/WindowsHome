@@ -263,6 +263,7 @@ $tmp = "$Env:ProgramFiles\Java\jdk*"
 If (Test-Path $tmp -ErrorAction SilentlyContinue) {
     $Env:JAVA_HOME = @(ls $tmp | sort -desc)[0].FullName
     Add-Path "$Env:JAVA_HOME\bin"
+#    $Env:JAVA_OPTS = "-Dhttp.proxyHost=proxyhostURL -Dhttp.proxyPort=proxyPortNumber"
 }
 
 Add-Path "$APPSDIR\scala\bin"
