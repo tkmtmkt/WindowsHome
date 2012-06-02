@@ -16,7 +16,12 @@ GitHubからファイルを取得します。
     git remote add origin https://github.com/tkmtmkt/WindowsHome.git
     git pull
     git branch --set-upstream master origin/master
-    git co master
+    git checkout master
+
+サブモジュールを取得します。
+
+    git submodule init
+    git submodule update
 
 ホームディレクトリ以下の管理対象外のファイルを除外します。
 （リポジトリのルートがホームディレクトリになるので.gitignoreはグローバル
@@ -28,12 +33,13 @@ GitHubからファイルを取得します。
     !Documents/WindowsPowerShell/profile.ps1
     !posh.bat
     !.bashrc
-    !.vim/
+    !.vim/*
     !_vimrc
     !_gvimrc
     !.gitconfig
     !.gitignore
-    "@ > Out-File "$home/.git/info/exclude" -encoding OEM -append
+    !.gitmodules
+    "@ | Out-File "$home/.git/info/exclude" -encoding OEM -append
 
 
 設定内容
