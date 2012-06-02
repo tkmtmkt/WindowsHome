@@ -224,8 +224,10 @@ Add-Path "$TOOLDIR\WinMerge"
 # リモート接続
 Add-Path "$TOOLDIR\teraterm"
 Add-Path "$TOOLDIR\winscp"
-If (Test-Path "$TOOLDIR\vnc*") {
-    Set-Alias vnc @(ls "$TOOLDIR\vnc*" | sort)[0].FullName
+
+$tmp = "$TOOLDIR\vnc*"
+If (Test-Path $tmp -ErrorAction SilentlyContinue) {
+    Set-Alias vnc @(ls $tmp | sort -desc)[0].FullName
 }
 
 # システム管理
@@ -258,8 +260,8 @@ Add-Path "$APPSDIR\mongodb\bin"
 
 # プログラミング
 $tmp = "$Env:ProgramFiles\Java\jdk*"
-If (Test-Path $tmp) {
-    $Env:JAVA_HOME = @(ls $tmp | sort)[0].FullName
+If (Test-Path $tmp -ErrorAction SilentlyContinue) {
+    $Env:JAVA_HOME = @(ls $tmp | sort -desc)[0].FullName
     Add-Path "$Env:JAVA_HOME\bin"
 }
 
@@ -268,13 +270,12 @@ Add-Path "$APPSDIR\scala\bin"
 Add-Path "$APPSDIR\jython"
 
 $tmp = "$APPSDIR\clojure\clojure*.jar"
-If (Test-Path $tmp) {
-    $CLOJURE = @(ls $tmp | sort)[0].FullName
-    $Env:CLOJURE_HOME = "$APPSDIR\clojure"
+If (Test-Path $tmp -ErrorAction SilentlyContinue) {
+    $CLOJURE = @(ls $tmp | sort -desc)[0].FullName
     Function clojure
     {
         $OFA = " "
-        java.exe -cp $CLOJURE clojure.main "$args"
+        java -cp $CLOJURE clojure.main "$args"
     }
 }
 
@@ -285,6 +286,7 @@ Add-Path "$APPSDIR\apache-ant\bin"
 Add-Path "$APPSDIR\apache-maven\bin"
 
 # その他
+Add-Path "$APPSDIR\astah_community"
 Add-Path "$APPSDIR\Play20"
 
 # vim: set ft=ps1 ts=4 sw=4 et:
