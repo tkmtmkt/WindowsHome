@@ -1,4 +1,7 @@
-*
-!.gitignore
-!README.md
-!profile.ps1
+*.sw[po]
+\#*#
+*#
+.#*
+.*~
+*~
+*.[ao]

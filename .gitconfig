@@ -1,0 +1,111 @@
+[user]
+	name = TAKAMATSU Makoto
+	email = tkmtmkt@gmail.com
+[core]
+	excludesfile = ~/.gitignore  # globalな.gitignoreの指定
+	autocrlf = false
+	editor = vim
+	quotepath = false
+	pager = nkf32 | less
+[color]
+	# colorの設定(以下のコマンドは自動で色つける)
+	diff = auto
+	status = auto
+	branch = auto
+	interactive = auto
+	grep = auto
+	ui = true
+[gui]
+	encoding = utf-8
+	fontui = -family \"ＭＳ ゴシック\" -size 10 -weight normal -slant roman -underline 0 -overstrike 0
+[push]
+	default = tracking       # defaultのpush先はtrackingしているリポジトリ
+[merge]
+	tool = vimdiff
+[alias]
+	st = status
+	sh = show
+	so = remote show origin
+	ft = fetch
+	ftp = fetch --prune
+	up = pull --rebase       # pull rebase
+	po = push origin         # push origin
+	pof = push -f origin     # force
+	pu = push -u origin      # push origin and set upstream
+	rbm = rebase master      # masterへのrebaseはよく使うのでalias
+	ci = commit              # commit
+	cam = commit --amend     # 直前のcommitを修正
+	co = checkout
+	cb = checkout -b         # branch切ってcheckoutする
+	ct = checkout --track    # remoteのbranchを追跡
+	cm = checkout master
+	# branch関連
+	br = branch
+	ba = branch -a           # originも含めた全てのbranchを表示
+	bm = branch --merged     # merge済みのbranchを表示
+	bn = branch --no-merged  # mergeしてないbranchを表示
+	bo = branch -r           # remote branchを表示
+	# log関連
+	wc = whatchanged         # logに変更されたファイルも一緒に出す
+	ls = log --stat          # logに変更されたファイルも一緒に出す
+	lp = log -p              # diffも一緒に出す
+	la = log --pretty=\"format:%ad %h (%an): %s\" --date=short  # ざっくりログ出す
+	lr = log origin          # originのlog
+	oneline = log --oneline --decorate
+	ranking = shortlog -s -n --no-merges
+	# logをtree表示
+	log-graph = log --graph --date=short --pretty=format:'%Cgreen%h %cd %Cblue%cn %Creset%s'
+	log-all = log --graph --all --color --pretty='%x09%h %cn%x09%s %Cred%d%Creset'
+	# reset
+	rhs  = reset --soft HEAD
+	rhs1 = reset --soft HEAD~
+	rhs2 = reset --soft HEAD~~
+	rhs3 = reset --soft HEAD~~~
+	rhs4 = reset --soft HEAD~~~~
+	rhs5 = reset --soft HEAD~~~~~
+	rhh  = reset --hard HEAD       # 取り返しのつかないことをしてしまった……!
+	rhh1 = reset --hard HEAD~
+	rhh2 = reset --hard HEAD~~
+	rhh3 = reset --hard HEAD~~~
+	rhh4 = reset --hard HEAD~~~~
+	rhh5 = reset --hard HEAD~~~~~
+	# diff関連
+	di = diff
+	dm = diff master           # masterとのdiff
+	dw = diff --color-words    # 単語単位でいろつけてdiff
+	dc = diff --cached         # addされているものとのdiff
+	ds = diff --staged         # 同上(1.6.1移行)
+	d1 = diff HEAD~            # HEADから1つ前とdiff
+	d2 = diff HEAD~~           # HEADから2つ前とdiff
+	d3 = diff HEAD~~~          # HEADから3つ前とdiff
+	d4 = diff HEAD~~~~         # HEADから4つ前とdiff
+	d5 = diff HEAD~~~~~        # HEADから5つ前とdiff
+	d10 = diff HEAD~~~~~~~~~~  # HEADから10前とdiff
+	# mergeの際にconflictが起きたファイルを編集
+	edit-unmerged = "!f() { git ls-files --unmerged | cut -f2 | sort -u ; }; vim `f`"
+	# mergeの際にconflictが起きたファイルをadd
+	add-unmerged = "!f() { git ls-files --unmerged | cut -f2 | sort -u ; }; git add `f`"
+	delete-unmerged =  "!f() { git ls-files --deleted | cut -f2 | sort -u ; }; git rm `f`"
+	# grep関連
+	gr = grep
+	gn = grep -n
+	sm = submodule
+	smupdate = submodule foreach "git checkout master; git pull origin master"
+	# stash関連
+	sl = stash list
+	sp = stash pop
+	ss = stash save
+
+	chpk = cherry-pick # チンピク
+
+
+[http]
+	sslVerify = false
+
+[tig "bind"]
+	generic = g move-first-line
+	generic = G move-last-line
+	generic = ^F move-page-down
+	generic = ^B move-page-up
+
+# vim: set ts=4 sw=4 ft=gitconfig:

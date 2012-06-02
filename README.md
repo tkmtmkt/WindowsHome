@@ -1,12 +1,39 @@
-WindowsPowerShell
-=================
-PowerShellの作業環境設定用のファイルです。
+WindowsHome
+===========
+Windowsのユーザホームディレクトリに置く環境設定用のファイルです。
+PowerShellのプロファイル設定をメインにしています。
 
 使い方
 ------
-リポジトリのクローンをプロファイルの場所に置くだけです。
+リポジトリのルートがWindowsのユーザホームディレクトリになっています。
+以下の手順でホームディレクトリをgitリポジトリとして初期化します。
 
-    git clone https://github.com/tkmtmkt/WindowsPowerShell.git (Split-Path $PROFILE)
+    cd $home
+    git init
+
+GitHubからファイルを取得します。
+
+    git remote add origin https://github.com/tkmtmkt/WindowsHome.git
+    git pull
+    git branch --set-upstream master origin/master
+    git co master
+
+ホームディレクトリ以下の管理対象外のファイルを除外します。
+（リポジトリのルートがホームディレクトリになるので.gitignoreはグローバル
+設定になってしまうため、リポジトリ内の設定ファイルを変更する。）
+
+    @"
+    *
+    !README.md
+    !Documents/WindowsPowerShell/profile.ps1
+    !posh.bat
+    !.bashrc
+    !.vim/
+    !_vimrc
+    !_gvimrc
+    !.gitconfig
+    !.gitignore
+    "@ > Out-File "$home/.git/info/exclude" -encoding OEM -append
 
 
 設定内容
