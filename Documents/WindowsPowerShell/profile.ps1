@@ -31,7 +31,6 @@ $Host.UI.RawUI | %{
 
 # フォルダへのショートカット用ドライブの設定
 $drives = @{
-    prof = "$(Split-Path $PROFILE)"
     tool = "$TOOLDIR"
     apps = "$APPSDIR"
     home = "$Env:HOME"
