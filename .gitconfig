@@ -22,7 +22,7 @@
 [push]
 	default = tracking       # defaultのpush先はtrackingしているリポジトリ
 [merge]
-	tool = vimdiff
+	tool = winmerge
 [alias]
 	st = status
 	sh = show
@@ -108,5 +108,14 @@
 	generic = G move-last-line
 	generic = ^F move-page-down
 	generic = ^B move-page-up
+
+[mergetool "winmerge"]
+	cmd = WinMergeU.exe "$LOCAL" "$REMOTE" "$BASE" "$MERGED"
+
+[diff]
+	tool = winmerge
+
+[difftool "winmerge"]
+	cmd = WinMergeU.exe "$LOCAL" "$REMOTE"
 
 # vim: set ts=4 sw=4 ft=gitconfig:
