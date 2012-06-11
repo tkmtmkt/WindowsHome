@@ -4,7 +4,6 @@
 [core]
 	excludesfile = ~/.gitignore  # globalな.gitignoreの指定
 	safecrlf = true
-	autocrlf = false
 	editor = vim
 	quotepath = false
 	pager = nkf32 | less

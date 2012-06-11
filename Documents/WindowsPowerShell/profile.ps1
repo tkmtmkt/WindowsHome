@@ -119,6 +119,36 @@ Function memo
 
 <#
 .SYNOPSIS
+ひとつ前の作業記録メモを開きます。
+#>
+function last
+{
+    $ErrorActionPreference = "Stop"
+
+    $memo_file = @(ls (split-path $TODAYPATH) *.mkd)[-2].fullname
+    If ((Get-Command gvim -ErrorAction:SilentlyContinue) -ne $null) {
+        gvim $memo_file
+    } else {
+        notepad $memo_file
+    }
+}
+
+<#
+.SYNOPSIS
+grepもどき。
+#>
+function grep
+{
+    param([string]$pattern, [string]$files)
+    $ErrorActionPreference = "Stop"
+
+    ls . $files -r | ?{-not $_.PSIsContainer} | %{
+        select-string $pattern $_.fullname
+    }
+}
+
+<#
+.SYNOPSIS
 クリップボート内の画像をファイルに出力します。
 #>
 Function cap
