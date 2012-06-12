@@ -127,7 +127,7 @@ function last
 
     $memo_file = @(ls (split-path $TODAYPATH) *.mkd)[-2].fullname
     If ((Get-Command gvim -ErrorAction:SilentlyContinue) -ne $null) {
-        gvim $memo_file
+        gvim -R $memo_file
     } else {
         notepad $memo_file
     }
@@ -231,6 +231,47 @@ Function Add-Path
     }
 }
 
+<#
+.SYNOPSIS
+sbtの初期プロジェクトを作成する。
+#>
+function sbt-init
+{
+    # 初期ディレクトリ作成
+@" 
+project
+lib
+src
+src/main
+src/main/scala
+src/test
+src/test/scala
+"@ -split "`r*`n" | %{md $_}
+
+    # ビルド設定ファイル作成
+    $build_file = "build.sbt"
+@" 
+
+name := "My Project"
+
+version := "0.1-SNAPSHOT"
+
+organization := "home"
+
+libraryDependencies += "junit" % "junit" % "4.8" % "test"
+"@ | out-file $build_file -encoding UTF8
+
+    # サンプルソースファイル作成
+    $sample_file = "src/main/scala/Main.scala"
+@" 
+package home
+
+object Main extends App
+{
+  println("Hello, world")
+}
+"@ | out-file $sample_file -encoding UTF8
+}
 
 ############################################################
 #

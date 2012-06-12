@@ -56,7 +56,7 @@ GitHubからファイルを取得します。
   [KaoriYa](http://www.kaoriya.net/)
 
 * 差分ツール：
-  [WinMerge](http://winmerge.org/?lang=ja)
+  [WinMerge](http://www.geocities.co.jp/SiliconValley-SanJose/8165/winmerge.html)
 
 * リモート接続：
   [Tera Term](http://sourceforge.jp/projects/ttssh2/),
@@ -100,9 +100,12 @@ GitHubからファイルを取得します。
 ### 関数定義
 
 * memo - 作業記録用のテキストファイルを開きます。
+* last - ひとつ前の作業記録用のテキストファイルを開きます。
+* grep - UNIXのgrepぽいもの。
 * cap - クリップボード内の画像を`today:images\img000.png`に保管します。
 * exp - カレントフォルダをエクスプローラで表示します。
 * Get-Hash - ファイルのMD5チェックサムを計算します。
 * Get-Assemblies - PowerShellセッションにロード済みのアセンブリを表示します。
+* sbt-init - sbt (simple build tool)の初期プロジェクトを作成します。
 
 <!-- vim: set ts=4 sw=4 et:-->
