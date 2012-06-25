@@ -12,7 +12,7 @@ if ($Env:HOME -eq $null) {
 }
 $TOOLDIR = "$Env:HOME\tool"
 $APPSDIR = "$Env:HOME\apps"
-$TODAYPATH = "$Env:HOME\work\$(Get-Date -f "yyyy\\MM\\yyyyMMdd")"
+$TODAYPATH = "$Env:HOME\work\$(Get-Date -u "%Y\%m\%Y%m%d")"
 
 # コンソール設定
 $Host.UI.RawUI | %{
@@ -78,7 +78,7 @@ Function memo
 @" 
 作業記録
 ========
-開始：$(Get-Date -f "yyyy/MM/dd HH:mm")  
+開始：$(Get-Date -u "%Y/%m/%d %H:%M")  
 終了：
 
 予定
