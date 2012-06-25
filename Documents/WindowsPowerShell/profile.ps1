@@ -273,6 +273,38 @@ object Main extends App
 "@ | out-file $sample_file -encoding UTF8
 }
 
+<#
+.SYNOPSIS
+PowerShellを実行するCRLバージョンを設定する
+#>
+function Set-CLRVersion
+{
+    param(
+        [parameter(Mandatory=$true)]
+        [string]
+        [ValidatePattern("[24]")]
+        $version
+    )
+
+    $configFile = "$PSHome/powershell.exe.config"
+    $template = @" 
+<?xml version="1.0" encoding="utf-8"?>
+<configuration>
+  <startup useLegacyV2RuntimeActivationPolicy="true" >
+    <supportedRuntime version="{0}" />
+  </startup>
+</configuration>
+"@
+
+    if ($version -eq "2") {
+        if (test-path $configFile) {
+            rm $configFile
+        }
+    } elseif ($version -eq "4" ) {
+        $template -f "v4.0" | out-file $configFile -encoding UTF8
+    }
+}
+
 ############################################################
 #
 # 環境設定（ツール）
