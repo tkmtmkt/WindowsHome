@@ -17,7 +17,7 @@ $TODAYPATH = "$Env:HOME\work\$(Get-Date -u "%Y\%m\%Y%m%d")"
 # ÉRÉìÉ\Å[Éãê›íË
 $Host.UI.RawUI | %{
     $tmp = $_.MaxPhysicalWindowSize
-    $tmpHeight = $tmp.Height - 1
+    $tmpHeight = $tmp.Height - 2
     $tmp.Width = 120
     $tmp.Height = 3000
     $_.BufferSize = $tmp
