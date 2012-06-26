@@ -293,6 +293,9 @@ function Set-CLRVersion
   <startup useLegacyV2RuntimeActivationPolicy="true" >
     <supportedRuntime version="{0}" />
   </startup>
+  <runtime>
+    <loadFromRemoteSources enabled="true" />
+  </runtime>
 </configuration>
 "@
 
