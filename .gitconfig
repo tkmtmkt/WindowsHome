@@ -98,6 +98,8 @@
 
 	chpk = cherry-pick # チンピク
 
+[help]
+	format = html
 
 [http]
 	sslVerify = false

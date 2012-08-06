@@ -175,15 +175,6 @@ Function cap
 
 <#
 .SYNOPSIS
-カレントフォルダをエクスプローラで表示します。
-#>
-Function exp
-{
-    explorer .
-}
-
-<#
-.SYNOPSIS
 指定したファイルのMD5ハッシュを取得します。
 .PARAMETER filePath
 ファイルパスを指定します。
@@ -373,17 +364,28 @@ If (Test-Path $tmp -ErrorAction SilentlyContinue) {
 
 Add-Path "$APPSDIR\scala\bin"
 
-Add-Path "$APPSDIR\jython"
+Function sbt {
+    $tmp = "$APPSDIR\bin\sbt-launch*.jar"
+    If (Test-Path $tmp -ErrorAction SilentlyContinue) {
+        $argList  = @("$Env:JAVA_OPTS -Xms512M -Xmx1536M -Xss1M -XX:+CMSClassUnloadingEnabled -XX:MaxPermSize=384M")
+        $argList += @("-jar $(@(ls $tmp | sort -desc)[0].FullName)")
+        $argList += $args
 
-$tmp = "$APPSDIR\clojure\clojure*.jar"
-If (Test-Path $tmp -ErrorAction SilentlyContinue) {
-    $CLOJURE = @(ls $tmp | sort -desc)[0].FullName
-    Function clojure
-    {
-        $OFA = " "
-        java -cp $CLOJURE clojure.main "$args"
+        start java $argList -NoNewWindow -Wait
     }
 }
+
+Function clojure {
+    $tmp = "$APPSDIR\clojure\clojure*.jar"
+    If (Test-Path $tmp -ErrorAction SilentlyContinue) {
+        $argList  = @("-cp $(@(ls $tmp | sort -desc)[0].FullName) clojure.main")
+        $argList += $args
+
+        start java $argList -NoNewWindow -Wait
+    }
+}
+
+Add-Path "$APPSDIR\jython"
 
 Add-Path "$APPSDIR\ruby\bin"
 
