@@ -209,17 +209,30 @@ Function Get-Assemblies
 
 <#
 .SYNOPSIS
+指定したパスから最新の項目を取得します。
+.PARAMETER Path
+ワイルドカードを含むパスを指定します。
+#>
+function Get-LatestPath {
+    param([string]$Path)
+
+    @(ls "$Path" -ea SilentlyContinue | sort -desc)[0].fullname
+}
+
+<#
+.SYNOPSIS
 環境変数PATHに新しいパスを追加します。
-.PARAMETER item
+.PARAMETER Item
 追加するパスを指定します。
 #>
 Function Add-Path
 {
-    Param([string]$item)
+    Param([string]$Item)
 
-    if (-not $Env:PATH.ToUpper().Contains($item.ToUpper())) {
-        $Env:PATH += ";$item"
-    }
+    if ($Item -eq $null -or
+        $Env:PATH.ToUpper().Contains($Item.ToUpper())) {return}
+
+    $Env:PATH += ";$Item"
 }
 
 <#
@@ -311,20 +324,22 @@ Add-Path "$TOOLDIR\7-Zip"
 Set-Alias zip "$TOOLDIR\7-Zip\7z.exe"
 
 # エディタ
-Add-Path "$TOOLDIR\vim"
-Set-Alias vi "$TOOLDIR\vim\vim.exe"
+$VIM_HOME = Get-LatestPath "$TOOLDIR\vim*"
+Add-Path "$VIM_HOME"
+Set-Alias vi "$VIM_HOME\vim.exe"
 
 # 差分ツール
-Add-Path "$TOOLDIR\WinMerge"
+$WINMERGE_HOME = Get-LatestPath "$TOOLDIR\WinMerge*"
+Add-Path "$WINMERGE_HOME"
 
 # リモート接続
+$TERATERM_HOME = Get-LatestPath "$TOOLDIR\teraterm*"
 Add-Path "$TOOLDIR\teraterm"
-Add-Path "$TOOLDIR\winscp"
+$WINSCP_HOME = Get-LatestPath "$TOOLDIR\winscp*"
+Add-Path "$WINSCP_HOME"
 
-$tmp = "$TOOLDIR\vnc*"
-If (Test-Path $tmp -ErrorAction SilentlyContinue) {
-    Set-Alias vnc @(ls $tmp | sort -desc)[0].FullName
-}
+$VNC = Get-LatestPath "$TOOLDIR\vnc*"
+Set-Alias vnc $VNC
 
 # システム管理
 Add-Path "$TOOLDIR\SysinternalsSuite"
@@ -346,29 +361,31 @@ Set-Alias sql "$TOOLDIR\sqlite3.exe"
 Add-Path "$APPSDIR\bin"
 
 # 構成管理
-Add-Path "$APPSDIR\git"
-Add-Path "$APPSDIR\git\cmd"
-Add-Path "$APPSDIR\svn-win32\bin"
-Add-Path "$APPSDIR\veracity"
+$GIT_HOME = Get-LatestPath "$APPSDIR\*git*"
+Add-Path "$GIT_HOME"
+Add-Path "$GIT_HOME\cmd"
+$SVN_HOME = Get-LatestPath "$APPSDIR\svn*"
+Add-Path "$SVN_HOME\bin"
+$VERACITY_HOME = Get-LatestPath "$APPSDIR\veracity*"
+Add-Path "$VERACITY_HOME"
 
 # データベース
-Add-Path "$APPSDIR\mongodb\bin"
+$MONGODB_HOME = Get-LatestPath "$APPSDIR\mongodb*"
+Add-Path "$MONGODB_HOME\bin"
 
 # プログラミング
-$tmp = "$Env:ProgramFiles\Java\jdk*"
-If (Test-Path $tmp -ErrorAction SilentlyContinue) {
-    $Env:JAVA_HOME = @(ls $tmp | sort -desc)[0].FullName
-    Add-Path "$Env:JAVA_HOME\bin"
-#    $Env:JAVA_OPTS = "-Dhttp.proxyHost=proxyhostURL -Dhttp.proxyPort=proxyPortNumber"
-}
+$JAVA_HOME = Get-LatestPath "$Env:ProgramFiles\Java\jdk*"
+Add-Path "$Env:JAVA_HOME\bin"
+#$Env:JAVA_OPTS = "-Dhttp.proxyHost=proxyhostURL -Dhttp.proxyPort=proxyPortNumber"
 
-Add-Path "$APPSDIR\scala\bin"
+$SCALA_HOME = Get-LatestPath "$APPSDIR\scala*"
+Add-Path "$SCALA_HOME\bin"
 
 Function sbt {
-    $tmp = "$APPSDIR\bin\sbt-launch*.jar"
-    If (Test-Path $tmp -ErrorAction SilentlyContinue) {
+    $sbt = Get-LatestPath "$APPSDIR\bin\sbt-launch*.jar"
+    If ($sbt -ne $null) {
         $argList  = @("$Env:JAVA_OPTS -Xms512M -Xmx1536M -Xss1M -XX:+CMSClassUnloadingEnabled -XX:MaxPermSize=384M")
-        $argList += @("-jar $(@(ls $tmp | sort -desc)[0].FullName)")
+        $argList += @("-jar $sbt")
         $argList += $args
 
         start java $argList -NoNewWindow -Wait
@@ -376,22 +393,26 @@ Function sbt {
 }
 
 Function clojure {
-    $tmp = "$APPSDIR\clojure\clojure*.jar"
-    If (Test-Path $tmp -ErrorAction SilentlyContinue) {
-        $argList  = @("-cp $(@(ls $tmp | sort -desc)[0].FullName) clojure.main")
+    $clojure = Get-LatestPath "$APPSDIR\clojure\clojure*.jar"
+    If ($clojure -ne $null) {
+        $argList  = @("-cp $clojure clojure.main")
         $argList += $args
 
         start java $argList -NoNewWindow -Wait
     }
 }
 
-Add-Path "$APPSDIR\jython"
+$JYTHON_HOME = Get-LatestPath "$APPSDIR\jython*"
+Add-Path "$JYTHON_HOME"
 
-Add-Path "$APPSDIR\ruby\bin"
+$RUBY_HOME = Get-LatestPath "$APPSDIR\ruby*"
+Add-Path "$RUBY_HOME\bin"
 
 # ビルド管理
-Add-Path "$APPSDIR\apache-ant\bin"
-Add-Path "$APPSDIR\apache-maven\bin"
+$ANT_HOME = Get-LatestPath "$APPSDIR\apache-ant*"
+Add-Path "$ANT_HOME\bin"
+$MVN_HOME = Get-LatestPath "$APPSDIR\apache-maven*"
+Add-Path "$MVN_HOME\bin"
 
 # その他
 Add-Path "$APPSDIR\astah_community"
