@@ -103,7 +103,6 @@ GitHubからファイルを取得します。
 * last - ひとつ前の作業記録用のテキストファイルを開きます。
 * grep - UNIXのgrepぽいもの。
 * cap - クリップボード内の画像を`today:images\img000.png`に保管します。
-* exp - カレントフォルダをエクスプローラで表示します。
 * Get-Hash - ファイルのMD5チェックサムを計算します。
 * Get-Assemblies - PowerShellセッションにロード済みのアセンブリを表示します。
 * sbt-init - sbt (simple build tool)の初期プロジェクトを作成します。
