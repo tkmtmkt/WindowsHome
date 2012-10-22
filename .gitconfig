@@ -19,7 +19,7 @@
 	encoding = utf-8
 	fontui = -family \"ＭＳ ゴシック\" -size 10 -weight normal -slant roman -underline 0 -overstrike 0
 [push]
-	default = tracking       # defaultのpush先はtrackingしているリポジトリ
+	default = upstream       # defaultのpush先はtrackingしているリポジトリ
 [merge]
 	tool = winmerge
 [alias]
