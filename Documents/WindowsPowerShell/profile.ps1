@@ -70,10 +70,10 @@ home:
 #>
 Function memo
 {
-    $memo_file = "$TODAYPATH.mkd"
-    If (-not (Test-Path $memo_file)) {
-        If (-not (Test-Path (Split-Path $memo_file))) {
-            New-Item (Split-Path $memo_file) -Force -ItemType Directory | Out-Null
+    $file = "$TODAYPATH.mkd"
+    If (-not (Test-Path $file)) {
+        If (-not (Test-Path (Split-Path $file))) {
+            New-Item (Split-Path $file) -Force -ItemType Directory | Out-Null
         }
 @" 
 作業記録
@@ -107,13 +107,13 @@ Function memo
 * [Markdownの文法](http://blog.2310.net/archives/6)
 
 <!-- vim: set ft=markdown ts=4 sw=4 et:-->
-"@ | Out-File $memo_file -Encoding Default -Force
+"@ | Out-File $file -Encoding Default -Force
     }
 
     If ((Get-Command gvim -ErrorAction:SilentlyContinue) -ne $null) {
-        gvim $memo_file
+        gvim $file
     } else {
-        notepad $memo_file
+        notepad $file
     }
 }
 
@@ -125,11 +125,45 @@ function last
 {
     $ErrorActionPreference = "Stop"
 
-    $memo_file = @(ls (split-path $TODAYPATH) *.mkd)[-2].fullname
+    $file = @(ls (split-path $TODAYPATH) *.mkd)[-2].fullname
     If ((Get-Command gvim -ErrorAction:SilentlyContinue) -ne $null) {
-        gvim -R $memo_file
+        gvim -R $file
     } else {
-        notepad $memo_file
+        notepad $file
+    }
+}
+
+<#
+.SYNOPSIS
+README.mdファイルを開きます。
+#>
+function readme {
+    $file = "README.md"
+    If (-not (Test-Path $file)) {
+        If (-not (Test-Path (Split-Path $file))) {
+            New-Item (Split-Path $file) -Force -ItemType Directory | Out-Null
+        }
+@" 
+HEAD3
+=====
+
+HEAD2
+-----
+
+### HEAD3
+
+
+
+* [Markdownの文法](http://blog.2310.net/archives/6)
+
+<!-- vim: set ts=4 sw=4 et:-->
+"@ | Out-File $file -Encoding UTF8 -Force
+    }
+
+    If ((Get-Command gvim -ErrorAction:SilentlyContinue) -ne $null) {
+        gvim $file
+    } else {
+        notepad $file
     }
 }
 
@@ -179,8 +213,7 @@ Function cap
 .PARAMETER filePath
 ファイルパスを指定します。
 #>
-Function Get-Hash
-{
+Function Get-Hash {
     Param (
         [parameter(Mandatory=$true)][string]$filePath
     )
@@ -194,7 +227,7 @@ Function Get-Hash
 
         $hashString = [BitConverter]::ToString($hash).ToLower().Replace("-","")
 
-        "MD5($_) = $hashString"
+        "$hashString  $($_.Name)"
     }
 }
 
