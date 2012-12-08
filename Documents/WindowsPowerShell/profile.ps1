@@ -12,7 +12,9 @@ if ($Env:HOME -eq $null) {
 }
 $TOOLDIR = "$Env:HOME\tool"
 $APPSDIR = "$Env:HOME\apps"
-$TODAYPATH = "$Env:HOME\work\$(Get-Date -u "%Y\%m\%Y%m%d")"
+$BASEDIR = "$Env:HOME\work"
+function TODAYPATH {"$BASEDIR\$(date -u "%Y\%m\%Y%m%d")"}
+$PSWORK = TODAYPATH
 
 # コンソール設定
 $Host.UI.RawUI | %{
@@ -29,13 +31,15 @@ $Host.UI.RawUI | %{
     cls
 }
 
-# フォルダへのショートカット用ドライブの設定
+# ショートカット：SSH接続
+function ssh-sakura {ttermpro takamatu@www6300u.sakura.ne.jp /P=22 /L="$(log "sakura-")"}
+
+# ショートカット：ドライブ指定
 $drives = @{
     tool = "$TOOLDIR"
     apps = "$APPSDIR"
     home = "$Env:HOME"
-    work = "$Env:HOME\work"
-    today = "$TODAYPATH"
+    work = "$PSWORK"
 }
 $drives.Keys | %{
     New-Item Function: -name "${_}:" -value {
@@ -44,11 +48,11 @@ $drives.Keys | %{
         フォルダへのショートカット用ドライブに移動します。
         #>
         $drive = $MyInvocation.MyCommand.Name
-        $name = $drive.substring(0, $drive.length - 1)
+        $name = $drive.trim(":")
         $path = $drives[$name]
 
         If (-not (Test-Path $path)) {
-            New-Item $path -Force -ItemType Directory | Out-Null
+            New-Item $path -ItemType Directory -Force | Out-Null
         }
         If (-not (Test-Path $drive)) {
             New-PSDrive $name FileSystem $path -Scope Global | Out-Null
@@ -66,19 +70,34 @@ home:
 ############################################################
 <#
 .SYNOPSIS
+ログファイル名を生成します。
+.PARAMETER id
+ログファイル名の先頭に付ける識別を指定します。
+#>
+function log {
+    param (
+        [string]$id = $null
+    )
+    if (-not (test-path TODAYPATH)) {
+        new-item (TODAYPATH) -type dir -force | out-null
+    }
+    "$(TODAYPATH)\$(if ($id -ne $null) {"$id"})$(date -u "%Y%m%d%H%M%S").log"
+}
+
+<#
+.SYNOPSIS
 作業記録メモを開きます。
 #>
-Function memo
-{
-    $file = "$TODAYPATH.mkd"
+Function memo {
+    $file = "$PSWORK.mkd"
     If (-not (Test-Path $file)) {
         If (-not (Test-Path (Split-Path $file))) {
-            New-Item (Split-Path $file) -Force -ItemType Directory | Out-Null
+            new-item (Split-Path $file) -type dir -force | Out-Null
         }
 @" 
 作業記録
 ========
-開始：$(Get-Date -u "%Y/%m/%d %H:%M")  
+開始：$(date -u "%Y/%m/%d %H:%M")  
 終了：
 
 予定
@@ -90,6 +109,11 @@ Function memo
 ----
 
 ### 
+
+
+
+
+
 
 
 
@@ -121,11 +145,10 @@ Function memo
 .SYNOPSIS
 ひとつ前の作業記録メモを開きます。
 #>
-function last
-{
+function last {
     $ErrorActionPreference = "Stop"
 
-    $file = @(ls (split-path $TODAYPATH) *.mkd)[-2].fullname
+    $file = @(ls $BASEDIR *.mkd -r)[-2].fullname
     If ((Get-Command gvim -ErrorAction:SilentlyContinue) -ne $null) {
         gvim -R $file
     } else {
@@ -140,21 +163,14 @@ README.mdファイルを開きます。
 function readme {
     $file = "README.md"
     If (-not (Test-Path $file)) {
-        If (-not (Test-Path (Split-Path $file))) {
-            New-Item (Split-Path $file) -Force -ItemType Directory | Out-Null
-        }
 @" 
-HEAD3
-=====
+タイトル
+========
 
-HEAD2
------
+大項目
+------
 
-### HEAD3
-
-
-
-* [Markdownの文法](http://blog.2310.net/archives/6)
+### 中項目
 
 <!-- vim: set ts=4 sw=4 et:-->
 "@ | Out-File $file -Encoding UTF8 -Force
@@ -171,9 +187,11 @@ HEAD2
 .SYNOPSIS
 grepもどき。
 #>
-function grep
-{
-    param([string]$pattern, [string]$files)
+function grep {
+    param(
+        [string]$pattern,
+        [string]$files
+    )
     $ErrorActionPreference = "Stop"
 
     ls . $files -r | ?{-not $_.PSIsContainer} | %{
@@ -185,17 +203,16 @@ function grep
 .SYNOPSIS
 クリップボート内の画像をファイルに出力します。
 #>
-Function cap
-{
+Function cap {
     powershell -sta -command {
     Add-Type -AssemblyName System.Windows.Forms
     $cb = [Windows.Forms.Clipboard]
     $img = $cb::GetImage()
 
     if ($img -ne $null) {
-        $images = "$TODAYPATH\images"
+        $images = "$PSWORK\images"
         If(-not (Test-Path $images)) {
-            New-Item $images -ItemType Directory -Force | Out-Null
+            New-Item $images -type dir -force | Out-Null
         }
         [int]$fileno = ls $images | ?{$_.Name -match 'img(\d{3}).png'} |
             sort | select -last 1 | %{$Matches[1]}
@@ -235,8 +252,7 @@ Function Get-Hash {
 .SYNOPSIS
 現在のセッションにロードされたアセンブリを取得します。
 #>
-Function Get-Assemblies
-{
+Function Get-Assemblies {
     [Appdomain]::CurrentDomain.GetAssemblies()
 }
 
@@ -247,7 +263,9 @@ Function Get-Assemblies
 ワイルドカードを含むパスを指定します。
 #>
 function Get-LatestPath {
-    param([string]$Path)
+    param(
+        [string]$Path
+    )
 
     @(ls "$Path" -ea SilentlyContinue | sort -desc)[0].fullname
 }
@@ -258,9 +276,10 @@ function Get-LatestPath {
 .PARAMETER Item
 追加するパスを指定します。
 #>
-Function Add-Path
-{
-    Param([string]$Item)
+Function Add-Path {
+    Param(
+        [string]$Item
+    )
 
     if ($Item -eq $null -or
         $Env:PATH.ToUpper().Contains($Item.ToUpper())) {return}
@@ -272,8 +291,7 @@ Function Add-Path
 .SYNOPSIS
 sbtの初期プロジェクトを作成する。
 #>
-function sbt-init
-{
+function sbt-init {
     # 初期ディレクトリ作成
 @" 
 project
@@ -314,8 +332,7 @@ object Main extends App
 .SYNOPSIS
 PowerShellを実行するCRLバージョンを設定する
 #>
-function Set-CLRVersion
-{
+function Set-CLRVersion {
     param(
         [parameter(Mandatory=$true)]
         [string]
@@ -345,6 +362,7 @@ function Set-CLRVersion
     }
 }
 
+
 ############################################################
 #
 # 環境設定（ツール）
@@ -368,6 +386,7 @@ Add-Path "$WINMERGE_HOME"
 # リモート接続
 $TERATERM_HOME = Get-LatestPath "$TOOLDIR\teraterm*"
 Add-Path "$TOOLDIR\teraterm"
+
 $WINSCP_HOME = Get-LatestPath "$TOOLDIR\winscp*"
 Add-Path "$WINSCP_HOME"
 
@@ -376,7 +395,9 @@ Set-Alias vnc $VNC
 
 # システム管理
 Add-Path "$TOOLDIR\SysinternalsSuite"
+
 Add-Path "$TOOLDIR\Log Parser 2.2"
+
 Add-Path "$TOOLDIR\SUPPORT"
 
 # 構成管理
@@ -397,8 +418,10 @@ Add-Path "$APPSDIR\bin"
 $GIT_HOME = Get-LatestPath "$APPSDIR\*git*"
 Add-Path "$GIT_HOME"
 Add-Path "$GIT_HOME\cmd"
+
 $SVN_HOME = Get-LatestPath "$APPSDIR\svn*"
 Add-Path "$SVN_HOME\bin"
+
 $VERACITY_HOME = Get-LatestPath "$APPSDIR\veracity*"
 Add-Path "$VERACITY_HOME"
 
@@ -447,11 +470,13 @@ Add-Path "$RUBY_HOME\bin"
 # ビルド管理
 $ANT_HOME = Get-LatestPath "$APPSDIR\apache-ant*"
 Add-Path "$ANT_HOME\bin"
+
 $MVN_HOME = Get-LatestPath "$APPSDIR\apache-maven*"
 Add-Path "$MVN_HOME\bin"
 
 # その他
 Add-Path "$APPSDIR\astah_community"
+
 Add-Path "$APPSDIR\Play20"
 
 # vim: set ft=ps1 ts=4 sw=4 et:
