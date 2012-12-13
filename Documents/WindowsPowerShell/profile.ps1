@@ -14,7 +14,7 @@ $TOOLDIR = "$Env:HOME\tool"
 $APPSDIR = "$Env:HOME\apps"
 $BASEDIR = "$Env:HOME\work"
 function TODAYPATH {"$BASEDIR\$(date -u "%Y\%m\%Y%m%d")"}
-$PSWORK = TODAYPATH
+$PSWORK = (TODAYPATH)
 
 # コンソール設定
 $Host.UI.RawUI | %{
@@ -40,6 +40,7 @@ $drives = @{
     apps = "$APPSDIR"
     home = "$Env:HOME"
     work = "$PSWORK"
+    today = "$(TODAYPATH)"
 }
 $drives.Keys | %{
     New-Item Function: -name "${_}:" -value {
@@ -78,7 +79,7 @@ function log {
     param (
         [string]$id = $null
     )
-    if (-not (test-path TODAYPATH)) {
+    if (-not (test-path (TODAYPATH))) {
         new-item (TODAYPATH) -type dir -force | out-null
     }
     "$(TODAYPATH)\$(if ($id -ne $null) {"$id"})$(date -u "%Y%m%d%H%M%S").log"
@@ -247,6 +248,7 @@ Function Get-Hash {
         "$hashString  $($_.Name)"
     }
 }
+Set-Alias md5hash Get-Hash
 
 <#
 .SYNOPSIS
@@ -422,7 +424,7 @@ Add-Path "$GIT_HOME\cmd"
 $SVN_HOME = Get-LatestPath "$APPSDIR\svn*"
 Add-Path "$SVN_HOME\bin"
 
-$VERACITY_HOME = Get-LatestPath "$APPSDIR\veracity*"
+$VERACITY_HOME = Get-LatestPath "$APPSDIR\vv_*"
 Add-Path "$VERACITY_HOME"
 
 # データベース
