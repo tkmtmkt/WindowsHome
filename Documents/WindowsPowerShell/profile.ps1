@@ -393,7 +393,7 @@ $WINSCP_HOME = Get-LatestPath "$TOOLDIR\winscp*"
 Add-Path "$WINSCP_HOME"
 
 $VNC = Get-LatestPath "$TOOLDIR\vnc*"
-Set-Alias vnc $VNC
+if ($VNC -ne $null) {Set-Alias vnc $VNC}
 
 # ÉVÉXÉeÉÄä«óù
 Add-Path "$TOOLDIR\SysinternalsSuite"
