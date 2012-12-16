@@ -463,6 +463,10 @@ Function clojure {
     }
 }
 
+$PYTHON_HOME = Get-LatestPath "$APPSDIR\python*"
+Add-Path "$PYTHON_HOME"
+Add-Path "$PYTHON_HOME\Scripts"
+
 $JYTHON_HOME = Get-LatestPath "$APPSDIR\jython*"
 Add-Path "$JYTHON_HOME"
 
@@ -477,6 +481,9 @@ $MVN_HOME = Get-LatestPath "$APPSDIR\apache-maven*"
 Add-Path "$MVN_HOME\bin"
 
 # ‚»‚Ì‘¼
+$PANDOC_HOME = Get-LatestPath "$APPSDIR\pandoc*"
+Add-Path "$PANDOC_HOME\bin"
+
 Add-Path "$APPSDIR\astah_community"
 
 Add-Path "$APPSDIR\Play20"

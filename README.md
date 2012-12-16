@@ -47,7 +47,7 @@ GitHubからファイルを取得します。
 コマンドラインツールのパス設定、コンソールの色設定、日常作業で使用する関数を定義しています。
 
 ### ツール（基本）
-"$Home\tool"フォルダに基本的なツールを置きます。
+"$Env:HOME\tool"フォルダに基本的なツールを置きます。
 
 * アーカイバ：
   [7-ZIP](http://sevenzip.sourceforge.jp/)
@@ -75,7 +75,7 @@ GitHubからファイルを取得します。
 
 
 ### ツール（オプション）
-"$Home\apps"フォルダに追加のツールを置きます。
+"$Env:HOME\apps"フォルダに追加のツールを置きます。
 
 * 構成管理：
   [msysgit](http://code.google.com/p/msysgit/downloads/list),
@@ -88,6 +88,7 @@ GitHubからファイルを取得します。
 * プログラミング：
   [Java SE](http://www.oracle.com/technetwork/java/javase/downloads/index.html),
   [Scala](http://www.scala-lang.org/),
+  [Python](http://www.python.org/),
   [Jython](http://www.jython.org/),
   [Clojure](http://clojure.org/),
   [RubyInsaller for Windows](http://rubyinstaller.org/)
@@ -102,7 +103,7 @@ GitHubからファイルを取得します。
 * memo - 作業記録用のテキストファイルを開きます。
 * last - ひとつ前の作業記録用のテキストファイルを開きます。
 * grep - UNIXのgrepぽいもの。
-* cap - クリップボード内の画像を`today:images\img000.png`に保管します。
+* cap - クリップボード内の画像を`work:images\img000.png`に保管します。
 * Get-Hash - ファイルのMD5チェックサムを計算します。
 * Get-Assemblies - PowerShellセッションにロード済みのアセンブリを表示します。
 * sbt-init - sbt (simple build tool)の初期プロジェクトを作成します。
