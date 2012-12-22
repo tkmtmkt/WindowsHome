@@ -65,7 +65,9 @@ GitHubからファイルを取得します。
 
 * システム管理：
   [SysinternalsSuite](http://technet.microsoft.com/ja-jp/sysinternals/bb842062.aspx),
-  [Log Parser](http://technet.microsoft.com/ja-jp/scriptcenter/dd919274.aspx)
+  [Log Parser](http://technet.microsoft.com/ja-jp/scriptcenter/dd919274.aspx),
+  [Windows Server 2003 Resource Kit Tools](http://www.microsoft.com/en-us/download/details.aspx?id=17657),
+  [Windows Server 2003 Service Pack 2 32-bit Support Tools](http://www.microsoft.com/en-us/download/details.aspx?id=15326)
 
 * 構成管理：
   [Fossil](http://www.fossil-scm.org/)

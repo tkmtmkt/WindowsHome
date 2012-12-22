@@ -13,8 +13,8 @@ if ($Env:HOME -eq $null) {
 $TOOLDIR = "$Env:HOME\tool"
 $APPSDIR = "$Env:HOME\apps"
 $BASEDIR = "$Env:HOME\work"
-function TODAYPATH {"$BASEDIR\$(date -u "%Y\%m\%Y%m%d")"}
-$PSWORK = (TODAYPATH)
+function TODAYPATH {"$BASEDIR\$(date -f 'yyyy\\MM\\yyyyMMdd')"}
+$WORKDIR = (TODAYPATH)
 
 # コンソール設定
 $Host.UI.RawUI | %{
@@ -39,7 +39,7 @@ $drives = @{
     tool = "$TOOLDIR"
     apps = "$APPSDIR"
     home = "$Env:HOME"
-    work = "$PSWORK"
+    work = "$WORKDIR"
     today = "$(TODAYPATH)"
 }
 $drives.Keys | %{
@@ -82,7 +82,7 @@ function log {
     if (-not (test-path (TODAYPATH))) {
         new-item (TODAYPATH) -type dir -force | out-null
     }
-    "$(TODAYPATH)\$(if ($id -ne $null) {"$id"})$(date -u "%Y%m%d%H%M%S").log"
+    "$(TODAYPATH)\$(if ($id -ne $null) {"$id"})$(date -f 'yyyyMMddHHmmss').log"
 }
 
 <#
@@ -90,7 +90,7 @@ function log {
 作業記録メモを開きます。
 #>
 Function memo {
-    $file = "$PSWORK.mkd"
+    $file = "$WORKDIR.mkd"
     If (-not (Test-Path $file)) {
         If (-not (Test-Path (Split-Path $file))) {
             new-item (Split-Path $file) -type dir -force | Out-Null
@@ -98,7 +98,7 @@ Function memo {
 @" 
 作業記録
 ========
-開始：$(date -u "%Y/%m/%d %H:%M")  
+開始：$(date -f 'yyyy/MM/dd HH:mm')  
 終了：
 
 予定
@@ -211,7 +211,7 @@ Function cap {
     $img = $cb::GetImage()
 
     if ($img -ne $null) {
-        $images = "$PSWORK\images"
+        $images = "$WORKDIR\images"
         If(-not (Test-Path $images)) {
             New-Item $images -type dir -force | Out-Null
         }
@@ -374,7 +374,8 @@ Add-Path $TOOLDIR
 
 # アーカイバ
 Add-Path "$TOOLDIR\7-Zip"
-Set-Alias zip "$TOOLDIR\7-Zip\7z.exe"
+Set-Alias zip  "$TOOLDIR\7-Zip\7z.exe"
+Set-Alias zipw "$TOOLDIR\7-Zip\7zFM.exe"
 
 # エディタ
 $VIM_HOME = Get-LatestPath "$TOOLDIR\vim*"
@@ -387,7 +388,7 @@ Add-Path "$WINMERGE_HOME"
 
 # リモート接続
 $TERATERM_HOME = Get-LatestPath "$TOOLDIR\teraterm*"
-Add-Path "$TOOLDIR\teraterm"
+Add-Path "$TERATERM_HOME"
 
 $WINSCP_HOME = Get-LatestPath "$TOOLDIR\winscp*"
 Add-Path "$WINSCP_HOME"
@@ -399,6 +400,8 @@ if ($VNC -ne $null) {Set-Alias vnc $VNC}
 Add-Path "$TOOLDIR\SysinternalsSuite"
 
 Add-Path "$TOOLDIR\Log Parser 2.2"
+
+Add-Path "$TOOLDIR\rktools"
 
 Add-Path "$TOOLDIR\SUPPORT"
 
