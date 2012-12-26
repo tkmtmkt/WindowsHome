@@ -65,9 +65,10 @@ GitHubからファイルを取得します。
 
 * システム管理：
   [SysinternalsSuite](http://technet.microsoft.com/ja-jp/sysinternals/bb842062.aspx),
-  [Log Parser](http://technet.microsoft.com/ja-jp/scriptcenter/dd919274.aspx),
   [Windows Server 2003 Resource Kit Tools](http://www.microsoft.com/en-us/download/details.aspx?id=17657),
-  [Windows Server 2003 Service Pack 2 32-bit Support Tools](http://www.microsoft.com/en-us/download/details.aspx?id=15326)
+  [Windows Server 2003 Service Pack 2 32-bit Support Tools](http://www.microsoft.com/en-us/download/details.aspx?id=15326),
+  [Log Parser](http://technet.microsoft.com/ja-jp/scriptcenter/dd919274.aspx),
+  [LogExpert](http://www.log-expert.de/)
 
 * 構成管理：
   [Fossil](http://www.fossil-scm.org/)
@@ -109,5 +110,68 @@ GitHubからファイルを取得します。
 * Get-Hash - ファイルのMD5チェックサムを計算します。
 * Get-Assemblies - PowerShellセッションにロード済みのアセンブリを表示します。
 * sbt-init - sbt (simple build tool)の初期プロジェクトを作成します。
+
+
+その他
+------
+
+### git設定
+
+設定ファイルの編集
+
+    git config --global -e
+
+
+### Subversion設定
+
+設定ファイルの編集
+
+    gvim $Env:APPDATA/Subversion/config
+
+
+### TeraTerm設定
+
+    TERATERM.INI
+
+    UILanguageFile=lang/Japanese.lng
+    TerminalSize=120,40
+    VTFont=ＭＳ ゴシック,0,-16,128
+
+
+### fossil設定
+
+リポジトリ作成
+
+    fossil init hoge.fossil
+
+ユーザパスワード変更
+
+    fossil user password USERNAME -R hoge.fossil
+
+ユーザ作成
+
+    fossil user new USERNAME -R hoge.fossil
+
+管理者権限付与
+
+    fossil user capabilities USERNAME -R hoge.fossil
+
+
+### Resource Kit Tools, Support Tools 設定
+
+    tools:
+    cd arch
+
+    zip x -otmp rktools.exe
+    zip x -orktools tmp\rktools.msi
+    rm tmp
+
+    zip x -oSUPPORT support.cab
+
+
+### WinMerge設定
+
+7z.dllをWinMergeフォルダにコピーして、アーカイブサポートを有効にする。
+
 
 <!-- vim: set ts=4 sw=4 et:-->

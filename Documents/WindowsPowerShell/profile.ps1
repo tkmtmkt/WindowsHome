@@ -18,14 +18,9 @@ $WORKDIR = (TODAYPATH)
 
 # コンソール設定
 $Host.UI.RawUI | %{
-    $tmp = $_.MaxPhysicalWindowSize
-    $tmpHeight = $tmp.Height - 2
-    $tmp.Width = 120
-    $tmp.Height = 3000
-    $_.BufferSize = $tmp
-    $tmp.Height = $tmpHeight
-    $_.WindowSize = $tmp
-
+    $height = $_.MaxPhysicalWindowSize.Height - 2
+    $_.WindowSize = new-object Management.Automation.Host.Size(120, $height)
+    $_.BufferSize = new-object Management.Automation.Host.Size(120, 3000)
     $_.ForegroundColor = "White"
     $_.BackgroundColor = "Black"
     cls
@@ -381,6 +376,7 @@ Set-Alias zipw "$TOOLDIR\7-Zip\7zFM.exe"
 $VIM_HOME = Get-LatestPath "$TOOLDIR\vim*"
 Add-Path "$VIM_HOME"
 Set-Alias vi "$VIM_HOME\vim.exe"
+$Env:EDITOR = "gvim"
 
 # 差分ツール
 $WINMERGE_HOME = Get-LatestPath "$TOOLDIR\WinMerge*"
@@ -399,11 +395,14 @@ if ($VNC -ne $null) {Set-Alias vnc $VNC}
 # システム管理
 Add-Path "$TOOLDIR\SysinternalsSuite"
 
-Add-Path "$TOOLDIR\Log Parser 2.2"
-
 Add-Path "$TOOLDIR\rktools"
 
 Add-Path "$TOOLDIR\SUPPORT"
+
+Add-Path "$TOOLDIR\Log Parser 2.2"
+
+$LOGEXPERT_HOME = Get-LatestPath "$TOOLDIR\LogExpert*"
+Add-Path "$LOGEXPERT_HOME"
 
 # 構成管理
 Set-Alias fos "$TOOLDIR\fossil.exe"
