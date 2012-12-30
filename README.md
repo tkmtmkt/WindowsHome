@@ -107,7 +107,8 @@ GitHubからファイルを取得します。
 * last - ひとつ前の作業記録用のテキストファイルを開きます。
 * grep - UNIXのgrepぽいもの。
 * cap - クリップボード内の画像を`work:images\img000.png`に保管します。
-* Get-Hash - ファイルのMD5チェックサムを計算します。
+* md5sum - ファイルのMD5チェックサムを計算します。
+* sha1sum - ファイルのSHA1チェックサムを計算します。
 * Get-Assemblies - PowerShellセッションにロード済みのアセンブリを表示します。
 * sbt-init - sbt (simple build tool)の初期プロジェクトを作成します。
 
@@ -115,63 +116,101 @@ GitHubからファイルを取得します。
 その他
 ------
 
+### WinMerge設定
+
+7z.dllをWinMergeフォルダにコピーして、アーカイブサポートを有効にする。
+
+    cp $TOOLDIR\7-Zip\7z.dll $WINMERGE_HOME
+
+
+### TeraTerm設定
+
+TERATERM.INIを編集してメニューの日本語化、ウィンドウサイズ、色を設定する。
+
+    UILanguageFile=lang\Japanese.lng
+    TerminalSize=120,40
+    VTFont=ＭＳ ゴシック,0,-16,128
+
+
+### Resource Kit Tools
+
+    tool:
+    cd \arch
+
+    zip x -otmp rktools.exe
+    zip x -orktools tmp\rktools.msi
+    mv rktools ..
+    rm tmp
+
+
+### Support Tools 設定
+
+    tool:
+    cd \arch
+
+    zip x -oSUPPORT support.cab
+    mv SUPPORT ..
+
+
+### fossil設定
+
+リポジトリファイルを作成する。
+
+    fossil init REPO_FILE
+
+ユーザを作成する。
+
+    fossil user new USERNAME -R REPO_FILE
+
+管理者権限を付与する。
+
+    fossil user capabilities USERNAME -R REPO_FILE
+
+ユーザパスワードを変更する。
+
+    fossil user password USERNAME -R REPO_FILE
+
+作業ディレクトリを作成する。
+
+    fossil open REPO_FILE
+
+
 ### git設定
 
-設定ファイルの編集
+設定ファイルを編集する。
 
     git config --global -e
 
 
 ### Subversion設定
 
-設定ファイルの編集
+設定ファイルを編集する。
 
-    gvim $Env:APPDATA/Subversion/config
-
-
-### TeraTerm設定
-
-    TERATERM.INI
-
-    UILanguageFile=lang/Japanese.lng
-    TerminalSize=120,40
-    VTFont=ＭＳ ゴシック,0,-16,128
+    gvim $Env:APPDATA\Subversion\config
 
 
-### fossil設定
+### Veracity設定
 
-リポジトリ作成
+BTSサーバを起動するために必要な設定を行う。
 
-    fossil init hoge.fossil
+    vv config set server/files $VERACITY_HOME\server_files
 
-ユーザパスワード変更
+リポジトリを作成する。(方法1)
 
-    fossil user password USERNAME -R hoge.fossil
+    vv repo new REPO_NAME
+    vv checkout REPO_NEM WORK_DIR
 
-ユーザ作成
+リポジトリを作成する。(方法2)
 
-    fossil user new USERNAME -R hoge.fossil
+    vv init REPO_NAME WORK_DIR
 
-管理者権限付与
+ユーザ名を設定する。
 
-    fossil user capabilities USERNAME -R hoge.fossil
+    vv whoami --create USERNAME
 
+参考：リポジトリの場所
 
-### Resource Kit Tools, Support Tools 設定
-
-    tools:
-    cd arch
-
-    zip x -otmp rktools.exe
-    zip x -orktools tmp\rktools.msi
-    rm tmp
-
-    zip x -oSUPPORT support.cab
-
-
-### WinMerge設定
-
-7z.dllをWinMergeフォルダにコピーして、アーカイブサポートを有効にする。
+    $Env:LOCALAPPDATA\.sgcloset
 
 
 <!-- vim: set ts=4 sw=4 et:-->

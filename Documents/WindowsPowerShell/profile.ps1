@@ -27,7 +27,7 @@ $Host.UI.RawUI | %{
 }
 
 # ショートカット：SSH接続
-function ssh-sakura {ttermpro takamatu@www6300u.sakura.ne.jp /P=22 /L="$(log "sakura-")"}
+function ssh-sakura {ttermpro $Env:USERNAME@www.sakura.ne.jp /P=22 /L="$(log "sakura-")"}
 
 # ショートカット：ドライブ指定
 $drives = @{
@@ -222,28 +222,60 @@ Function cap {
 
 <#
 .SYNOPSIS
-指定したファイルのMD5ハッシュを取得します。
+指定したファイルのハッシュを取得します。
+.PARAMETER hashAlgorithm
+ハッシュアルゴリズムを指定します。
 .PARAMETER filePath
 ファイルパスを指定します。
 #>
 Function Get-Hash {
     Param (
+        [parameter(Mandatory=$true)][Security.Cryptography.HashAlgorithm]$hashAlgorithm,
+        [parameter(Mandatory=$true)][string]$fileName
+    )
+
+    # ハッシュ作成
+    $inputStream = New-Object IO.StreamReader $fileName
+    $hash = $hashAlgorithm.ComputeHash($inputStream.BaseStream);
+    $inputStream.Close()
+
+    # 文字列に変換
+    [BitConverter]::ToString($hash).ToLower().Replace("-","")
+}
+
+<#
+.SYNOPSIS
+指定したファイルのMD5ハッシュを取得します。
+.PARAMETER filePath
+ファイルパスを指定します。
+#>
+function md5sum {
+    Param (
         [parameter(Mandatory=$true)][string]$filePath
     )
 
     $hashAlgorithm = [Security.Cryptography.MD5]::Create()
-
     @(ls $filePath) | ?{-not $_.PSIsContainer} | %{
-        $inputStream = New-Object IO.StreamReader $_
-        $hash = $hashAlgorithm.ComputeHash($inputStream.BaseStream);
-        $inputStream.Close()
-
-        $hashString = [BitConverter]::ToString($hash).ToLower().Replace("-","")
-
-        "$hashString  $($_.Name)"
+        "$(Get-Hash $hashAlgorithm $_.FullName) $($_.Name)"
     }
 }
-Set-Alias md5hash Get-Hash
+
+<#
+.SYNOPSIS
+指定したファイルのSHA1ハッシュを取得します。
+.PARAMETER filePath
+ファイルパスを指定します。
+#>
+function sha1sum {
+    Param (
+        [parameter(Mandatory=$true)][string]$filePath
+    )
+
+    $hashAlgorithm = [Security.Cryptography.SHA1]::Create()
+    @(ls $filePath) | ?{-not $_.PSIsContainer} | %{
+        "$(Get-Hash $hashAlgorithm $_.FullName) $($_.Name)"
+    }
+}
 
 <#
 .SYNOPSIS
