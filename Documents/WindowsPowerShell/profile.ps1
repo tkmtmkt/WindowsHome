@@ -26,8 +26,13 @@ $Host.UI.RawUI | %{
     cls
 }
 
+# プロンプト設定
+function prompt {
+    $Env:USERDOMAIN + '\' + $Env:USERNAME + ' ' + $(pwd) + "`nPS> "
+}
+
 # ショートカット：SSH接続
-function ssh-sakura {ttermpro $Env:USERNAME@www.sakura.ne.jp /P=22 /L="$(log "sakura-")"}
+function ssh-sakura {ttermpro $Env:USERNAME@www.sakura.ne.jp /P=22 /L=$(log "sakura-")}
 
 # ショートカット：ドライブ指定
 $drives = @{
