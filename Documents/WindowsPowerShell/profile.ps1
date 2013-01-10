@@ -28,7 +28,9 @@ $Host.UI.RawUI | %{
 
 # プロンプト設定
 function prompt {
-    $Env:USERDOMAIN + '\' + $Env:USERNAME + ' ' + $(pwd) + "`nPS> "
+    write-host "$($Env:USERDOMAIN)\$($Env:USERNAME) " -NoNewline -ForegroundColor "Green"
+    write-host "$PWD" -ForegroundColor "DarkCyan"
+    "PS> "
 }
 
 # ショートカット：SSH接続
