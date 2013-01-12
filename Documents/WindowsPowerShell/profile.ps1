@@ -30,7 +30,8 @@ $Host.UI.RawUI | %{
 function prompt {
     write-host "$($Env:USERDOMAIN)\$($Env:USERNAME) " -NoNewline -ForegroundColor "Green"
     write-host "$PWD" -ForegroundColor "DarkCyan"
-    "PS> "
+    $(if (test-path Variable:/PSDebugContext) { '[DBG]: ' } else { '' }) +
+    "PS $(date -f 'yyyy/MM/dd HH:mm:ss')$('>' * ($NestedPromptLevel + 1)) "
 }
 
 # ショートカット：SSH接続
