@@ -74,6 +74,51 @@ home:
 ############################################################
 <#
 .SYNOPSIS
+管理者権限の有無を判定します。
+#>
+function IsAdministrator {
+    [Security.Principal.WindowsPrincipal]$id = [Security.Principal.WindowsIdentity]::GetCurrent()
+    $id.IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)
+}
+
+<#
+.SYNOPSIS
+シンボリックリンクを作成します。
+#>
+function ln {
+    param(
+        [parameter(Mandatory=$true)]
+        [ValidateScript({test-path $_})]
+        [string]$target,
+        [string]$link
+    )
+
+    $target_path = (resolve-path $target).ProviderPath
+
+    if ($link -eq $null -or $link -eq "") {
+        $link_name = split-path $target_path -leaf
+    } else {
+        $link_name = split-path $link -leaf
+    }
+
+    $option = "/D" * (test-path $target_path -type container)
+
+    $script = @"
+cd '$($PWD.ProviderPath)'
+cmd /c mklink $option '$link_name' '$target_path'
+write-host "Enterを押してください..."
+read-host | out-null
+"@
+
+    if (IsAdministrator) {
+        Invoke-Expression $script
+    } else {
+        start powershell @("-NoProfile -Command",$script) -Verb RunAs
+    }
+}
+
+<#
+.SYNOPSIS
 ログファイル名を生成します。
 .PARAMETER id
 ログファイル名の先頭に付ける識別を指定します。
