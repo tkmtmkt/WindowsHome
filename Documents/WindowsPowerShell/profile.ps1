@@ -276,20 +276,20 @@ Function cap {
 <#
 .SYNOPSIS
 指定したファイルのハッシュを取得します。
-.PARAMETER hashAlgorithm
+.PARAMETER HashAlgorithm
 ハッシュアルゴリズムを指定します。
-.PARAMETER filePath
-ファイルパスを指定します。
+.PARAMETER FileName
+ファイル名を指定します。
 #>
 Function Get-Hash {
     Param (
-        [parameter(Mandatory=$true)][Security.Cryptography.HashAlgorithm]$hashAlgorithm,
-        [parameter(Mandatory=$true)][string]$fileName
+        [parameter(Mandatory=$true)][Security.Cryptography.HashAlgorithm]$HashAlgorithm,
+        [parameter(Mandatory=$true)][string]$FileName
     )
 
     # ハッシュ作成
-    $inputStream = New-Object IO.StreamReader $fileName
-    $hash = $hashAlgorithm.ComputeHash($inputStream.BaseStream);
+    $inputStream = New-Object IO.StreamReader $FileName
+    $hash = $HashAlgorithm.ComputeHash($inputStream.BaseStream);
     $inputStream.Close()
 
     # 文字列に変換
@@ -299,35 +299,33 @@ Function Get-Hash {
 <#
 .SYNOPSIS
 指定したファイルのMD5ハッシュを取得します。
-.PARAMETER filePath
+.PARAMETER FilePath
 ファイルパスを指定します。
 #>
 function md5sum {
     Param (
-        [parameter(Mandatory=$true)][string]$filePath
+        [parameter(Mandatory=$true)][string]$FilePath
     )
 
     $hashAlgorithm = [Security.Cryptography.MD5]::Create()
-    @(ls $filePath) | ?{-not $_.PSIsContainer} | %{
-        "$(Get-Hash $hashAlgorithm $_.FullName) $($_.Name)"
-    }
+    @(ls $FilePath) | ?{-not $_.PSIsContainer} |
+        select @{Label="Checksum";Expression={(Get-Hash $hashAlgorithm $_.FullName)}},Name
 }
 
 <#
 .SYNOPSIS
 指定したファイルのSHA1ハッシュを取得します。
-.PARAMETER filePath
+.PARAMETER FilePath
 ファイルパスを指定します。
 #>
 function sha1sum {
     Param (
-        [parameter(Mandatory=$true)][string]$filePath
+        [parameter(Mandatory=$true)][string]$FilePath
     )
 
     $hashAlgorithm = [Security.Cryptography.SHA1]::Create()
-    @(ls $filePath) | ?{-not $_.PSIsContainer} | %{
-        "$(Get-Hash $hashAlgorithm $_.FullName) $($_.Name)"
-    }
+    @(ls $FilePath) | ?{-not $_.PSIsContainer} |
+        select @{Label="Checksum";Expression={(Get-Hash $hashAlgorithm $_.FullName)}},Name
 }
 
 <#
