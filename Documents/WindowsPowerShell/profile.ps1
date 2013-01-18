@@ -64,7 +64,6 @@ $drives.Keys | %{
         cd $drive
     } | Out-Null
 }
-home:
 
 
 ############################################################
@@ -72,6 +71,14 @@ home:
 # 関数定義
 #
 ############################################################
+<#
+.SYNOPSIS
+管理者権限のコンソールを開きます。
+#>
+function su {
+    start powershell "-NoExit -Command","cd $($PWD.ProviderPath)" -Verb RunAs
+}
+
 <#
 .SYNOPSIS
 管理者権限の有無を判定します。
