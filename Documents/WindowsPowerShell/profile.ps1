@@ -12,9 +12,9 @@ if ($Env:HOME -eq $null) {
 }
 $TOOLDIR = "$Env:HOME\tool"
 $APPSDIR = "$Env:HOME\apps"
-$BASEDIR = "$Env:HOME\work"
-function TODAYPATH {"$BASEDIR\$(date -f 'yyyy\\MM\\yyyyMMdd')"}
-$WORKDIR = (TODAYPATH)
+$PROJDIR = "$Env:HOME\project"
+function Get-TodayPath {"$Env:HOME\work\$(date -f 'yyyy\\MM\\dd')"}
+$WORKDIR = $(Get-TodayPath)
 
 # コンソール設定
 $Host.UI.RawUI | %{
@@ -39,11 +39,11 @@ function ssh-sakura {ttermpro $Env:USERNAME@www.sakura.ne.jp /P=22 /L=$(log "sak
 
 # ショートカット：ドライブ指定
 $drives = @{
-    tool = "$TOOLDIR"
-    apps = "$APPSDIR"
-    home = "$Env:HOME"
-    work = "$WORKDIR"
-    today = "$(TODAYPATH)"
+    HOME = "$Env:HOME"
+    TOOL = "$TOOLDIR"
+    APPS = "$APPSDIR"
+    PROJ = "$PROJDIR"
+    WORK = "$WORKDIR"
 }
 $drives.Keys | %{
     New-Item Function: -name "${_}:" -value {
@@ -134,10 +134,11 @@ function log {
     param (
         [string]$id = $null
     )
-    if (-not (test-path (TODAYPATH))) {
-        new-item (TODAYPATH) -type dir -force | out-null
+    $todaypath = Get-TodayPath
+    if (!(test-path $todaypath)) {
+        new-item $todaypath -type dir -force | out-null
     }
-    "$(TODAYPATH)\$(if ($id -ne $null) {"$id"})$(date -f 'yyyyMMddHHmmss').log"
+    "$todaypath\$(if ($id -ne $null) {"$id"})$(date -f 'yyyyMMddHHmmss').log"
 }
 
 <#
@@ -145,9 +146,9 @@ function log {
 作業記録メモを開きます。
 #>
 Function memo {
-    $file = "$WORKDIR.mkd"
-    If (-not (Test-Path $file)) {
-        If (-not (Test-Path (Split-Path $file))) {
+    $file = "$WORKDIR\$(date -f 'yyyyMMdd').mkd"
+    If (!(Test-Path $file)) {
+        If (!(Test-Path (Split-Path $file))) {
             new-item (Split-Path $file) -type dir -force | Out-Null
         }
 @" 
@@ -203,7 +204,7 @@ Function memo {
 #>
 function last {
     try {
-        $dir = @(ls $BASEDIR 20*)[-1].fullname
+        $dir = $(split-path $(split-path $WORKDIR))
         $file = @(ls $dir *.mkd -r | select -last 2)[-2].fullname
         If ((Get-Command gvim -ErrorAction:SilentlyContinue) -ne $null) {
             gvim -R $file
