@@ -73,10 +73,16 @@ $drives.Keys | %{
 ############################################################
 <#
 .SYNOPSIS
-管理者権限のコンソールを開きます。
+新しいコンソールを開きます。
 #>
-function su {
-    start powershell "-NoExit -Command","cd $($PWD.ProviderPath)" -Verb RunAs
+function console {
+    param([switch]$admin)
+
+    if ($admin) {
+        start powershell "-NoExit -Command","cd $($PWD.ProviderPath)" -Verb RunAs
+    } else {
+        start powershell "-NoExit -Command","cd $($PWD.ProviderPath)"
+    }
 }
 
 <#
