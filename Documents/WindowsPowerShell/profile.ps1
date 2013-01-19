@@ -19,8 +19,8 @@ $WORKDIR = (TODAYPATH)
 # コンソール設定
 $Host.UI.RawUI | %{
     $height = $_.MaxPhysicalWindowSize.Height - 2
-    $_.WindowSize = new-object Management.Automation.Host.Size(120, $height)
     $_.BufferSize = new-object Management.Automation.Host.Size(120, 3000)
+    $_.WindowSize = new-object Management.Automation.Host.Size(120, $height)
     $_.ForegroundColor = "White"
     $_.BackgroundColor = "Black"
     cls
@@ -202,13 +202,16 @@ Function memo {
 ひとつ前の作業記録メモを開きます。
 #>
 function last {
-    $ErrorActionPreference = "Stop"
-
-    $file = @(ls $BASEDIR *.mkd -r)[-2].fullname
-    If ((Get-Command gvim -ErrorAction:SilentlyContinue) -ne $null) {
-        gvim -R $file
-    } else {
-        notepad $file
+    try {
+        $dir = @(ls $BASEDIR 20*)[-1].fullname
+        $file = @(ls $dir *.mkd -r | select -last 2)[-2].fullname
+        If ((Get-Command gvim -ErrorAction:SilentlyContinue) -ne $null) {
+            gvim -R $file
+        } else {
+            notepad $file
+        }
+    } catch {
+        $_
     }
 }
 
