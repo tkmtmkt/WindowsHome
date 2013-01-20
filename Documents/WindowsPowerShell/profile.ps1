@@ -35,10 +35,28 @@ function prompt {
 }
 
 # ショートカット：SSH接続
+cat C:\Windows\system32\drivers\etc\hosts | %{
+    @($_ -split "#",2)[0]
+} | ?{$_ -match '(\d+(\.\d+){3})\s+(\w+)'} | %{
+    $name = "ssh-$($matches[3])"
+    new-item function: -name $name -value {
+        $hostname = ($MyInvocation.MyCommand.Name -split "-")[1]
+        ttermpro $Env:USERNAME@$hostname /P=22 /L="$(log "${hostname}-")"
+    } | out-null
+}
 function ssh-sakura {ttermpro $Env:USERNAME@www.sakura.ne.jp /P=22 /L=$(log "sakura-")}
+
+# ショートカット：RDP接続
+@(ls $Home\Documents *.rdp) | %{
+    new-item function: -name "rdp-$($_.basename)" -value {
+        $rdp_file = "$Home\Documents\$(($MyInvocation.MyCommand.Name -split '-')[1]).rdp"
+        mstsc $rdp_file
+    } | out-null
+}
 
 # ショートカット：ドライブ指定
 $drives = @{
+    PUBLIC = "$Env:PUBLIC"
     HOME = "$Env:HOME"
     TOOL = "$TOOLDIR"
     APPS = "$APPSDIR"
