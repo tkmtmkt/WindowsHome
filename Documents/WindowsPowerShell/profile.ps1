@@ -19,8 +19,15 @@ $WORKDIR = $(Get-TodayPath)
 # コンソール設定
 $Host.UI.RawUI | %{
     $height = $_.MaxPhysicalWindowSize.Height - 2
-    $_.BufferSize = new-object Management.Automation.Host.Size(120, 3000)
-    $_.WindowSize = new-object Management.Automation.Host.Size(120, $height)
+    $width  = 120
+    $buffer = 3000
+    if ($_.BufferSize.Width -lt $width) {
+        $_.BufferSize = new-object Management.Automation.Host.Size($width, $buffer)
+        $_.WindowSize = new-object Management.Automation.Host.Size($width, $height)
+    } else {
+        $_.WindowSize = new-object Management.Automation.Host.Size($width, $height)
+        $_.BufferSize = new-object Management.Automation.Host.Size($width, $buffer)
+    }
     $_.ForegroundColor = "White"
     $_.BackgroundColor = "Black"
     cls
@@ -28,29 +35,30 @@ $Host.UI.RawUI | %{
 
 # プロンプト設定
 function prompt {
-    write-host "$($Env:USERDOMAIN)\$($Env:USERNAME) " -NoNewline -ForegroundColor "Green"
+    write-host "$Env:USERDOMAIN\$Env:USERNAME " -NoNewline -ForegroundColor "Green"
     write-host "$PWD" -ForegroundColor "DarkCyan"
     $(if (test-path Variable:/PSDebugContext) { '[DBG]: ' } else { '' }) +
     "PS $(date -f 'yyyy/MM/dd HH:mm:ss')$('>' * ($NestedPromptLevel + 1)) "
 }
 
 # ショートカット：SSH接続
-cat C:\Windows\system32\drivers\etc\hosts | %{
-    @($_ -split "#",2)[0]
-} | ?{$_ -match '(\d+(\.\d+){3})\s+(\w+)'} | %{
-    $name = "ssh-$($matches[3])"
+cat C:\Windows\system32\drivers\etc\hosts |
+?{$_ -match '\b\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\b'} |
+%{@($_ -split "#",2)[0].trim()} | ?{$_.length -gt 0} | %{
+    $name = "ssh-$(@($_ -split "\s+")[1])"
     new-item function: -name $name -value {
+        param([string]$user = $Env:USERNAME)
         $hostname = ($MyInvocation.MyCommand.Name -split "-")[1]
-        ttermpro $Env:USERNAME@$hostname /P=22 /L="$(log "${hostname}-")"
+        ttermpro $user@$hostname /P=22 /L="$(log "${hostname}-")"
     } | out-null
 }
 function ssh-sakura {ttermpro $Env:USERNAME@www.sakura.ne.jp /P=22 /L=$(log "sakura-")}
 
 # ショートカット：RDP接続
-@(ls $Home\Documents *.rdp) | %{
+@(ls $Home\Documents *.rdp -ea:SilentlyContinue) | %{
     new-item function: -name "rdp-$($_.basename)" -value {
         $rdp_file = "$Home\Documents\$(($MyInvocation.MyCommand.Name -split '-')[1]).rdp"
-        mstsc $rdp_file
+        mstsc "$rdp_file"
     } | out-null
 }
 
@@ -73,10 +81,10 @@ $drives.Keys | %{
         $name = $drive.trim(":")
         $path = $drives[$name]
 
-        If (-not (Test-Path $path)) {
+        If (!(Test-Path $path)) {
             New-Item $path -ItemType Directory -Force | Out-Null
         }
-        If (-not (Test-Path $drive)) {
+        If (!(Test-Path $drive)) {
             New-PSDrive $name FileSystem $path -Scope Global | Out-Null
         }
         cd $drive
@@ -97,9 +105,9 @@ function console {
     param([switch]$admin)
 
     if ($admin) {
-        start powershell "-NoExit -Command","cd $($PWD.ProviderPath)" -Verb RunAs
+        start powershell "-NoExit","-Command","&{cd '$($PWD.ProviderPath)'}" -Verb RunAs
     } else {
-        start powershell "-NoExit -Command","cd $($PWD.ProviderPath)"
+        start powershell "-NoExit","-Command","&{cd '$($PWD.ProviderPath)'}"
     }
 }
 
@@ -215,7 +223,7 @@ Function memo {
 "@ | Out-File $file -Encoding Default -Force
     }
 
-    If ((Get-Command gvim -ErrorAction:SilentlyContinue) -ne $null) {
+    If ((Get-Command gvim -ea:SilentlyContinue) -ne $null) {
         gvim $file
     } else {
         notepad $file
@@ -230,7 +238,7 @@ function last {
     try {
         $dir = $(split-path $(split-path $WORKDIR))
         $file = @(ls $dir *.mkd -r | select -last 2)[-2].fullname
-        If ((Get-Command gvim -ErrorAction:SilentlyContinue) -ne $null) {
+    If ((Get-Command gvim -ea:SilentlyContinue) -ne $null) {
             gvim -R $file
         } else {
             notepad $file
@@ -260,7 +268,7 @@ function readme {
 "@ | Out-File $file -Encoding UTF8 -Force
     }
 
-    If ((Get-Command gvim -ErrorAction:SilentlyContinue) -ne $null) {
+    If ((Get-Command gvim -ea:SilentlyContinue) -ne $null) {
         gvim $file
     } else {
         notepad $file
@@ -344,7 +352,7 @@ function md5sum {
 
     $hashAlgorithm = [Security.Cryptography.MD5]::Create()
     @(ls $FilePath) | ?{-not $_.PSIsContainer} |
-        select @{Label="Checksum";Expression={(Get-Hash $hashAlgorithm $_.FullName)}},Name
+        select @{Label="Checksum";Expression={$(Get-Hash $hashAlgorithm $_.FullName)}},Name
 }
 
 <#
@@ -360,7 +368,7 @@ function sha1sum {
 
     $hashAlgorithm = [Security.Cryptography.SHA1]::Create()
     @(ls $FilePath) | ?{-not $_.PSIsContainer} |
-        select @{Label="Checksum";Expression={(Get-Hash $hashAlgorithm $_.FullName)}},Name
+        select @{Label="Checksum";Expression={$(Get-Hash $hashAlgorithm $_.FullName)}},Name
 }
 
 <#
@@ -382,7 +390,9 @@ function Get-LatestPath {
         [string]$Path
     )
 
-    @(ls "$Path" -ea SilentlyContinue | sort -desc)[0].fullname
+    if (test-path $Path) {
+        @(ls $Path -ea:SilentlyContinue | sort -desc)[0].fullname
+    }
 }
 
 <#
