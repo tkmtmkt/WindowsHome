@@ -104,10 +104,14 @@ $drives.Keys | %{
 function console {
     param([switch]$admin)
 
+    $script = @"
+cd '$($PWD.ProviderPath)'
+`$Host.UI.RawUI.WindowTitle = '$($Host.UI.RawUI.WindowTitle)'
+"@
     if ($admin) {
-        start powershell "-NoExit","-Command","&{cd '$($PWD.ProviderPath)'}" -Verb RunAs
+        start powershell "-NoExit","-Command",$script -Verb RunAs
     } else {
-        start powershell "-NoExit","-Command","&{cd '$($PWD.ProviderPath)'}"
+        start powershell "-NoExit","-Command",$script
     }
 }
 
@@ -238,7 +242,7 @@ function last {
     try {
         $dir = $(split-path $(split-path $WORKDIR))
         $file = @(ls $dir *.mkd -r | select -last 2)[-2].fullname
-    If ((Get-Command gvim -ea:SilentlyContinue) -ne $null) {
+        If ((Get-Command gvim -ea:SilentlyContinue) -ne $null) {
             gvim -R $file
         } else {
             notepad $file
