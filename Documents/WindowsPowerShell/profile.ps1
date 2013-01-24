@@ -38,7 +38,7 @@ function prompt {
     write-host "$Env:USERDOMAIN\$Env:USERNAME " -NoNewline -ForegroundColor "Green"
     write-host "$PWD" -ForegroundColor "DarkCyan"
     $(if (test-path Variable:/PSDebugContext) { '[DBG]: ' } else { '' }) +
-    "PS $(date -f 'yyyy/MM/dd HH:mm:ss')$('>' * ($NestedPromptLevel + 1)) "
+    "PS $(date -u '%T')$('>' * ($NestedPromptLevel + 1)) "
 }
 
 # ショートカット：SSH接続
