@@ -1,5 +1,5 @@
 [user]
-	name = TAKAMATSU Makoto
+	name = Takamatsu Makoto
 	email = tkmtmkt@gmail.com
 [core]
 	excludesfile = ~/.gitignore  # globalな.gitignoreの指定
