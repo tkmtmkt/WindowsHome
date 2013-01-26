@@ -23,24 +23,6 @@ GitHubからファイルを取得します。
     git submodule init
     git submodule update
 
-ホームディレクトリ以下の管理対象外のファイルを除外します。
-（リポジトリのルートがホームディレクトリになるので.gitignoreはグローバル
-設定になってしまうため、リポジトリ内の設定ファイルを変更する。）
-
-    @"
-    *
-    !README.md
-    !Documents/WindowsPowerShell/profile.ps1
-    !posh.bat
-    !.bashrc
-    !.vim/*
-    !_vimrc
-    !_gvimrc
-    !.gitconfig
-    !.gitignore
-    !.gitmodules
-    "@ | Out-File "$home/.git/info/exclude" -encoding OEM -append
-
 
 設定内容
 --------

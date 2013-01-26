@@ -1,9 +1,18 @@
-.netrwhist
-*.sw[po]
-\#*#
-*#
-.#*
-.*~
-*~
-*.[ao]
-~*
+# git ls-files --others --exclude-from=.git/info/exclude
+# Lines that start with '#' are comments.
+# For a project mostly in C, the following would be a good set of
+# exclude patterns (uncomment them if you want to use them):
+# *.[oa]
+# *~
+*
+!/.bashrc
+!/.gitconfig
+!/.gitexclude
+!/.gitignore
+!/.gitmodules
+!/Documents/WindowsPowerShell/profile.ps1
+!/README.md
+!/_gvimrc
+!/_vimrc
+!/apps/bin/sbt.bat
+!/posh.bat

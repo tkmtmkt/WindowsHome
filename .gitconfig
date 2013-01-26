@@ -2,9 +2,9 @@
 	name = Takamatsu Makoto
 	email = tkmtmkt@gmail.com
 [core]
-	excludesfile = ~/.gitignore  # globalな.gitignoreの指定
+	excludesfile = ~/.gitexclude  # globalな無視ファイル指定
 	safecrlf = true
-	editor = vim
+	editor = vim +1
 	quotepath = false
 	pager = nkf32 | less
 [color]
