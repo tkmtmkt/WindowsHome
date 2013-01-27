@@ -179,6 +179,12 @@ function log {
 
 <#
 .SYNOPSIS
+コンソールの入出力を記録します。
+#>
+function start-log {start-transcript $(log "posh-$PID-")}
+
+<#
+.SYNOPSIS
 作業記録メモを開きます。
 #>
 Function memo {
