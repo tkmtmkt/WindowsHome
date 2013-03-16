@@ -190,9 +190,13 @@ BTSサーバを起動するために必要な設定を行う。
 
     vv whoami --create USERNAME
 
-参考：リポジトリの場所
+参考：設定情報は以下のファイルに保管される。（ファイルはsqlite3データベース）
 
-    $Env:LOCALAPPDATA\.sgcloset
+    $Env:LOCALAPPDATA\.sgcloset\settings.jsondb
+
+参考：リポジトリは以下のフォルダ内に作成される。
+
+    $Env:LOCALAPPDATA\.sgcloset\repo
 
 
 <!-- vim: set ts=4 sw=4 et:-->
