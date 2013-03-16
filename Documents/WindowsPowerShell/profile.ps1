@@ -594,7 +594,7 @@ Function sbt {
 }
 
 Function clojure {
-    $clojure = Get-LatestPath "$APPSDIR\clojure\clojure*.jar"
+    $clojure = Get-LatestPath "$APPSDIR\clojure*\clojure*.jar"
     If ($clojure -ne $null) {
         $argList  = @("-cp $clojure clojure.main")
         $argList += $args
