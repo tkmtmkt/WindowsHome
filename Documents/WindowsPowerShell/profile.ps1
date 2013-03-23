@@ -572,7 +572,7 @@ $MONGODB_HOME = Get-LatestPath "$APPSDIR\mongodb*"
 Add-Path "$MONGODB_HOME\bin"
 
 # プログラミング
-$Env:JAVA_HOME = Get-LatestPath "$Env:ProgramFiles\Java\jdk1.6*"
+$Env:JAVA_HOME = Get-LatestPath "$Env:ProgramFiles\Java\jdk*"
 Add-Path "$Env:JAVA_HOME\bin"
 $Env:CLASS_PATH = "$Env:JAVA_HOME\lib\tools.jar"
 #$Env:JAVA_OPTS = "-Dhttp.proxyHost=proxyhostURL -Dhttp.proxyPort=proxyPortNumber"

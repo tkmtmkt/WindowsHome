@@ -80,6 +80,7 @@ GitHubからファイルを取得します。
 
 * ビルド管理：
   [Apache Ant](http://ant.apache.org/),
+  [Apache Ivy](http://ant.apache.org/ivy/),
   [Apache Maven](http://maven.apache.org/)
 
 
@@ -101,6 +102,7 @@ GitHubからファイルを取得します。
 ### WinMerge設定
 
 7z.dllをWinMergeフォルダにコピーして、アーカイブサポートを有効にする。
+※バージョン9.20をコピーすること。9.22は認識しない。
 
     cp $TOOLDIR\7-Zip\7z.dll $WINMERGE_HOME
 
