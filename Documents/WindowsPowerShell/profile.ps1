@@ -564,7 +564,7 @@ Add-Path "$GIT_HOME\cmd"
 $SVN_HOME = Get-LatestPath "$APPSDIR\svn*"
 Add-Path "$SVN_HOME\bin"
 
-$VERACITY_HOME = Get-LatestPath "$APPSDIR\vv_*"
+$VERACITY_HOME = Get-LatestPath "$APPSDIR\veracity_*"
 Add-Path "$VERACITY_HOME"
 
 # データベース
