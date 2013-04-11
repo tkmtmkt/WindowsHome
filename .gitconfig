@@ -3,6 +3,7 @@
 	email = tkmtmkt@gmail.com
 [core]
 	excludesfile = ~/.gitexclude  # globalな無視ファイル指定
+	autocrlf = false
 	safecrlf = true
 	editor = vim +1
 	quotepath = false

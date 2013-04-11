@@ -54,6 +54,14 @@ cat C:\Windows\system32\drivers\etc\hosts |
 }
 function ssh-sakura {ttermpro $Env:USERNAME@www.sakura.ne.jp /P=22 /L=$(log "sakura-")}
 
+# ショートカット：仮想マシン起動
+@(ls $Home\Documents *.vmx -r -ea:SilentlyContinue) | ?{$_.name -match "vmx$"} | %{
+    new-item function: -name "vmx-$($_.basename)" -value {
+        $vmx_file = $(ls $Home\Documents "$(($MyInvocation.MyCommand.Name -split '-')[1]).vmx" -r).fullname
+        start "$vmx_file"
+    } | out-null
+}
+
 # ショートカット：RDP接続
 @(ls $Home\Documents *.rdp -ea:SilentlyContinue) | %{
     new-item function: -name "rdp-$($_.basename)" -value {
