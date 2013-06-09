@@ -628,6 +628,9 @@ Add-Path "$ANT_HOME\bin"
 $MVN_HOME = Get-LatestPath "$APPSDIR\apache-maven*"
 Add-Path "$MVN_HOME\bin"
 
+$GRADLE_HOME = Get-LatestPath "$APPSDIR\gradle*"
+Add-Path "$GRADLE_HOME\bin"
+
 # ‚»‚Ì‘¼
 $PANDOC_HOME = Get-LatestPath "$APPSDIR\pandoc*"
 Add-Path "$PANDOC_HOME\bin"

@@ -81,7 +81,8 @@ GitHubからファイルを取得します。
 * ビルド管理：
   [Apache Ant](http://ant.apache.org/),
   [Apache Ivy](http://ant.apache.org/ivy/),
-  [Apache Maven](http://maven.apache.org/)
+  [Apache Maven](http://maven.apache.org/),
+  [gradle](http://www.gradle.org/)
 
 
 ### 関数定義
