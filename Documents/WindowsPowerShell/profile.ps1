@@ -505,6 +505,30 @@ function Set-CLRVersion {
     }
 }
 
+<#
+.SYNOPSIS
+コンピュータの起動／停止履歴を取得する。
+#>
+function Get-RestartLog {
+    Get-EventLog System |
+    ?{$_.Source -match '(USER32|EventLog)' -and 1074,1076,6005,6006,6008 -contains $_.EventId} | %{
+        $record = new-object PSObject -property @{
+            Time = $_.TimeGenerated
+            EventId = $_.EventId
+        }
+        if ($Matches[1] -eq 'USER32') {
+            $_.Message -split "`r`n" | ?{$_.Length -gt 0} | %{
+                $line = $_ -split ":(?!\\)",2
+                if ($line[0] -match "次の理由") {$line[0] = "理由"}
+                add-member NoteProperty $line[0].trim() -InputObject $record $line[1].trim()
+            }
+        } else {
+            add-member NoteProperty 'コメント' -InputObject $record $_.Message
+        }
+        $record
+    } | select Time,EventId,シャットダウンの種類,理由,理由コード,コメント
+}
+
 
 ############################################################
 #
