@@ -7,3 +7,7 @@
 *~
 *.[ao]
 ~*
+_FOSSIL_
+.svn/
+.hg/
+.sgdrawer/

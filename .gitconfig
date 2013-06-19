@@ -5,7 +5,7 @@
 	excludesfile = ~/.gitexclude  # globalな無視ファイル指定
 	autocrlf = false
 	safecrlf = true
-	editor = vim +1
+	editor = gvim +1
 	quotepath = false
 	pager = nkf32 | less
 [color]
