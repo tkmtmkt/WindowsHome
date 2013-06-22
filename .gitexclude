@@ -8,6 +8,8 @@
 *.[ao]
 ~*
 _FOSSIL_
+CVS/
 .svn/
 .hg/
+.bzr/
 .sgdrawer/
