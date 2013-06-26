@@ -12,7 +12,7 @@ if ($Env:HOME -eq $null) {
 }
 $TOOLDIR = "$Env:HOME\tool"
 $APPSDIR = "$Env:HOME\apps"
-$PROJDIR = "$Env:HOME\project"
+$PROJDIR = "C:\Projects"
 function Get-TodayPath {"$Env:HOME\work\$(date -f 'yyyy\\MM\\dd')"}
 $WORKDIR = $(Get-TodayPath)
 
