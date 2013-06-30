@@ -13,7 +13,7 @@ if ($Env:HOME -eq $null) {
 $TOOLDIR = "$Env:HOME\tool"
 $APPSDIR = "$Env:HOME\apps"
 $PROJDIR = "C:\Projects"
-function Get-TodayPath {"$Env:HOME\work\$(date -f 'yyyy\\MM\\dd')"}
+function Get-TodayPath {"$Env:HOME\work\$(Get-Date -f 'yyyy\\MM\\dd')"}
 $WORKDIR = $(Get-TodayPath)
 
 # コンソール設定
@@ -38,7 +38,7 @@ function prompt {
     write-host "$Env:USERDOMAIN\$Env:USERNAME " -NoNewline -ForegroundColor "Green"
     write-host "$PWD" -ForegroundColor "DarkCyan"
     $(if (test-path Variable:/PSDebugContext) { '[DBG]: ' } else { '' }) +
-    "PS $(date -u '%T')$('>' * ($NestedPromptLevel + 1)) "
+    "PS $(Get-Date -u '%T')$('>' * ($NestedPromptLevel + 1)) "
 }
 
 # ショートカット：SSH接続
@@ -182,7 +182,7 @@ function log {
     if (!(test-path $todaypath)) {
         new-item $todaypath -type dir -force | out-null
     }
-    "$todaypath\$(if ($id -ne $null) {"$id"})$(date -f 'yyyyMMddHHmmss').log"
+    "$todaypath\$(if ($id -ne $null) {"$id"})$(Get-Date -f 'yyyyMMddHHmmss').log"
 }
 
 <#
@@ -196,7 +196,7 @@ function start-log {start-transcript $(log "posh-$PID-")}
 作業記録メモを開きます。
 #>
 Function memo {
-    $file = "$WORKDIR\$(date -f 'yyyyMMdd').mkd"
+    $file = "$WORKDIR\$(Get-Date -f 'yyyyMMdd').mkd"
     If (!(Test-Path $file)) {
         If (!(Test-Path (Split-Path $file))) {
             new-item (Split-Path $file) -type dir -force | Out-Null
@@ -204,7 +204,7 @@ Function memo {
 @" 
 作業記録
 ========
-開始：$(date -f 'yyyy/MM/dd HH:mm')  
+開始：$(Get-Date -f 'yyyy/MM/dd HH:mm')  
 終了：
 
 予定
@@ -592,6 +592,7 @@ Add-Path "$APPSDIR\bin"
 $GIT_HOME = Get-LatestPath "$APPSDIR\*git*"
 Add-Path "$GIT_HOME"
 Add-Path "$GIT_HOME\cmd"
+Add-Path "$GIT_HOME\bin"
 
 $SVN_HOME = Get-LatestPath "$APPSDIR\svn*"
 Add-Path "$SVN_HOME\bin"
