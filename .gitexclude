@@ -7,9 +7,11 @@
 *~
 *.[ao]
 ~*
+Thumbs.db
 _FOSSIL_
 CVS/
 .svn/
 .hg/
 .bzr/
 .sgdrawer/
+tmp/
