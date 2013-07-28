@@ -378,14 +378,18 @@ if has('vim_starting')
 endif
 
 " recommended to install
-NeoBundle 'Shougo/vimproc'
+NeoBundle 'Shougo/vimproc.vim'
 " after install, turn shell ~/.vim/bundle/vimproc, (n,g)make -f your_machines_makefile
-NeoBundle 'Shougo/vimshell'
+NeoBundle 'Shougo/vimshell.vim'
 NeoBundle 'Shougo/unite.vim'
+NeoBundle 'Shougo/neocomplcache.vim'
 "
 NeoBundle 'vim-scripts/VimClojure'
 NeoBundle 'PProvost/vim-ps1'
 NeoBundle 'derekwyatt/vim-scala'
+NeoBundle 'kchmck/vim-coffee-script'
+"
+NeoBundle 'scrooloose/syntastic'
 
 "pluginを使用可能にする
 filetype plugin indent on
