@@ -86,8 +86,6 @@ set backspace=indent,eol,start
 set ambiwidth=double
 "コマンドライン補完するときに強化されたものを使う
 set wildmenu
-"シェルをpowershellに変更する
-set shell=powershell.exe
 "ファイルエンコーディングの候補一覧
 set fileencodings=utf-8,iso-2022-jp-3,iso-2022-jp,euc-jisx0213,euc-jp,ucs-bom,euc-jp,eucjp-ms,cp932
 "マウスを有効にする
