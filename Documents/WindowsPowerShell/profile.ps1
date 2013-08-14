@@ -10,9 +10,9 @@ if ($Env:HOME -eq $null) {
         $Env:HOME = $Env:HOME.TrimEnd("\")
     }
 }
-$TOOLDIR = "$Env:HOME\tool"
-$APPSDIR = "$Env:HOME\apps"
-$PROJDIR = "C:\Projects"
+$TOOLDIR = "$Env:PUBLIC\tool"
+$APPSDIR = "$Env:PUBLIC\apps"
+$PROJDIR = "$Env:PUBLIC\projects"
 function Get-TodayPath {"$Env:HOME\work\$(Get-Date -f 'yyyy\\MM\\dd')"}
 $WORKDIR = $(Get-TodayPath)
 
@@ -614,13 +614,16 @@ $SCALA_HOME = Get-LatestPath "$APPSDIR\scala*"
 Add-Path "$SCALA_HOME\bin"
 
 Function sbt {
-    $sbt = Get-LatestPath "$APPSDIR\bin\sbt-launch*.jar"
-    If ($sbt -ne $null) {
-        $argList  = @("$Env:JAVA_OPTS -Xms512M -Xmx1024M -Xss1M")
-        $argList += @("-XX:MaxPermSize=200M -XX:ReservedCodeCacheSize=60M")
-        $argList += @("-XX:+CMSClassUnloadingEnabled -XX:-UseGCOverheadLimit")
-        $argList += @("-jar $sbt")
-        $argList += $args
+    $sbtLaunch = Get-LatestPath "$APPSDIR\sbt\sbt-launch*.jar"
+    If ($sbtLaunch -ne $null) {
+$argList = @" 
+$Env:JAVA_OPTS -Xms512M -Xmx1024M -Xss1M
+-XX:MaxPermSize=200M -XX:ReservedCodeCacheSize=60M
+-XX:+CMSClassUnloadingEnabled -XX:-UseGCOverheadLimit
+-Dsbt.boot.directory="$APPSDIR\sbt\boot"
+-Dsbt.ivy.home="$APPSDIR\sbt\repository"
+-jar $sbtLaunch
+"@ -split "`r*`n" + $args
 
         start java $argList -NoNewWindow -Wait
     }
