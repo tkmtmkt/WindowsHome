@@ -616,7 +616,7 @@ Add-Path "$SCALA_HOME\bin"
 Function sbt {
     $sbt = Get-LatestPath "$APPSDIR\bin\sbt-launch*.jar"
     If ($sbt -ne $null) {
-        $argList  = @("$Env:JAVA_OPTS -Xms512M -Xmx1792M -Xss1M")
+        $argList  = @("$Env:JAVA_OPTS -Xms512M -Xmx1024M -Xss1M")
         $argList += @("-XX:MaxPermSize=200M -XX:ReservedCodeCacheSize=60M")
         $argList += @("-XX:+CMSClassUnloadingEnabled -XX:-UseGCOverheadLimit")
         $argList += @("-jar $sbt")
