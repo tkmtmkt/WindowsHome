@@ -606,28 +606,28 @@ Add-Path "$MONGODB_HOME\bin"
 
 # プログラミング
 $Env:JAVA_HOME = Get-LatestPath "$Env:ProgramFiles\Java\jdk*"
-Add-Path "$Env:JAVA_HOME\bin"
-$Env:CLASS_PATH = "$Env:JAVA_HOME\lib\tools.jar"
 #$Env:JAVA_OPTS = "-Dhttp.proxyHost=proxyhostURL -Dhttp.proxyPort=proxyPortNumber"
+
+$PLEIADES_HOME = Get-LatestPath "$APPSDIR\pleiades*"
+function eclipse {
+    if ($PLEIADES_HOME -ne $null) {
+        pushd $PLEIADES_HOME\eclipse
+        start eclipse.exe
+        popd
+    }
+}
+
+if ($Env:JAVA_HOME -eq $null -and $PLEIADES_HOME -ne $null) {
+    $Env:JAVA_HOME = "$PLEIADES_HOME\java\7"
+}
+
+if ($Env:JAVA_HOME -ne $null) {
+    Add-Path "$Env:JAVA_HOME\bin"
+    $Env:CLASS_PATH = "$Env:JAVA_HOME\lib\tools.jar"
+}
 
 $SCALA_HOME = Get-LatestPath "$APPSDIR\scala*"
 Add-Path "$SCALA_HOME\bin"
-
-Function sbt {
-    $sbtLaunch = Get-LatestPath "$APPSDIR\sbt\sbt-launch*.jar"
-    If ($sbtLaunch -ne $null) {
-$argList = @" 
-$Env:JAVA_OPTS -Xms512M -Xmx1024M -Xss1M
--XX:MaxPermSize=200M -XX:ReservedCodeCacheSize=60M
--XX:+CMSClassUnloadingEnabled -XX:-UseGCOverheadLimit
--Dsbt.boot.directory="$APPSDIR\sbt\boot"
--Dsbt.ivy.home="$APPSDIR\sbt\repository"
--jar $sbtLaunch
-"@ -split "`r*`n" + $args
-
-        start java $argList -NoNewWindow -Wait
-    }
-}
 
 Function clojure {
     $clojure = Get-LatestPath "$APPSDIR\clojure*\clojure*.jar"
@@ -658,6 +658,22 @@ Add-Path "$MVN_HOME\bin"
 
 $GRADLE_HOME = Get-LatestPath "$APPSDIR\gradle*"
 Add-Path "$GRADLE_HOME\bin"
+
+Function sbt {
+    $sbtLaunch = Get-LatestPath "$APPSDIR\sbt\sbt-launch*.jar"
+    If ($sbtLaunch -ne $null) {
+$argList = @" 
+$Env:JAVA_OPTS -Xms512M -Xmx1024M -Xss1M
+-XX:MaxPermSize=200M -XX:ReservedCodeCacheSize=60M
+-XX:+CMSClassUnloadingEnabled -XX:-UseGCOverheadLimit
+-Dsbt.boot.directory="$APPSDIR\sbt\boot"
+-Dsbt.ivy.home="$APPSDIR\sbt\repository"
+-jar $sbtLaunch
+"@ -split "`r*`n" + $args
+
+        start java $argList -NoNewWindow -Wait
+    }
+}
 
 # その他
 $PANDOC_HOME = Get-LatestPath "$APPSDIR\pandoc*"

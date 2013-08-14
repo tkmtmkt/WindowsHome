@@ -29,7 +29,7 @@ GitHubからファイルを取得します。
 コマンドラインツールのパス設定、コンソールの色設定、日常作業で使用する関数を定義しています。
 
 ### ツール（基本）
-"$Env:HOME\tool"フォルダに基本的なツールを置きます。
+`$TOOLDIR="$Env:PUBLIC\tool"`フォルダに基本的なツールを置きます。
 
 * アーカイバ：
   [7-ZIP](http://sevenzip.sourceforge.jp/)
@@ -60,7 +60,7 @@ GitHubからファイルを取得します。
 
 
 ### ツール（オプション）
-"$Env:HOME\apps"フォルダに追加のツールを置きます。
+`$APPSDIR="$Env:PUBLIC\apps"`フォルダに追加のツールを置きます。
 
 * 構成管理：
   [msysgit](http://code.google.com/p/msysgit/downloads/list),
@@ -72,6 +72,7 @@ GitHubからファイルを取得します。
 
 * プログラミング：
   [Java SE](http://www.oracle.com/technetwork/java/javase/downloads/index.html),
+  [Pleiades - Eclipse プラグイン日本語化プラグイン](http://mergedoc.sourceforge.jp/),
   [Scala](http://www.scala-lang.org/),
   [Python](http://www.python.org/),
   [Jython](http://www.jython.org/),
@@ -82,7 +83,8 @@ GitHubからファイルを取得します。
   [Apache Ant](http://ant.apache.org/),
   [Apache Ivy](http://ant.apache.org/ivy/),
   [Apache Maven](http://maven.apache.org/),
-  [gradle](http://www.gradle.org/)
+  [gradle](http://www.gradle.org/),
+  [sbt](http://www.scala-sbt.org/)
 
 
 ### 関数定義
@@ -161,6 +163,26 @@ TERATERM.INIを編集してメニューの日本語化、ウィンドウサイ�
 
 
 ### git設定
+
+日本語対応設定
+
+    arch:
+    cd \arch\git
+
+    zip e less-418-utf8.zip less-418-utf8-bin\less.exe
+    mv less.exe $GIT_HOME/bin
+
+    zip e nkfwin.zip 'vc2005\win32(98,Me,NT,2000,XP,Vista,7)Windows-31J\nkf32.exe'
+    mv nkf32.exe $GIT_HOME\bin
+
+git-bashのvimパスを変更
+
+    @"
+    #!/bin/sh
+    exec /c/Users/Public/tool/vim/vim "$@"
+    "@ | sc $GIT_HOME\bin\vim
+
+    cp $GIT_HOME\bin\vim $GIT_HOME\bin\vi
 
 設定ファイルを編集する。
 
