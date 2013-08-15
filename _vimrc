@@ -9,6 +9,8 @@ scriptencoding utf-8
 "scriptencodingと、このファイルのエンコーディングが一致するよう注意！
 "scriptencodingは、vimの内部エンコーディングと同じものを推奨します。
 "改行コードは set fileformat=unix に設定するとunixでも使えます。
+set encoding=utf-8
+set fileformat=unix
 
 "----------------------------------------
 " ユーザーランタイムパス設定
@@ -115,7 +117,7 @@ set hlsearch
 " 表示設定
 "----------------------------------------
 "スプラッシュ(起動時のメッセージ)を表示しない
-"set shortmess+=I
+set shortmess+=I
 "エラー時の音とビジュアルベルの抑制(gvimは.gvimrcで設定)
 set noerrorbells
 set novisualbell
@@ -345,24 +347,6 @@ endif
 "  au BufEnter * execute ":silent! lcd " . escape(expand("%:p:h"), ' ')
 "endif
 
-""""""""""""""""""""""""""""""
-"Windowsで内部エンコーディングがcp932以外の場合
-"makeのメッセージが化けるのを回避
-""""""""""""""""""""""""""""""
-"if has('win32') || has('win64') || has('win95') || has('win16')
-"  au QuickfixCmdPost grep call QFixCnv('cp932')
-"endif
-"
-"function! QFixCnv(enc)
-"  if a:enc == &enc
-"    return
-"  endif
-"  let qflist = getqflist()
-"  for i in qflist
-"    let i.text = iconv(i.text, a:enc, &enc)
-"  endfor
-"  call setqflist(qflist)
-"endfunction
 
 "----------------------------------------
 " 各種プラグイン設定
