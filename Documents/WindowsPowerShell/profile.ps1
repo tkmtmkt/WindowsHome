@@ -665,8 +665,6 @@ Function sbt {
         $argList  = @("$Env:JAVA_OPTS -Xms512M -Xmx1024M -Xss1M")
         $argList += @("-XX:MaxPermSize=200M -XX:ReservedCodeCacheSize=60M")
         $argList += @("-XX:+CMSClassUnloadingEnabled -XX:-UseGCOverheadLimit")
-        $argList += @("-Duser.language=en")
-        $argList += @("-Dfile.encoding=UTF-8")
         $argList += @("-Dsbt.global.base=`"$APPSDIR\sbt`"")
         $argList += @("-Dsbt.ivy.home=`"$APPSDIR\sbt\repository`"")
         $argList += @("-jar $sbtLaunch")
