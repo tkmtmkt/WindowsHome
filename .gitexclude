@@ -8,10 +8,12 @@
 *.[ao]
 ~*
 Thumbs.db
-_FOSSIL_
+tmp/
+
+# VCS specific
 CVS/
 .svn/
 .hg/
 .bzr/
 .sgdrawer/
-tmp/
+_FOSSIL_

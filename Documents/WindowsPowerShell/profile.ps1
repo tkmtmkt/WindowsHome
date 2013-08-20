@@ -13,6 +13,7 @@ if ($Env:HOME -eq $null) {
 $TOOLDIR = "$Env:PUBLIC\tool"
 $APPSDIR = "$Env:PUBLIC\apps"
 $PROJDIR = "$Env:PUBLIC\projects"
+$REPODIR = "$Env:PUBLIC\repos"
 function Get-TodayPath {"$Env:HOME\work\$(Get-Date -f 'yyyy\\MM\\dd')"}
 $WORKDIR = $(Get-TodayPath)
 
@@ -77,6 +78,12 @@ $drives = @{
     TOOL = "$TOOLDIR"
     APPS = "$APPSDIR"
     PROJ = "$PROJDIR"
+    GIT  = "$REPODIR\git"
+    SVN  = "$REPODIR\svn"
+    HG   = "$REPODIR\hg"
+    VZR  = "$REPODIR\vzr"
+    VV   = "$REPODIR\veracity"
+    FOS  = "$REPODIR\fossil"
     WORK = "$WORKDIR"
 }
 $drives.Keys | %{
