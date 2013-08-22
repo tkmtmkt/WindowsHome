@@ -85,6 +85,7 @@ $drives = @{
     VV   = "$REPODIR\veracity"
     FOS  = "$REPODIR\fossil"
     WORK = "$WORKDIR"
+    WKSP = "$Env:PUBLIC\workspace"
 }
 $drives.Keys | %{
     New-Item Function: -name "${_}:" -value {
@@ -630,7 +631,7 @@ if ($Env:JAVA_HOME -eq $null -and $PLEIADES_HOME -ne $null) {
 
 if ($Env:JAVA_HOME -ne $null) {
     Add-Path "$Env:JAVA_HOME\bin"
-    $Env:CLASS_PATH = "$Env:JAVA_HOME\lib\tools.jar"
+    $Env:CLASS_PATH = "'$Env:JAVA_HOME\lib\tools.jar'"
 }
 
 $SCALA_HOME = Get-LatestPath "$APPSDIR\scala*"

@@ -4,15 +4,16 @@
 # exclude patterns (uncomment them if you want to use them):
 # *.[oa]
 # *~
-*
+/*
+!/Documents
+/Documents/*
+!/Documents/WindowsPowerShell
 !/.bashrc
 !/.gitconfig
 !/.gitexclude
 !/.gitignore
 !/.gitmodules
-!/Documents/WindowsPowerShell/profile.ps1
+!/posh.bat
 !/README.md
 !/_gvimrc
 !/_vimrc
-!/apps/bin/sbt.bat
-!/posh.bat
