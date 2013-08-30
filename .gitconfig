@@ -22,8 +22,8 @@
 	fontui = -family \"ＭＳ ゴシック\" -size 10 -weight normal -slant roman -underline 0 -overstrike 0
 [push]
 	default = upstream       # defaultのpush先はtrackingしているリポジトリ
-[merge]
-	tool = winmerge
+[pull]
+	rebase = true            # pullするときはrebaseする
 [alias]
 	st = status
 	sh = show
@@ -112,13 +112,16 @@
 	generic = ^F move-page-down
 	generic = ^B move-page-up
 
+[merge]
+	tool = winmerge
+
 [mergetool "winmerge"]
-	cmd = WinMergeU.exe "$LOCAL" "$REMOTE" "$BASE" "$MERGED"
+	cmd = WinMergeU.exe -e -ub \"$LOCAL\" \"$REMOTE\" \"$BASE\" -o \"$MERGED\"
 
 [diff]
 	tool = winmerge
 
 [difftool "winmerge"]
-	cmd = WinMergeU.exe "$LOCAL" "$REMOTE"
+	cmd = WinMergeU.exe -e -ub -dl \"Base\" -dr \"Minn\" \"$LOCAL\" \"$REMOTE\"
 
 # vim: set ts=4 sw=4 ft=gitconfig:
