@@ -1,6 +1,7 @@
 [user]
 	name = Takamatsu Makoto
 	email = tkmtmkt@gmail.com
+
 [core]
 	excludesfile = ~/.gitexclude  # globalな無視ファイル指定
 	filemode = false
@@ -9,6 +10,7 @@
 	editor = gvim +1
 	quotepath = false
 	pager = nkf32 | less
+
 [color]
 	# colorの設定(以下のコマンドは自動で色つける)
 	diff = auto
@@ -17,13 +19,29 @@
 	interactive = auto
 	grep = auto
 	ui = true
+
 [gui]
 	encoding = utf-8
 	fontui = -family \"ＭＳ ゴシック\" -size 10 -weight normal -slant roman -underline 0 -overstrike 0
+
 [push]
 	default = upstream       # defaultのpush先はtrackingしているリポジトリ
+
 [pull]
 	rebase = true            # pullするときはrebaseする
+
+[merge]
+	tool = winmerge
+
+[mergetool "winmerge"]
+	cmd = WinMergeU.exe -e -ub \"$LOCAL\" \"$REMOTE\" \"$BASE\" -o \"$MERGED\"
+
+[diff]
+	tool = winmerge
+
+[difftool "winmerge"]
+	cmd = WinMergeU.exe -e -ub -dl \"Base\" -dr \"Minn\" \"$LOCAL\" \"$REMOTE\"
+
 [alias]
 	st = status
 	sh = show
@@ -100,9 +118,6 @@
 
 	chpk = cherry-pick # チンピク
 
-[help]
-	format = html
-
 [http]
 	sslVerify = false
 
@@ -112,16 +127,7 @@
 	generic = ^F move-page-down
 	generic = ^B move-page-up
 
-[merge]
-	tool = winmerge
-
-[mergetool "winmerge"]
-	cmd = WinMergeU.exe -e -ub \"$LOCAL\" \"$REMOTE\" \"$BASE\" -o \"$MERGED\"
-
-[diff]
-	tool = winmerge
-
-[difftool "winmerge"]
-	cmd = WinMergeU.exe -e -ub -dl \"Base\" -dr \"Minn\" \"$LOCAL\" \"$REMOTE\"
+[help]
+	format = html
 
 # vim: set ts=4 sw=4 ft=gitconfig:
