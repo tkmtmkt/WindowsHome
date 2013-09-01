@@ -28,9 +28,10 @@
 	default = upstream       # defaultのpush先はtrackingしているリポジトリ
 
 [pull]
-	rebase = true            # pullするときはrebaseする
+	rebase = true            # git pull --rebase
 
 [merge]
+	ff = false               # git merge --no-ff
 	tool = winmerge
 
 [mergetool "winmerge"]
