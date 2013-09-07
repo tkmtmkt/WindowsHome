@@ -35,13 +35,13 @@
 	tool = winmerge
 
 [mergetool "winmerge"]
-	cmd = WinMergeU.exe -e -ub \"$LOCAL\" \"$REMOTE\" \"$BASE\" -o \"$MERGED\"
+	cmd = WinMergeU.exe -e -ub \"$LOCAL\" \"$BASE\" \"$REMOTE\" -o \"$MERGED\"
 
 [diff]
 	tool = winmerge
 
 [difftool "winmerge"]
-	cmd = WinMergeU.exe -e -ub -dl \"Base\" -dr \"Minn\" \"$LOCAL\" \"$REMOTE\"
+	cmd = WinMergeU.exe -e -ub -dl \"Base\" -dr \"Mine\" \"$LOCAL\" \"$REMOTE\"
 
 [alias]
 	st = status
