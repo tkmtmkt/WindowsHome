@@ -537,6 +537,24 @@ function Get-RestartLog {
     } | select Time,EventId,シャットダウンの種類,理由,理由コード,コメント
 }
 
+"eclipse","pleiades" | %{
+    New-Item Function: -name $_ -force -value {
+        <#
+        .SYNOPSIS
+        eclipseを起動します。
+        #>
+        param(
+            $findword
+        )
+        $name = $MyInvocation.MyCommand.Name
+        ls "$APPSDIR\$name*" | ?{$_.name -match $findword} | select -last 1 | %{
+            $dir = "$($_.fullname)\eclipse"
+            "Starting $name in $dir" | out-host
+            start "$dir\eclipse.exe" -work $dir
+        }
+    }
+}
+
 
 ############################################################
 #
@@ -617,21 +635,13 @@ $Env:JAVA_HOME = Get-LatestPath "$Env:ProgramFiles\Java\jdk*"
 #$Env:JAVA_OPTS = "-Dhttp.proxyHost=proxyhostURL -Dhttp.proxyPort=proxyPortNumber"
 
 $PLEIADES_HOME = Get-LatestPath "$APPSDIR\pleiades*"
-function eclipse {
-    if ($PLEIADES_HOME -ne $null) {
-        pushd $PLEIADES_HOME\eclipse
-        start eclipse.exe
-        popd
-    }
-}
-
 if ($Env:JAVA_HOME -eq $null -and $PLEIADES_HOME -ne $null) {
     $Env:JAVA_HOME = "$PLEIADES_HOME\java\7"
 }
 
 if ($Env:JAVA_HOME -ne $null) {
     Add-Path "$Env:JAVA_HOME\bin"
-    $Env:CLASS_PATH = "'$Env:JAVA_HOME\lib\tools.jar'"
+    $Env:CLASS_PATH = "$Env:JAVA_HOME\lib\tools.jar"
 }
 
 $SCALA_HOME = Get-LatestPath "$APPSDIR\scala*"
