@@ -8,6 +8,8 @@
 !/Documents
 /Documents/*
 !/Documents/WindowsPowerShell
+/Documents/WindowsPowerShell/*
+!/Documents/WindowsPowerShell/profile.ps1
 !/.bashrc
 !/.gitconfig
 !/.gitexclude
