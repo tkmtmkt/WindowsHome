@@ -552,7 +552,7 @@ function Get-RestartLog {
             "Starting $name in $dir" | out-host
             start "$dir\eclipse.exe" -work $dir
         }
-    }
+    } | out-null
 }
 
 

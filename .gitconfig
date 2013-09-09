@@ -71,6 +71,7 @@
 	ls = log --stat          # logに変更されたファイルも一緒に出す
 	lp = log -p              # diffも一緒に出す
 	la = log --pretty=\"format:%ad %h (%an): %s\" --date=short  # ざっくりログ出す
+	ll = log --pretty=\"format:%Cblue%ai %h %Cgreen%<(20,trunc)%an%Creset %d %s\" --decorate
 	lr = log origin          # originのlog
 	oneline = log --oneline --decorate
 	ranking = shortlog -s -n --no-merges
