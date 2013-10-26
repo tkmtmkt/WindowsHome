@@ -50,10 +50,10 @@ cat C:\Windows\system32\drivers\etc\hosts |
     new-item function: -name $name -value {
         param([string]$user = $Env:USERNAME)
         $hostname = ($MyInvocation.MyCommand.Name -split "-")[1]
-        ttermpro $user@$hostname /P=22 /L="$(log "${hostname}-")"
+        ttermpro ssh://$user@$hostname /auth=publickey /keyfile="$Home\.ssh\id_rsa" /ask4passwd /L="$(log "${hostname}-")"
     } | out-null
 }
-function ssh-sakura {ttermpro $Env:USERNAME@www.sakura.ne.jp /P=22 /L=$(log "sakura-")}
+function ssh-sakura {ttermpro ssh://$Env:USERNAME@www.sakura.ne.jp /auth=publickey /keyfile="$Home\.ssh\id_rsa" /L=$(log "sakura-")}
 
 # ショートカット：仮想マシン起動
 @(ls $Home\Documents *.vmx -r -ea:SilentlyContinue) | ?{$_.name -match "vmx$"} | %{
