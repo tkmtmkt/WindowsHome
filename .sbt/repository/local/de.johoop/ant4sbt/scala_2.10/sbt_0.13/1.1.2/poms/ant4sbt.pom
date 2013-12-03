@@ -1,0 +1,64 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>de.johoop</groupId>
+    <artifactId>ant4sbt</artifactId>
+    <packaging>jar</packaging>
+    <description>ant4sbt</description>
+    <version>1.1.2</version>
+    <name>ant4sbt</name>
+    <organization>
+        <name>de.johoop</name>
+    </organization>
+    <url>http://www.bitbucket.org/jmhofer/ant4sbt</url>
+    <licenses>
+        <license>
+            <name>Eclipse Public License v1.0</name>
+            <url>http://www.eclipse.org/legal/epl-v10.html</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+    <scm>
+        <url>https://bitbucket.org/jmhofer/ant4sbt</url>
+        <connection>scm:hg:https://bitbucket.org/jmhofer/ant4sbt</connection>
+    </scm>
+    <developers>
+        <developer>
+            <id>johofer</id>
+            <name>Joachim Hofer</name>
+            <url>http://jmhofer.johoop.de</url>
+        </developer>
+        <developer>
+            <id>asflierl</id>
+            <name>Andreas Flierl</name>
+            <url>http://flierl.eu</url>
+        </developer>
+        <developer>
+            <id>tkmtmkt</id>
+            <name>tkmtmkt</name>
+        </developer>
+    </developers>
+    <properties>
+        <sbtVersion>0.13</sbtVersion>
+        <scalaVersion>2.10</scalaVersion>
+    </properties>
+    <dependencies>
+        <dependency>
+            <groupId>org.scala-lang</groupId>
+            <artifactId>scala-library</artifactId>
+            <version>2.10.2</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.scala-sbt</groupId>
+            <artifactId>sbt</artifactId>
+            <version>0.13.0</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.ant</groupId>
+            <artifactId>ant</artifactId>
+            <version>1.9.2</version>
+        </dependency>
+    </dependencies>
+</project>

@@ -84,7 +84,8 @@ GitHubからファイルを取得します。
   [Apache Ivy](http://ant.apache.org/ivy/),
   [Apache Maven](http://maven.apache.org/),
   [gradle](http://www.gradle.org/),
-  [sbt](http://www.scala-sbt.org/)
+  [sbt](http://www.scala-sbt.org/),
+  [leiningen](http://leiningen.org/)
 
 
 ### 関数定義

@@ -19,3 +19,15 @@
 !/README.md
 !/_gvimrc
 !/_vimrc
+
+# sbt specific
+!.sbt
+.sbt/boot/
+.sbt/repository/*
+!.sbt/repository/local
+project
+target
+
+# lein specific
+!.lein
+.lein/self-installs/
