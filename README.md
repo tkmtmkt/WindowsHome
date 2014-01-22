@@ -225,4 +225,10 @@ BTSサーバを起動するために必要な設定を行う。
     $Env:LOCALAPPDATA\.sgcloset\repo
 
 
+### mavenリポジトリリスト
+
+    # The MongoDB Java driver
+    "org.mongodb" % "mongo-java-driver" % "2.11.3"
+
+
 <!-- vim: set ts=4 sw=4 et:-->

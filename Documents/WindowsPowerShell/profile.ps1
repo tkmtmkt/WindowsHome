@@ -670,6 +670,7 @@ Add-Path "$RUBY_HOME\bin"
 # ÉrÉãÉhä«óù
 $ANT_HOME = Get-LatestPath "$APPSDIR\apache-ant*"
 Add-Path "$ANT_HOME\bin"
+#$Env:ANT_OPTS = "-Dhttp.proxyHost=proxyhostURL -Dhttp.proxyPort=proxyPortNumber"
 
 $MVN_HOME = Get-LatestPath "$APPSDIR\apache-maven*"
 Add-Path "$MVN_HOME\bin"
@@ -687,6 +688,6 @@ Add-Path "$PANDOC_HOME\bin"
 
 Add-Path "$APPSDIR\astah_community"
 
-Add-Path "$APPSDIR\Play20"
+Add-Path "$APPSDIR\playframework"
 
 # vim: set ft=ps1 ts=4 sw=4 et:
