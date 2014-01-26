@@ -103,12 +103,10 @@ GitHubからファイルを取得します。
 その他
 ------
 
-### WinMerge設定
+### 端末フォント設定
 
-7z.dllをWinMergeフォルダにコピーして、アーカイブサポートを有効にする。
-※バージョン9.20をコピーすること。9.22は認識しない。
-
-    cp $TOOLDIR\7-Zip\7z.dll $WINMERGE_HOME
+* [プログラミング用フォント Ricty](http://save.sys.t.u-tokyo.ac.jp/~yusa/fonts/ricty.html)
+* [MacType](https://code.google.com/p/mactype/)
 
 
 ### TeraTerm設定
@@ -117,7 +115,15 @@ TERATERM.INIを編集してメニューの日本語化、ウィンドウサイ�
 
     UILanguageFile=lang\Japanese.lng
     TerminalSize=120,40
-    VTFont=ＭＳ ゴシック,0,-16,128
+    VTFont=Ricty,0,-16,128
+
+
+### WinMerge設定
+
+7z.dllをWinMergeフォルダにコピーして、アーカイブサポートを有効にする。
+※バージョン9.20をコピーすること。9.22は認識しない。
+
+    cp $TOOLDIR\7-Zip\7z.dll $WINMERGE_HOME
 
 
 ### Resource Kit Tools
