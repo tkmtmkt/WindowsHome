@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ivy-module version="2.0" xmlns:e="http://ant.apache.org/ivy/extra">
-	<info organisation="com.typesafe.sbt" module="sbt-git" revision="0.6.3" status="release" publication="20131004003350" e:scalaVersion="2.10" e:sbtVersion="0.13">
+	<info organisation="com.typesafe.sbt" module="sbt-git" revision="0.6.3" status="release" publication="20140126123136" e:scalaVersion="2.10" e:sbtVersion="0.13">
 		<description>
 		sbt-git
 		</description>
@@ -27,8 +27,8 @@
 	</publications>
 	<dependencies>
 		
-		<dependency org="org.scala-lang" name="scala-library" rev="2.10.2" conf="provided->default(compile)"/>
-		<dependency org="org.scala-sbt" name="sbt" rev="0.13.0" conf="provided->default(compile)"/>
+		<dependency org="org.scala-lang" name="scala-library" rev="2.10.3" conf="provided->default(compile)"/>
+		<dependency org="org.scala-sbt" name="sbt" rev="0.13.1" conf="provided->default(compile)"/>
 		<dependency org="org.eclipse.jgit" name="org.eclipse.jgit.pgm" rev="2.2.0.201212191850-r" conf="compile->default(compile)"/>
 	</dependencies>
 </ivy-module>
