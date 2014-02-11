@@ -25,7 +25,6 @@
 .sbt/boot/
 .sbt/repository/*
 !.sbt/repository/local
-project
 target
 
 # lein specific

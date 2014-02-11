@@ -97,7 +97,6 @@ GitHubからファイルを取得します。
 * md5sum - ファイルのMD5チェックサムを計算します。
 * sha1sum - ファイルのSHA1チェックサムを計算します。
 * Get-Assemblies - PowerShellセッションにロード済みのアセンブリを表示します。
-* sbt-init - sbt (simple build tool)の初期プロジェクトを作成します。
 
 
 その他
