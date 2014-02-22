@@ -37,7 +37,9 @@ $Host.UI.RawUI | %{
 # ƒvƒƒ“ƒvƒgÝ’è
 function prompt {
     write-host "$Env:USERDOMAIN\$Env:USERNAME " -NoNewline -ForegroundColor "Green"
-    write-host "$PWD" -ForegroundColor "DarkCyan"
+    write-host "$PWD" -NoNewline -ForegroundColor "DarkCyan"
+    if ((test-path .git) -and $PWD.ProviderPath.trim("\") -ne $Home) { Write-VcsStatus }
+    write-host ""
     $(if (test-path Variable:/PSDebugContext) { '[DBG]: ' } else { '' }) +
     "PS $(Get-Date -u '%T')$('>' * ($NestedPromptLevel + 1)) "
 }
@@ -578,6 +580,7 @@ $GIT_HOME = Get-LatestPath "$APPSDIR\*git*"
 Add-Path "$GIT_HOME"
 Add-Path "$GIT_HOME\cmd"
 Add-Path "$GIT_HOME\bin"
+Enable-GitColors
 
 $SVN_HOME = Get-LatestPath "$APPSDIR\svn*"
 Add-Path "$SVN_HOME\bin"

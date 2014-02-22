@@ -167,6 +167,19 @@ TERATERM.INIを編集してメニューの日本語化、ウィンドウサイ�
 
     fossil open REPO_FILE
 
+作業ディレクトリに以下のファイルが作成される。（ファイルはsqlite3データベース）
+
+    _FOSSIL_
+
+作業ディレクトリのリポジトリ位置情報はsqlで参照する。
+
+    sql _FOSSIL_
+    .mode line
+    select * from vvar;
+
+参考：グローバル設定情報は以下のファイルに保管される。（ファイルはsqlite3データベース）
+    $Env:LOCALAPPDATA\_fossil
+
 
 ### git設定
 
