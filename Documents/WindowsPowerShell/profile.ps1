@@ -38,7 +38,7 @@ $Host.UI.RawUI | %{
 function prompt {
     write-host "$Env:USERDOMAIN\$Env:USERNAME " -NoNewline -ForegroundColor "Green"
     write-host "$PWD" -NoNewline -ForegroundColor "DarkCyan"
-    if ((test-path .git) -and $PWD.ProviderPath.trim("\") -ne $Home) { Write-VcsStatus }
+    if (!$PWD.ProviderPath.StartsWith($Home)) { Write-VcsStatus }
     write-host ""
     $(if (test-path Variable:/PSDebugContext) { '[DBG]: ' } else { '' }) +
     "PS $(Get-Date -u '%T')$('>' * ($NestedPromptLevel + 1)) "
