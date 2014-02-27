@@ -580,6 +580,7 @@ $GIT_HOME = Get-LatestPath "$APPSDIR\*git*"
 Add-Path "$GIT_HOME"
 Add-Path "$GIT_HOME\cmd"
 Add-Path "$GIT_HOME\bin"
+Import-Module posh-git
 Enable-GitColors
 
 $SVN_HOME = Get-LatestPath "$APPSDIR\svn*"
