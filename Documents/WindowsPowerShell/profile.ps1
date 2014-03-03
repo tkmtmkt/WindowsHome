@@ -535,6 +535,11 @@ Add-Path "$VIM_HOME"
 Set-Alias vi "$VIM_HOME\vim.exe"
 $Env:EDITOR = "gvim"
 
+# バイナリエディタ
+Add-Path "$TOOLDIR\FavBinEdit"
+Set-Alias binedit "$TOOLDIR\FavBinEdit\FavBinEdit.exe"
+Set-Alias bingrep "$TOOLDIR\FavBinEdit\FavBinGrep.exe"
+
 # 差分ツール
 $WINMERGE_HOME = Get-LatestPath "$TOOLDIR\WinMerge*"
 Add-Path "$WINMERGE_HOME"

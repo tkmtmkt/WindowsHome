@@ -35,7 +35,8 @@ GitHubからファイルを取得します。
   [7-ZIP](http://sevenzip.sourceforge.jp/)
 
 * エディタ：
-  [KaoriYa](http://www.kaoriya.net/)
+  [KaoriYa](http://www.kaoriya.net/),
+  [FavBinEdit](http://tech2assist.web.fc2.com/FavBinEdit/)
 
 * 差分ツール：
   [WinMerge](http://www.geocities.co.jp/SiliconValley-SanJose/8165/winmerge.html)
@@ -115,6 +116,10 @@ TERATERM.INIを編集してメニューの日本語化、ウィンドウサイ�
     UILanguageFile=lang\Japanese.lng
     TerminalSize=120,40
     VTFont=Ricty,0,-16,128
+
+罫線が文字化けするのでUNICODEからDEC文字への変換対象から外す。
+
+    UnicodeToDecSpMapping=2
 
 
 ### WinMerge設定
