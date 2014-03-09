@@ -540,6 +540,14 @@ Add-Path "$TOOLDIR\FavBinEdit"
 Set-Alias binedit "$TOOLDIR\FavBinEdit\FavBinEdit.exe"
 Set-Alias bingrep "$TOOLDIR\FavBinEdit\FavBinGrep.exe"
 
+# 階層化情報管理ツール
+$ZEETA_HOME = "$TOOLDIR\Zeeta"
+function zeeta {
+    pushd $ZEETA_HOME\startup
+    javaw -jar $ZEETA_HOME\lib\selj.jar
+    popd
+}
+
 # 差分ツール
 $WINMERGE_HOME = Get-LatestPath "$TOOLDIR\WinMerge*"
 Add-Path "$WINMERGE_HOME"

@@ -37,6 +37,7 @@ GitHubからファイルを取得します。
 * エディタ：
   [KaoriYa](http://www.kaoriya.net/),
   [FavBinEdit](http://tech2assist.web.fc2.com/FavBinEdit/)
+  [zeeta](https://sites.google.com/site/zeetahp/)
 
 * 差分ツール：
   [WinMerge](http://www.geocities.co.jp/SiliconValley-SanJose/8165/winmerge.html)
