@@ -63,7 +63,9 @@ if version >= 703
   "set undodir=.
 endif
 "set noswapfile
-set directory=$TEMP
+set directory=~/.vim/tmp
+"set noundofile
+set undodir=~/.vim/tmp
 "viminfoを作成しない
 "set viminfo=
 "クリップボードを共有
@@ -384,4 +386,3 @@ filetype plugin indent on
 "----------------------------------------
 set tabstop=4
 set shiftwidth=4
-
