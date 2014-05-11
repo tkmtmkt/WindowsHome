@@ -7,7 +7,7 @@
 	filemode = false
 	autocrlf = false
 	safecrlf = true
-	editor = gvim +1
+	editor = gvim +1 -c \"set fenc=utf-8 ff=unix\"
 	quotepath = false
 	pager = nkf32 | less
 
