@@ -51,7 +51,7 @@ cat C:\Windows\system32\drivers\etc\hosts |
     $name = "ssh-$(@($_ -split "\s+")[1])"
     new-item function: -name $name -value {
         param([string]$user = $Env:USERNAME)
-        $hostname = ($MyInvocation.MyCommand.Name -split "-")[1]
+        $hostname = ($MyInvocation.MyCommand.Name -split "-",2)[1]
         ttermpro ssh://$user@$hostname /auth=publickey /keyfile="$Home\.ssh\id_rsa" /ask4passwd /L="$(log "${hostname}-")"
     } | out-null
 }
@@ -60,7 +60,7 @@ function ssh-sakura {ttermpro ssh://$Env:USERNAME@www.sakura.ne.jp /auth=publick
 # ショートカット：仮想マシン起動
 @(ls $Home\Documents *.vmx -r -ea:SilentlyContinue) | ?{$_.name -match "vmx$"} | %{
     new-item function: -name "vmx-$($_.basename)" -value {
-        $vmx_file = $(ls $Home\Documents "$(($MyInvocation.MyCommand.Name -split '-')[1]).vmx" -r).fullname
+        $vmx_file = $(ls $Home\Documents "$(($MyInvocation.MyCommand.Name -split '-',2)[1]).vmx" -r).fullname
         start "$vmx_file"
     } | out-null
 }
@@ -68,7 +68,7 @@ function ssh-sakura {ttermpro ssh://$Env:USERNAME@www.sakura.ne.jp /auth=publick
 # ショートカット：RDP接続
 @(ls $Home\Documents *.rdp -ea:SilentlyContinue) | %{
     new-item function: -name "rdp-$($_.basename)" -value {
-        $rdp_file = "$Home\Documents\$(($MyInvocation.MyCommand.Name -split '-')[1]).rdp"
+        $rdp_file = "$Home\Documents\$(($MyInvocation.MyCommand.Name -split '-',2)[1]).rdp"
         mstsc "$rdp_file"
     } | out-null
 }
