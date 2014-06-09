@@ -36,7 +36,8 @@ GitHubからファイルを取得します。
 
 * エディタ：
   [KaoriYa](http://www.kaoriya.net/),
-  [FavBinEdit](http://tech2assist.web.fc2.com/FavBinEdit/)
+  [MarkDown#Editor](http://hibara.org/software/markdownsharpeditor/),
+  [FavBinEdit](http://tech2assist.web.fc2.com/FavBinEdit/),
   [zeeta](https://sites.google.com/site/zeetahp/)
 
 * 差分ツール：
@@ -65,7 +66,7 @@ GitHubからファイルを取得します。
 `$APPSDIR="$Env:PUBLIC\apps"`フォルダに追加のツールを置きます。
 
 * 構成管理：
-  [msysgit](http://code.google.com/p/msysgit/downloads/list),
+  [msysgit](https://github.com/msysgit/msysgit/releases),
   [Subversion for Windows](http://sourceforge.net/projects/win32svn/),
   [Veracity](http://veracity-scm.com/)
 
