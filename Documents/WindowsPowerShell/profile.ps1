@@ -662,6 +662,9 @@ Add-Path "$Env:HOME\.lein"
 $PANDOC_HOME = Get-LatestPath "$APPSDIR\pandoc*"
 Add-Path "$PANDOC_HOME\bin"
 
+$PHANTOMJS_HOME = Get-LatestPath "$APPSDIR\phantomjs-*"
+Add-Path "$PHANTOMJS_HOME\bin"
+
 Add-Path "$APPSDIR\astah_community"
 
 Add-Path "$APPSDIR\playframework"
