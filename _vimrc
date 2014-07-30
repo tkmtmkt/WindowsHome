@@ -56,14 +56,12 @@ set nowritebackup
 set nobackup
 if version >= 703
   "再読込、vim終了後も継続するアンドゥ(7.3)
-  "set undofile
+  set undofile
   "アンドゥの保存場所(7.3)
-  "set undodir=.
+  set undodir=~/.vim/tmp
 endif
 "set noswapfile
 set directory=~/.vim/tmp
-"set noundofile
-set undodir=~/.vim/tmp
 "viminfoを作成しない
 "set viminfo=
 "クリップボードを共有
