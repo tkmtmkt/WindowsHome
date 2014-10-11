@@ -356,23 +356,26 @@ filetype off
 
 if has('vim_starting')
   set runtimepath+=~/.vim/bundle/neobundle.vim/
-  call neobundle#rc(expand('~/.vim/bundle/'))
 endif
 
+call neobundle#begin(expand('~/.vim/bundle/'))
+
 " recommended to install
-NeoBundle 'Shougo/vimproc.vim'
+NeoBundleFetch 'Shougo/vimproc.vim'
 " after install, turn shell ~/.vim/bundle/vimproc, (n,g)make -f your_machines_makefile
-NeoBundle 'Shougo/vimshell.vim'
-NeoBundle 'Shougo/unite.vim'
-NeoBundle 'Shougo/neocomplcache.vim'
+NeoBundleFetch 'Shougo/vimshell.vim'
+NeoBundleFetch 'Shougo/unite.vim'
+NeoBundleFetch 'Shougo/neocomplcache.vim'
 "
-NeoBundle 'vim-scripts/VimClojure'
-NeoBundle 'PProvost/vim-ps1'
-NeoBundle 'derekwyatt/vim-scala'
-NeoBundle 'kchmck/vim-coffee-script'
-NeoBundle 'martintreurnicht/vim-gradle'
+NeoBundleFetch 'vim-scripts/VimClojure'
+NeoBundleFetch 'PProvost/vim-ps1'
+NeoBundleFetch 'derekwyatt/vim-scala'
+NeoBundleFetch 'kchmck/vim-coffee-script'
+NeoBundleFetch 'martintreurnicht/vim-gradle'
 "
-NeoBundle 'scrooloose/syntastic'
+NeoBundleFetch 'scrooloose/syntastic'
+
+call neobundle#end()
 
 "pluginを使用可能にする
 filetype plugin indent on
