@@ -14,7 +14,7 @@ $TOOLDIR = "$Env:PUBLIC\tool"
 $APPSDIR = "$Env:PUBLIC\apps"
 $PROJDIR = "$Env:PUBLIC\projects"
 $REPODIR = "$Env:PUBLIC\repos"
-function Get-TodayPath {"$Env:HOME\work\$(Get-Date -f 'yyyy\\MM\\dd')"}
+function Get-TodayPath {"$Env:HOME\work\$(Get-Date (Get-Date).AddHours(-5) -f 'yyyy\\MM\\dd')"}
 $WORKDIR = $(Get-TodayPath)
 
 # ÉRÉìÉ\Å[Éãê›íË
