@@ -46,7 +46,8 @@ GitHubからファイルを取得します。
 * リモート接続：
   [Tera Term](http://sourceforge.jp/projects/ttssh2/),
   [WinSCP](http://winscp.net/eng/docs/lang:jp),
-  [RealVNC](http://www.realvnc.com/)
+  [RealVNC](http://www.realvnc.com/),
+  [ConEmu](http://sourceforge.jp/projects/conemu/)
 
 * システム管理：
   [SysinternalsSuite](http://technet.microsoft.com/ja-jp/sysinternals/bb842062.aspx),
@@ -77,6 +78,7 @@ GitHubからファイルを取得します。
   [Java SE](http://www.oracle.com/technetwork/java/javase/downloads/index.html),
   [Pleiades - Eclipse プラグイン日本語化プラグイン](http://mergedoc.sourceforge.jp/),
   [Scala](http://www.scala-lang.org/),
+  [Groovy](http://groovy.codehaus.org/),
   [Python](http://www.python.org/),
   [Jython](http://www.jython.org/),
   [Clojure](http://clojure.org/),
