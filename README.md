@@ -92,6 +92,9 @@ GitHubからファイルを取得します。
   [sbt](http://www.scala-sbt.org/),
   [leiningen](http://leiningen.org/)
 
+* その他ツール：
+  [GNU GLOBAL](http://www.gnu.org/software/global/)
+
 
 ### 関数定義
 
@@ -256,6 +259,12 @@ BTSサーバを起動するために必要な設定を行う。
 
     # The MongoDB Java driver
     "org.mongodb" % "mongo-java-driver" % "2.11.3"
+
+
+### GLOBALを使用したタグ生成
+
+    gtags -vw | tee gtags.log
+    htags --tabs 4 -sanofFTvxt 'TITLE' | tee htags.log
 
 
 <!-- vim: set ts=4 sw=4 et:-->
