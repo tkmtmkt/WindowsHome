@@ -34,3 +34,6 @@
 [submodule ".vim/bundle/vim-gradle"]
 	path = .vim/bundle/vim-gradle
 	url = https://github.com/martintreurnicht/vim-gradle.git
+[submodule ".vim/bundle/gtags.vim"]
+	path = .vim/bundle/gtags.vim
+	url = https://github.com/vim-scripts/gtags.vim.git

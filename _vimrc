@@ -374,6 +374,8 @@ NeoBundle 'kchmck/vim-coffee-script'
 NeoBundle 'martintreurnicht/vim-gradle'
 "
 NeoBundle 'scrooloose/syntastic'
+"
+NeoBundle 'vim-scripts/gtags.vim'
 
 call neobundle#end()
 
