@@ -633,6 +633,9 @@ Function clojure {
     }
 }
 
+$GROOVY_HOME = Get-LatestPath "$APPSDIR\groovy*"
+Add-Path "$GROOVY_HOME\bin"
+
 $PYTHON_HOME = Get-LatestPath "$APPSDIR\python*"
 Add-Path "$PYTHON_HOME"
 Add-Path "$PYTHON_HOME\Scripts"
