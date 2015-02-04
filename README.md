@@ -53,6 +53,7 @@ GitHubからファイルを取得します。
   [SysinternalsSuite](http://technet.microsoft.com/ja-jp/sysinternals/bb842062.aspx),
   [Windows Server 2003 Resource Kit Tools](http://www.microsoft.com/en-us/download/details.aspx?id=17657),
   [Windows Server 2003 Service Pack 2 32-bit Support Tools](http://www.microsoft.com/en-us/download/details.aspx?id=15326),
+  [Intel vPro Technology Modules for Microsoft Windows PowerShell](http://www.intel.com/content/www/us/en/remote-support/vpro-technology-module-for-microsoft-windows-powershell.html),
   [Log Parser](http://technet.microsoft.com/ja-jp/scriptcenter/dd919274.aspx),
   [LogExpert](http://www.log-expert.de/)
 
@@ -76,7 +77,6 @@ GitHubからファイルを取得します。
 
 * プログラミング：
   [Java SE](http://www.oracle.com/technetwork/java/javase/downloads/index.html),
-  [Pleiades - Eclipse プラグイン日本語化プラグイン](http://mergedoc.sourceforge.jp/),
   [Scala](http://www.scala-lang.org/),
   [Groovy](http://groovy.codehaus.org/),
   [Python](http://www.python.org/),
@@ -93,7 +93,9 @@ GitHubからファイルを取得します。
   [leiningen](http://leiningen.org/)
 
 * その他ツール：
-  [GNU GLOBAL](http://www.gnu.org/software/global/)
+  [Pleiades - Eclipse プラグイン日本語化プラグイン](http://mergedoc.sourceforge.jp/),
+  [GNU GLOBAL](http://www.gnu.org/software/global/),
+  [pandoc](https://github.com/jgm/pandoc/releases)
 
 
 ### 関数定義
