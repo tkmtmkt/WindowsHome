@@ -87,7 +87,7 @@ set ambiwidth=double
 "コマンドライン補完するときに強化されたものを使う
 set wildmenu
 "ファイルエンコーディングの候補一覧
-set fileencodings=utf-8,iso-2022-jp-3,iso-2022-jp,euc-jisx0213,euc-jp,ucs-bom,euc-jp,eucjp-ms,cp932
+set fileencodings=ucs-bom,utf-8,euc-jp,iso-2022-jp,cp932,utf-16,utf-16le
 "マウスを無効にする
 set mouse=
 "マウスを有効にする
