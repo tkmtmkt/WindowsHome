@@ -254,6 +254,30 @@ if has('folding')
 endif
 "現在日時を挿入する
 nnoremap <F5> a<C-R>=strftime("%Y/%m/%d %H:%M")<CR><Esc>
+"GNU GLOBAL(gtags)
+"   Ctrl-q 検索結果Windowを閉じる
+"   Ctrl-g ソースコードの grep
+"   Ctrl-l このファイルの関数一覧
+"   Ctrl-j カーソル以下の定義元を探す
+"   Ctrl-k カーソル以下の使用箇所を探す
+"   Ctrl-n 次の検索結果へジャンプする
+"   Ctrl-p 前の検索結果へジャンプする
+nnoremap <C-q> <C-w><C-w><C-w>q
+nnoremap <C-g> :Gtags -g
+nnoremap <C-l> :Gtags -f %<CR>
+nnoremap <C-j> :Gtags <C-r><C-w><CR>
+nnoremap <C-k> :Gtags -r <C-r><C-w><CR>
+nnoremap <C-n> :cn<CR>
+nnoremap <C-p> :cp<CR>
+"vimgrep
+"   [q 前へ
+"   ]q 次へ
+"   [Q 最初へ
+"   ]Q 最後へ
+nnoremap [q :cprevious<CR>
+nnoremap ]q :cnext<CR>
+nnoremap [Q :<C-u>cfirst<CR>
+nnoremap ]Q :<C-u>clast<CR>
 
 "----------------------------------------
 " 挿入モード
@@ -381,24 +405,6 @@ call neobundle#end()
 
 "pluginを使用可能にする
 filetype plugin indent on
-
-"----------------------------------------------------
-" GNU GLOBAL(gtags)
-"   Ctrl-q 検索結果Windowを閉じる
-"   Ctrl-g ソースコードの grep
-"   Ctrl-l このファイルの関数一覧
-"   Ctrl-j カーソル以下の定義元を探す
-"   Ctrl-k カーソル以下の使用箇所を探す
-"   Ctrl-n 次の検索結果へジャンプする
-"   Ctrl-p 前の検索結果へジャンプする
-"----------------------------------------------------
-nmap <C-q> <C-w><C-w><C-w>q
-nmap <C-g> :Gtags -g
-nmap <C-l> :Gtags -f %<CR>
-nmap <C-j> :Gtags <C-r><C-w><CR>
-nmap <C-k> :Gtags -r <C-r><C-w><CR>
-nmap <C-n> :cn<CR>
-nmap <C-p> :cp<CR>
 
 "----------------------------------------
 " 一時設定
