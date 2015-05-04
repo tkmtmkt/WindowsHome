@@ -2,7 +2,7 @@
 
 setLocal EnableExtensions EnableDelayedExpansion
 
-set LEIN_VERSION=2.5.0
+set LEIN_VERSION=2.5.1
 
 if "%LEIN_VERSION:~-9%" == "-SNAPSHOT" (
     set SNAPSHOT=YES
@@ -141,21 +141,21 @@ if NOT "x%HTTP_CLIENT%" == "x" (
     %HTTP_CLIENT% %1 %2
     goto EOF
 )
-call wget >nul 2>&1
-if NOT ERRORLEVEL 9009 (
-    call wget --no-check-certificate -O %1 %2
+call wget --help >nul 2>&1
+if NOT ERRORLEVEL 1 (
+    call wget -O %1 %2
     goto EOF
 )
-call curl >nul 2>&1
-if NOT ERRORLEVEL 9009 (
+call curl --help >nul 2>&1
+if NOT ERRORLEVEL 1 (
     rem We set CURL_PROXY to a space character below to pose as a no-op argument
     set CURL_PROXY= 
     if NOT "x%HTTPS_PROXY%" == "x" set CURL_PROXY="-x %HTTPS_PROXY%"
-    call curl %CURL_PROXY% --insecure -f -L -o  %1 %2
+    call curl %CURL_PROXY% -f -L -o  %1 %2
     goto EOF
 )
-powershell -? >nul 2>&1
-if NOT ERRORLEVEL 9009 (
+call powershell -? >nul 2>&1
+if NOT ERRORLEVEL 1 (
     powershell -Command "& {param($a,$f) (new-object System.Net.WebClient).DownloadFile($a, $f)}" ""%2"" ""%1""
     goto EOF
 )
@@ -191,7 +191,7 @@ if not exist %LEIN_INSTALL_DIR% mkdir %LEIN_INSTALL_DIR%
 
 echo Downloading Leiningen now...
 
-set LEIN_JAR_URL=https://github.com/technomancy/leiningen/releases/download/%LEIN_VERSION%/leiningen-%LEIN_VERSION%-standalone.jar
+set LEIN_JAR_URL=https://github.com/technomancy/leiningen/releases/download/%LEIN_VERSION%/leiningen-%LEIN_VERSION%-standalone.zip
 call :DownloadFile "%LEIN_JAR%.pending" "%LEIN_JAR_URL%"
 if ERRORLEVEL 1 (
     del "%LEIN_JAR%.pending" >nul 2>&1
