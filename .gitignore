@@ -25,6 +25,7 @@
 .sbt/boot/
 .sbt/repository/*
 !.sbt/repository/local
+.sbt/repository/local/org.scala-sbt/
 target
 
 # lein specific
