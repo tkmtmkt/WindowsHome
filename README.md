@@ -82,7 +82,15 @@ GitHubからファイルを取得します。
   [Python](http://www.python.org/),
   [Jython](http://www.jython.org/),
   [Clojure](http://clojure.org/),
+  [checkstyle](http://checkstyle.sourceforge.net/),
+  [findbugs](http://findbugs.sourceforge.net/),
+  [jacoco](http://www.eclemma.org/jacoco/),
+  [pmd](http://pmd.sourceforge.net/),
+  [javancss](http://www.kclee.de/clemens/java/javancss/),
+  [junit](http://junit.org/),
+  [mockito](http://mockito.org/),
   [RubyInsaller for Windows](http://rubyinstaller.org/)
+
 
 * ビルド管理：
   [Apache Ant](http://ant.apache.org/),
