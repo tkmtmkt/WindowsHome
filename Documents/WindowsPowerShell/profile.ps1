@@ -675,4 +675,11 @@ Add-Path "$APPSDIR\astah_community"
 
 Add-Path "$APPSDIR\playframework"
 
+$BEITEL_HOME = Get-LatestPath "$APPSDIR\beitel-*"
+Add-Path "$BEITEL_HOME"
+
+function zeeta {
+    start run.bat -Work "$APPSDIR\Zeeta\startup"
+}
+
 # vim: set ft=ps1 ts=4 sw=4 et:

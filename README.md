@@ -103,7 +103,9 @@ GitHubからファイルを取得します。
 * その他ツール：
   [Pleiades - Eclipse プラグイン日本語化プラグイン](http://mergedoc.sourceforge.jp/),
   [GNU GLOBAL](http://www.gnu.org/software/global/),
-  [pandoc](https://github.com/jgm/pandoc/releases)
+  [pandoc](https://github.com/jgm/pandoc/releases),
+  [BEITEL (バイト)](http://beitel.carabiner.jp/),
+  [zeeta HP](https://sites.google.com/site/zeetahp/)
 
 
 ### 関数定義
