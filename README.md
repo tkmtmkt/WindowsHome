@@ -78,7 +78,7 @@ GitHubからファイルを取得します。
 * プログラミング：
   [Java SE](http://www.oracle.com/technetwork/java/javase/downloads/index.html),
   [Scala](http://www.scala-lang.org/),
-  [Groovy](http://groovy.codehaus.org/),
+  [Groovy](http://www.groovy-lang.org/),
   [Python](http://www.python.org/),
   [Jython](http://www.jython.org/),
   [Clojure](http://clojure.org/),
@@ -103,6 +103,7 @@ GitHubからファイルを取得します。
 * その他ツール：
   [Pleiades - Eclipse プラグイン日本語化プラグイン](http://mergedoc.sourceforge.jp/),
   [GNU GLOBAL](http://www.gnu.org/software/global/),
+  [Gpg4win - Secure email and file encryption with GnuPG for Windows](http://www.gpg4win.de/index.html),
   [pandoc](https://github.com/jgm/pandoc/releases),
   [BEITEL (バイト)](http://beitel.carabiner.jp/),
   [zeeta HP](https://sites.google.com/site/zeetahp/)
