@@ -678,6 +678,17 @@ Add-Path "$APPSDIR\playframework"
 $BEITEL_HOME = Get-LatestPath "$APPSDIR\beitel-*"
 Add-Path "$BEITEL_HOME"
 
+function memo-monthly {
+    $dir  = "$Env:HOME\work\$(Get-Date -f 'yyyy\\MM')"
+    $file = "$(Get-Date -f 'yyyy-MM').zte"
+
+    if (Test-Path "$dir\$file") {
+        start beitel "$dir\$file" -Work "$dir"
+    } else {
+        start beitel -Work "$dir"
+    }
+}
+
 function zeeta {
     start run.bat -Work "$APPSDIR\Zeeta\startup"
 }
