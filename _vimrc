@@ -391,13 +391,14 @@ NeoBundle 'Shougo/vimshell.vim'
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/neocomplcache.vim'
 "
+NeoBundle 'scrooloose/syntastic'
+"
 NeoBundle 'vim-scripts/VimClojure'
 NeoBundle 'PProvost/vim-ps1'
 NeoBundle 'derekwyatt/vim-scala'
-NeoBundle 'kchmck/vim-coffee-script'
 NeoBundle 'martintreurnicht/vim-gradle'
-"
-NeoBundle 'scrooloose/syntastic'
+NeoBundle 'kchmck/vim-coffee-script'
+NeoBundle 'slim-template/vim-slim'
 "
 NeoBundle 'vim-scripts/gtags.vim'
 
