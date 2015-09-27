@@ -68,7 +68,7 @@ GitHubからファイルを取得します。
 `$APPSDIR="$Env:PUBLIC\apps"`フォルダに追加のツールを置きます。
 
 * 構成管理：
-  [msysgit](https://github.com/msysgit/msysgit/releases),
+  [git](https://github.com/git-for-windows/git/releases),
   [Subversion for Windows](http://sourceforge.net/projects/win32svn/),
   [Veracity](http://veracity-scm.com/)
 
