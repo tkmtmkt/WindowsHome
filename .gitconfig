@@ -9,7 +9,6 @@
 	safecrlf = true
 	editor = gvim +1 -c \"set fenc=utf-8 ff=unix\"
 	quotepath = false
-	pager = nkf32 | less
 
 [color]
 	# colorの設定(以下のコマンドは自動で色つける)

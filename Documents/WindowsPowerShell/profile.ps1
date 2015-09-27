@@ -589,8 +589,10 @@ Set-Alias sql "$TOOLDIR\sqlite3.exe"
 Add-Path "$APPSDIR\bin"
 
 # ç\ê¨ä«óù
-$GIT_HOME = Get-LatestPath "$APPSDIR\*git*"
+$GIT_HOME = Get-LatestPath "$APPSDIR\PortableGit*"
 Add-Path "$GIT_HOME"
+Add-Path "$GIT_HOME\mingw64\bin"
+Add-Path "$GIT_HOME\usr\bin"
 Add-Path "$GIT_HOME\cmd"
 Add-Path "$GIT_HOME\bin"
 Import-Module posh-git
