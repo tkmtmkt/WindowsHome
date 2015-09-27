@@ -280,4 +280,39 @@ BTSサーバを起動するために必要な設定を行う。
     htags --tabs 4 -sanofFTvxt 'TITLE' | tee htags.log
 
 
+### sbt-launch.jarビルド
+
+ソースコード取得
+
+    $ git clone https://github.com/sbt/sbt.git
+    $ cd sbt
+
+Java8でコンパイルするための設定
+
+```diff
+--- a/project/Release.scala
++++ b/project/Release.scala
+@@ -17,6 +17,6 @@ object Release {
+   )
+
+   def javaVersionCheckSettings = Seq(
+-    javaVersionPrefix in javaVersionCheck := Some("1.6")
++    javaVersionPrefix in javaVersionCheck := Some("1.8")
+   )
+ }
+```
+
+コンパイル
+
+    $ sbt clean update compile
+
+パッケージ
+
+    $ sbt bundledLauncherProj/sbtLaunchJar
+
+以下のファイルを出力
+
+    ./launch/target/sbt-launch.jar
+
+
 <!-- vim: set ts=4 sw=4 et:-->
