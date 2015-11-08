@@ -406,9 +406,3 @@ call neobundle#end()
 
 "pluginを使用可能にする
 filetype plugin indent on
-
-"----------------------------------------
-" 一時設定
-"----------------------------------------
-set tabstop=4
-set shiftwidth=4
