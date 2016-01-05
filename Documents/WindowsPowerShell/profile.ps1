@@ -401,6 +401,22 @@ function sha1sum {
 
 <#
 .SYNOPSIS
+指定したファイルのSHA256ハッシュを取得します。
+.PARAMETER FilePath
+ファイルパスを指定します。
+#>
+function sha256sum {
+    Param (
+        [parameter(Mandatory=$true)][string]$FilePath
+    )
+
+    $hashAlgorithm = [Security.Cryptography.SHA256]::Create()
+    @(ls $FilePath) | ?{-not $_.PSIsContainer} |
+        select @{Label="Checksum";Expression={$(Get-Hash $hashAlgorithm $_.FullName)}},Name
+}
+
+<#
+.SYNOPSIS
 現在のセッションにロードされたアセンブリを取得します。
 #>
 Function Get-Assemblies {
