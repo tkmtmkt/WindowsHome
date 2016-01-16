@@ -10,6 +10,7 @@ ls $base_dir .git -r | %{
     write-host "### $(split-path $repo_dir -leaf)"
     pushd $repo_dir
     git co master
+    git fetch --all
     git pull
     popd
 }
