@@ -141,13 +141,12 @@ TERATERM.INIを編集してメニューの日本語化、ウィンドウサイ�
 
     UnicodeToDecSpMapping=2
 
+### BGInfo設定
 
-### WinMerge設定
-
-7z.dllをWinMergeフォルダにコピーして、アーカイブサポートを有効にする。
-※バージョン9.20をコピーすること。9.22は認識しない。
-
-    cp $TOOLDIR\7-Zip\7z.dll $WINMERGE_HOME
+    > console -a
+    $name = "pcinfo"
+    $value = "`"$TOOLDIR\SysinternalsSuite\bginfo.exe`" `"$TOOLDIR\pcinfo.bgi`" /TIMER:0 /NOLICPROMPT"
+    Set-ItemProperty HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Run $name $value
 
 
 ### Resource Kit Tools
