@@ -1,42 +1,42 @@
 [submodule "Documents/WindowsPowerShell/Modules/posh-git"]
 	path = Documents/WindowsPowerShell/Modules/posh-git
 	url = https://github.com/dahlbyk/posh-git.git
-[submodule ".vim/bundle/neobundle.vim"]
-	path = .vim/bundle/neobundle.vim
+[submodule "vimfiles/bundle/neobundle.vim"]
+	path =vimfiles/bundle/neobundle.vim
 	url = https://github.com/Shougo/neobundle.vim.git
-[submodule ".vim/bundle/vimproc.vim"]
-	path = .vim/bundle/vimproc.vim
+[submodule "vimfiles/bundle/vimproc.vim"]
+	path =vimfiles/bundle/vimproc.vim
 	url = https://github.com/Shougo/vimproc.vim.git
-[submodule ".vim/bundle/vimshell.vim"]
-	path = .vim/bundle/vimshell.vim
+[submodule "vimfiles/bundle/vimshell.vim"]
+	path =vimfiles/bundle/vimshell.vim
 	url = https://github.com/Shougo/vimshell.vim.git
-[submodule ".vim/bundle/unite.vim"]
-	path = .vim/bundle/unite.vim
+[submodule "vimfiles/bundle/unite.vim"]
+	path =vimfiles/bundle/unite.vim
 	url = https://github.com/Shougo/unite.vim.git
-[submodule ".vim/bundle/neocomplcache.vim"]
-	path = .vim/bundle/neocomplcache.vim
+[submodule "vimfiles/bundle/neocomplcache.vim"]
+	path =vimfiles/bundle/neocomplcache.vim
 	url = https://github.com/Shougo/neocomplcache.vim.git
-[submodule ".vim/bundle/syntastic"]
-	path = .vim/bundle/syntastic
+[submodule "vimfiles/bundle/syntastic"]
+	path =vimfiles/bundle/syntastic
 	url = https://github.com/scrooloose/syntastic.git
-[submodule ".vim/bundle/VimClojure"]
-	path = .vim/bundle/VimClojure
+[submodule "vimfiles/bundle/VimClojure"]
+	path =vimfiles/bundle/VimClojure
 	url = https://github.com/vim-scripts/VimClojure.git
-[submodule ".vim/bundle/vim-ps1"]
-	path = .vim/bundle/vim-ps1
+[submodule "vimfiles/bundle/vim-ps1"]
+	path =vimfiles/bundle/vim-ps1
 	url = https://github.com/PProvost/vim-ps1.git
-[submodule ".vim/bundle/vim-scala"]
-	path = .vim/bundle/vim-scala
+[submodule "vimfiles/bundle/vim-scala"]
+	path =vimfiles/bundle/vim-scala
 	url = https://github.com/derekwyatt/vim-scala.git
-[submodule ".vim/bundle/vim-gradle"]
-	path = .vim/bundle/vim-gradle
+[submodule "vimfiles/bundle/vim-gradle"]
+	path =vimfiles/bundle/vim-gradle
 	url = https://github.com/martintreurnicht/vim-gradle.git
-[submodule ".vim/bundle/vim-coffee-script"]
-	path = .vim/bundle/vim-coffee-script
+[submodule "vimfiles/bundle/vim-coffee-script"]
+	path =vimfiles/bundle/vim-coffee-script
 	url = https://github.com/kchmck/vim-coffee-script.git
-[submodule ".vim/bundle/vim-slim"]
-	path = .vim/bundle/vim-slim
+[submodule "vimfiles/bundle/vim-slim"]
+	path =vimfiles/bundle/vim-slim
 	url = https://github.com/slim-template/vim-slim.git
-[submodule ".vim/bundle/gtags.vim"]
-	path = .vim/bundle/gtags.vim
+[submodule "vimfiles/bundle/gtags.vim"]
+	path =vimfiles/bundle/gtags.vim
 	url = https://github.com/vim-scripts/gtags.vim.git
