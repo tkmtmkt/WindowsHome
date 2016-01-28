@@ -7,7 +7,7 @@
 	filemode = false
 	autocrlf = false
 	safecrlf = true
-	editor = gvim +1 -c \"set fenc=utf-8 ff=unix\"
+	editor = vi +1 -c \"set fenc=utf-8 ff=unix\"
 	quotepath = false
 
 [color]
