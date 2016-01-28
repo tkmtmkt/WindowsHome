@@ -58,10 +58,10 @@ if version >= 703
   "再読込、vim終了後も継続するアンドゥ(7.3)
   set undofile
   "アンドゥの保存場所(7.3)
-  set undodir=~/vimfiles/tmp
+  set undodir=$MY_VIMRUNTIME/tmp
 endif
 "set noswapfile
-set directory=~/vimfiles/tmp
+set directory=$MY_VIMRUNTIME/tmp
 "viminfoを作成しない
 "set viminfo=
 "クリップボードを共有
@@ -379,8 +379,8 @@ endif
 filetype off
 
 if has('vim_starting')
-  set runtimepath+=~/vimfiles/bundle/neobundle.vim/
-  call neobundle#begin(expand('~/vimfiles/bundle/'))
+  set runtimepath+=$MY_VIMRUNTIME/bundle/neobundle.vim/
+  call neobundle#begin(expand($MY_VIMRUNTIME . '/bundle/'))
 endif
 
 " recommended to install
