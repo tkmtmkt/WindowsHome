@@ -89,8 +89,8 @@ GitHubからファイルを取得します。
   [javancss](http://www.kclee.de/clemens/java/javancss/),
   [junit](http://junit.org/),
   [mockito](http://mockito.org/),
-  [RubyInsaller for Windows](http://rubyinstaller.org/)
-
+  [RubyInsaller for Windows](http://rubyinstaller.org/),
+  [.NET Framework と .NET SDK ダウンロード](https://msdn.microsoft.com/ja-jp/aa496123)
 
 * ビルド管理：
   [Apache Ant](http://ant.apache.org/),
