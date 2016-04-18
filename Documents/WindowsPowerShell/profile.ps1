@@ -689,6 +689,9 @@ Add-Path "$PHANTOMJS_HOME\bin"
 $GLOBAL_HOME = Get-LatestPath "$APPSDIR\global*"
 Add-Path "$GLOBAL_HOME\bin"
 
+$LFTP_HOME = Get-LatestPath "$APPSDIR\lftp*"
+Add-Path "$LFTP_HOME\bin"
+
 Add-Path "$APPSDIR\astah_community"
 
 Add-Path "$APPSDIR\playframework"

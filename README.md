@@ -54,6 +54,7 @@ GitHubからファイルを取得します。
   [Windows Server 2003 Resource Kit Tools](http://www.microsoft.com/en-us/download/details.aspx?id=17657),
   [Windows Server 2003 Service Pack 2 32-bit Support Tools](http://www.microsoft.com/en-us/download/details.aspx?id=15326),
   [Intel vPro Technology Modules for Microsoft Windows PowerShell](http://www.intel.com/content/www/us/en/remote-support/vpro-technology-module-for-microsoft-windows-powershell.html),
+  [ドライバーおよびソフトウェア](https://downloadcenter.intel.com/ja/search?keyword=vPro+PowerShell),
   [Log Parser](http://technet.microsoft.com/ja-jp/scriptcenter/dd919274.aspx),
   [LogExpert](http://www.log-expert.de/)
 
@@ -103,6 +104,7 @@ GitHubからファイルを取得します。
 * その他ツール：
   [Pleiades - Eclipse プラグイン日本語化プラグイン](http://mergedoc.sourceforge.jp/),
   [GNU GLOBAL](http://www.gnu.org/software/global/),
+  [LFTP for Windows](https://nwgat.ninja/lftp-for-windows/),
   [Gpg4win - Secure email and file encryption with GnuPG for Windows](http://www.gpg4win.de/index.html),
   [pandoc](https://github.com/jgm/pandoc/releases),
   [BEITEL (バイト)](http://beitel.carabiner.jp/),
