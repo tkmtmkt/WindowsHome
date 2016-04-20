@@ -400,6 +400,8 @@ NeoBundle 'kchmck/vim-coffee-script'
 NeoBundle 'slim-template/vim-slim'
 "
 NeoBundle 'vim-scripts/gtags.vim'
+NeoBundle 'tpope/vim-git'
+NeoBundle 'cohama/agit.vim'
 
 call neobundle#end()
 

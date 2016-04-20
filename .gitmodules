@@ -40,3 +40,6 @@
 [submodule "vimfiles/bundle/gtags.vim"]
 	path =vimfiles/bundle/gtags.vim
 	url = https://github.com/vim-scripts/gtags.vim.git
+[submodule "vimfiles/bundle/agit.vim"]
+	path = vimfiles/bundle/agit.vim
+	url = https://github.com/cohama/agit.vim.git
