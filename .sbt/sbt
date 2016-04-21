@@ -2,7 +2,7 @@
 SCRIPT_DIR=$(cd $(dirname $0);pwd)
 
 SBT_OPTS="-Xms512M -Xmx1024M -Xss1M"
-SBT_OPTS="$SBT_OPTS -XX:MaxPermSize=200M -XX:ReservedCodeCacheSize=60M"
+SBT_OPTS="$SBT_OPTS -XX:MaxMetaspaceSize=200M -XX:ReservedCodeCacheSize=60M"
 SBT_OPTS="$SBT_OPTS -XX:+CMSClassUnloadingEnabled -XX:-UseGCOverheadLimit"
 SBT_OPTS="$SBT_OPTS -Dsbt.ivy.home=$SCRIPT_DIR/repository"
 
