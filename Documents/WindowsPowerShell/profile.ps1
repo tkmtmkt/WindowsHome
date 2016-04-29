@@ -602,8 +602,6 @@ Set-Alias sql "$TOOLDIR\sqlite3.exe"
 # 環境設定（オプションツール）
 #
 ############################################################
-Add-Path "$APPSDIR\bin"
-
 # 構成管理
 $GIT_HOME = Get-LatestPath "$APPSDIR\PortableGit*"
 Add-Path "$GIT_HOME"
@@ -713,5 +711,7 @@ function memo-monthly {
 function zeeta {
     start run.bat -Work "$APPSDIR\Zeeta\startup"
 }
+
+Add-Path "$Home\scripts"
 
 # vim: set ft=ps1 ts=4 sw=4 et:
