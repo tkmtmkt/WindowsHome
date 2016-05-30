@@ -106,6 +106,11 @@ GitHubからファイルを取得します。
   [GNU GLOBAL](http://www.gnu.org/software/global/),
   [LFTP for Windows](https://nwgat.ninja/lftp-for-windows/),
   [Gpg4win - Secure email and file encryption with GnuPG for Windows](http://www.gpg4win.de/index.html),
+  [Doxygen](http://www.doxygen.jp/),
+  [Graphviz | Graphviz - Graph Visualization Software](http://www.graphviz.org/),
+  [Sphinx-Users.jp — Python製ドキュメンテーションビルダー、Sphinxの日本ユーザ会](http://sphinx-users.jp/index.html),
+  [PlantUML : Open-source tool that uses simple textual descriptions to draw UML diagrams.](http://plantuml.com/),
+  [RedPen](http://redpen.cc/),
   [pandoc](https://github.com/jgm/pandoc/releases),
   [BEITEL (バイト)](http://beitel.carabiner.jp/),
   [zeeta HP](https://sites.google.com/site/zeetahp/)
