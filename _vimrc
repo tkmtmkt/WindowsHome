@@ -86,8 +86,12 @@ set backspace=indent,eol,start
 set ambiwidth=double
 "コマンドライン補完するときに強化されたものを使う
 set wildmenu
+"デフォルトエンコーディング
+set encoding=utf-8
 "ファイルエンコーディングの候補一覧
-set fileencodings=ucs-bom,utf-8,euc-jp,iso-2022-jp,cp932,utf-16,utf-16le
+set fileencodings=iso-2022-jp,euc-jp,cp932,utf-8,utf-16,utf-16le,ucs-bom
+"ファイルフォーマットの候補一覧
+set fileformats=unix,dos,mac
 "マウスを無効にする
 set mouse=
 "マウスを有効にする
