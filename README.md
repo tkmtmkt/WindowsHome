@@ -103,6 +103,8 @@ GitHubからファイルを取得します。
 
 * その他ツール：
   [Pleiades - Eclipse プラグイン日本語化プラグイン](http://mergedoc.sourceforge.jp/),
+  [BTrace - a safe, dynamic tracing tool for the Java platform](https://github.com/btraceio/btrace),
+  [JDepend](http://clarkware.com/software/JDepend.html),
   [GNU GLOBAL](http://www.gnu.org/software/global/),
   [LFTP for Windows](https://nwgat.ninja/lftp-for-windows/),
   [Gpg4win - Secure email and file encryption with GnuPG for Windows](http://www.gpg4win.de/index.html),
@@ -113,6 +115,7 @@ GitHubからファイルを取得します。
   [RedPen](http://redpen.cc/),
   [pandoc](https://github.com/jgm/pandoc/releases),
   [BEITEL (バイト)](http://beitel.carabiner.jp/),
+  [GanttProject: free desktop project management app](https://www.ganttproject.biz/),
   [zeeta HP](https://sites.google.com/site/zeetahp/)
 
 

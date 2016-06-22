@@ -681,6 +681,9 @@ Add-Path "$Env:HOME\.lein"
 $PANDOC_HOME = Get-LatestPath "$APPSDIR\pandoc*"
 Add-Path "$PANDOC_HOME\bin"
 
+$GRAPHVIZ_HOME = Get-LatestPath "$APPSDIR\graphviz-*"
+Add-Path "$GRAPHVIZ_HOME\bin"
+
 $PHANTOMJS_HOME = Get-LatestPath "$APPSDIR\phantomjs-*"
 Add-Path "$PHANTOMJS_HOME\bin"
 
@@ -696,6 +699,9 @@ Add-Path "$APPSDIR\playframework"
 
 $BEITEL_HOME = Get-LatestPath "$APPSDIR\beitel-*"
 Add-Path "$BEITEL_HOME"
+
+$GANTT_HOME = Get-LatestPath "$APPSDIR\ganttproject-*"
+Add-Path "$GANTT_HOME"
 
 function memo-monthly {
     $dir  = "$Env:HOME\work\$(Get-Date -f 'yyyy\\MM')"
