@@ -636,6 +636,9 @@ if ($Env:JAVA_HOME -ne $null) {
     $Env:CLASS_PATH = "$Env:JAVA_HOME\lib\tools.jar"
 }
 
+$BTRACE_HOME = Get-LatestPath "$APPSDIR\btrace-*"
+Add-Path "$BTRACE_HOME\bin"
+
 $SCALA_HOME = Get-LatestPath "$APPSDIR\scala*"
 Add-Path "$SCALA_HOME\bin"
 
