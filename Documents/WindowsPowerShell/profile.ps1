@@ -622,6 +622,9 @@ Add-Path "$VERACITY_HOME"
 $MONGODB_HOME = Get-LatestPath "$APPSDIR\mongodb*"
 Add-Path "$MONGODB_HOME\bin"
 
+$NEO4J_HOME = Get-LatestPath "$APPSDIR\neo4j-community-*"
+Add-Path "$NEO4J_HOME\bin"
+
 # プログラミング
 $Env:JAVA_HOME = Get-LatestPath "$Env:ProgramFiles\Java\jdk*"
 #$Env:JAVA_OPTS = "-Dhttp.proxyHost=proxyhostURL -Dhttp.proxyPort=proxyPortNumber"
