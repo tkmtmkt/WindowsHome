@@ -37,6 +37,9 @@
 [submodule "vimfiles/bundle/vim-slim"]
 	path =vimfiles/bundle/vim-slim
 	url = https://github.com/slim-template/vim-slim.git
+[submodule "vimfiles/bundle/riv.vim"]
+	path = vimfiles/bundle/riv.vim
+	url = https://github.com/Rykka/riv.vim.git
 [submodule "vimfiles/bundle/gtags.vim"]
 	path =vimfiles/bundle/gtags.vim
 	url = https://github.com/vim-scripts/gtags.vim.git

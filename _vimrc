@@ -402,6 +402,7 @@ NeoBundle 'derekwyatt/vim-scala'
 NeoBundle 'martintreurnicht/vim-gradle'
 NeoBundle 'kchmck/vim-coffee-script'
 NeoBundle 'slim-template/vim-slim'
+NeoBundle 'Rykka/riv.vim'
 "
 NeoBundle 'vim-scripts/gtags.vim'
 NeoBundle 'tpope/vim-git'
