@@ -4,7 +4,6 @@
 "  Last Modified: 0000-00-00 07:03
 "        Version: 0.00
 "=============================================================================
-set nocompatible
 scriptencoding utf-8
 "scriptencodingと、このファイルのエンコーディングが一致するよう注意！
 "scriptencodingは、vimの内部エンコーディングと同じものを推奨します。
@@ -39,6 +38,7 @@ endif
 "silent! source $MY_VIMRUNTIME/pluginjp/encode.vim
 "scriptencodingと異なる内部エンコーディングに変更する場合、
 "変更後にもscriptencodingを指定しておくと問題が起きにくくなります。
+set encoding=utf-8
 scriptencoding utf-8
 
 "----------------------------------------
@@ -86,10 +86,8 @@ set backspace=indent,eol,start
 set ambiwidth=double
 "コマンドライン補完するときに強化されたものを使う
 set wildmenu
-"デフォルトエンコーディング
-set encoding=utf-8
 "ファイルエンコーディングの候補一覧
-set fileencodings=iso-2022-jp,euc-jp,cp932,utf-8,utf-16,utf-16le,ucs-bom
+set fileencodings=utf-8,utf-16,utf-16le,iso-2022-jp,ucs-bom,euc-jp,cp932
 "ファイルフォーマットの候補一覧
 set fileformats=unix,dos,mac
 "マウスを無効にする
