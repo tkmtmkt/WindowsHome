@@ -28,6 +28,9 @@
 [submodule "vimfiles/bundle/vim-scala"]
 	path =vimfiles/bundle/vim-scala
 	url = https://github.com/derekwyatt/vim-scala.git
+[submodule "vimfiles/bundle/kotlin-vim"]
+	path = vimfiles/bundle/kotlin-vim
+	url = https://github.com/udalov/kotlin-vim.git
 [submodule "vimfiles/bundle/vim-elixir"]
 	path = vimfiles/bundle/vim-elixir
 	url = https://github.com/elixir-lang/vim-elixir.git
