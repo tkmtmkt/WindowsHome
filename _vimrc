@@ -389,24 +389,24 @@ endif
 NeoBundle 'Shougo/vimproc.vim'
 " after install, turn shell ~/.vim/bundle/vimproc, (n,g)make -f your_machines_makefile
 NeoBundle 'Shougo/vimshell.vim'
+" for editor
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/neocomplcache.vim'
-"
 NeoBundle 'scrooloose/syntastic'
-"
-NeoBundle 'vim-scripts/VimClojure'
+" language
 NeoBundle 'PProvost/vim-ps1'
 NeoBundle 'derekwyatt/vim-scala'
 NeoBundle 'udalov/kotlin-vim'
-NeoBundle 'derekwyatt/vim-elixir'
-NeoBundle 'martintreurnicht/vim-gradle'
+NeoBundle 'vim-scripts/VimClojure'
+NeoBundle 'elixir-lang/vim-elixir'
 NeoBundle 'kchmck/vim-coffee-script'
 NeoBundle 'slim-template/vim-slim'
 NeoBundle 'Rykka/riv.vim'
-"
+" utility
+NeoBundle 'martintreurnicht/vim-gradle'
 NeoBundle 'vim-scripts/gtags.vim'
-NeoBundle 'tpope/vim-git'
 NeoBundle 'cohama/agit.vim'
+NeoBundle 'tpope/vim-git'
 
 call neobundle#end()
 
