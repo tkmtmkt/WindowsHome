@@ -146,7 +146,7 @@ TERATERM.INIを編集してメニューの日本語化、ウィンドウサイ�
 
     UILanguageFile=lang\Japanese.lng
     TerminalSize=120,40
-    VTFont=Ricty,0,-16,128
+    VTFont=Ricty Discord,0,-16,128
 
 罫線が文字化けするのでUNICODEからDEC文字への変換対象から外す。
 

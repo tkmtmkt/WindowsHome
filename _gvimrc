@@ -4,8 +4,8 @@ colorscheme torte
 
 "---------------------------------------------------------------------------
 " フォント設定:
-set guifont=Ricty:h12,MS_Gothic:h12
-set printfont=Ricty:h12
+set guifont=Ricty\ Discord:h12,MS_Gothic:h12
+set printfont=Ricty\ Discord:h12
 
 "---------------------------------------------------------------------------
 " ウインドウに関する設定:
