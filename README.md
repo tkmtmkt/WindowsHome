@@ -78,20 +78,22 @@ GitHubからファイルを取得します。
   [neo4j](https://neo4j.com/)
 
 * プログラミング：
+  [RubyInsaller for Windows](http://rubyinstaller.org/),
+  [Python](http://www.python.org/),
+  [elixir](http://elixir-lang.org/),
   [Java SE](http://www.oracle.com/technetwork/java/javase/downloads/index.html),
   [Scala](http://www.scala-lang.org/),
-  [Groovy](http://www.groovy-lang.org/),
-  [Python](http://www.python.org/),
-  [Jython](http://www.jython.org/),
+  [Kotlin](https://kotlinlang.org/),
   [Clojure](http://clojure.org/),
+  [Groovy](http://www.groovy-lang.org/),
+  [Jython](http://www.jython.org/),
+  [junit](http://junit.org/),
+  [mockito](http://mockito.org/),
   [checkstyle](http://checkstyle.sourceforge.net/),
   [findbugs](http://findbugs.sourceforge.net/),
   [jacoco](http://www.eclemma.org/jacoco/),
   [pmd](http://pmd.sourceforge.net/),
   [javancss](http://www.kclee.de/clemens/java/javancss/),
-  [junit](http://junit.org/),
-  [mockito](http://mockito.org/),
-  [RubyInsaller for Windows](http://rubyinstaller.org/),
   [.NET Framework と .NET SDK ダウンロード](https://msdn.microsoft.com/ja-jp/aa496123)
 
 * ビルド管理：
@@ -105,6 +107,7 @@ GitHubからファイルを取得します。
 * その他ツール：
   [Pleiades - Eclipse プラグイン日本語化プラグイン](http://mergedoc.sourceforge.jp/),
   [BTrace - a safe, dynamic tracing tool for the Java platform](https://github.com/btraceio/btrace),
+  [XDoclet](http://xdoclet.sourceforge.net/xdoclet/index.html),
   [JDepend](http://clarkware.com/software/JDepend.html),
   [GNU GLOBAL](http://www.gnu.org/software/global/),
   [LFTP for Windows](https://nwgat.ninja/lftp-for-windows/),
