@@ -79,7 +79,7 @@ GitHubからファイルを取得します。
 
 * プログラミング：
   [RubyInsaller for Windows](http://rubyinstaller.org/),
-  [Python](http://www.python.org/),
+  [Anaconda - Open Data Science Core](https://www.continuum.io/),
   [elixir](http://elixir-lang.org/),
   [Java SE](http://www.oracle.com/technetwork/java/javase/downloads/index.html),
   [Scala](http://www.scala-lang.org/),
