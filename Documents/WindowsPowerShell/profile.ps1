@@ -144,42 +144,6 @@ function IsAdministrator {
 
 <#
 .SYNOPSIS
-シンボリックリンクを作成します。
-#>
-function ln {
-    param(
-        [parameter(Mandatory=$true)]
-        [ValidateScript({test-path $_})]
-        [string]$target,
-        [string]$link
-    )
-
-    $target_path = (resolve-path $target).ProviderPath
-
-    if ($link -eq $null -or $link -eq "") {
-        $link_name = split-path $target_path -leaf
-    } else {
-        $link_name = split-path $link -leaf
-    }
-
-    $option = "/D" * (test-path $target_path -type container)
-
-    $script = @"
-cd '$($PWD.ProviderPath)'
-cmd /c mklink $option '$link_name' '$target_path'
-write-host "Enterを押してください..."
-read-host | out-null
-"@
-
-    if (IsAdministrator) {
-        Invoke-Expression $script
-    } else {
-        start powershell @("-NoProfile -Command",$script) -Verb RunAs
-    }
-}
-
-<#
-.SYNOPSIS
 ログファイル名を生成します。
 .PARAMETER id
 ログファイル名の先頭に付ける識別を指定します。
@@ -300,22 +264,6 @@ function readme {
         gvim $file
     } else {
         notepad $file
-    }
-}
-
-<#
-.SYNOPSIS
-grepもどき。
-#>
-function grep {
-    param(
-        [string]$pattern,
-        [string]$files
-    )
-    $ErrorActionPreference = "Stop"
-
-    ls . $files -r | ?{-not $_.PSIsContainer} | %{
-        select-string $pattern $_.fullname
     }
 }
 
@@ -555,14 +503,6 @@ $Env:EDITOR = "gvim"
 Add-Path "$TOOLDIR\FavBinEdit"
 Set-Alias binedit "$TOOLDIR\FavBinEdit\FavBinEdit.exe"
 Set-Alias bingrep "$TOOLDIR\FavBinEdit\FavBinGrep.exe"
-
-# 階層化情報管理ツール
-$ZEETA_HOME = "$TOOLDIR\Zeeta"
-function zeeta {
-    pushd $ZEETA_HOME\startup
-    javaw -jar $ZEETA_HOME\lib\selj.jar
-    popd
-}
 
 # 差分ツール
 $WINMERGE_HOME = Get-LatestPath "$TOOLDIR\WinMerge*"
