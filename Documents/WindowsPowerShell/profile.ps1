@@ -470,24 +470,6 @@ function Get-RestartLog {
     } | select Time,EventId,シャットダウンの種類,理由,理由コード,コメント
 }
 
-"eclipse","pleiades" | %{
-    New-Item Function: -name $_ -force -value {
-        <#
-        .SYNOPSIS
-        eclipseを起動します。
-        #>
-        param(
-            $findword
-        )
-        $name = $MyInvocation.MyCommand.Name
-        ls "$APPSDIR\$name*" | ?{$_.name -match $findword} | select -last 1 | %{
-            $dir = "$($_.fullname)\eclipse"
-            "Starting $name in $dir" | out-host
-            start "$dir\eclipse.exe" -work $dir
-        }
-    } | out-null
-}
-
 
 ############################################################
 #
@@ -507,11 +489,6 @@ Add-Path "$VIM_HOME"
 Set-Alias vi "$VIM_HOME\vim.exe"
 $Env:EDITOR = "gvim"
 
-# バイナリエディタ
-Add-Path "$TOOLDIR\FavBinEdit"
-Set-Alias binedit "$TOOLDIR\FavBinEdit\FavBinEdit.exe"
-Set-Alias bingrep "$TOOLDIR\FavBinEdit\FavBinGrep.exe"
-
 # 差分ツール
 $WINMERGE_HOME = Get-LatestPath "$TOOLDIR\WinMerge*"
 Add-Path "$WINMERGE_HOME"
@@ -526,6 +503,12 @@ Add-Path "$WINSCP_HOME"
 $VNC = Get-LatestPath "$TOOLDIR\vnc*"
 if ($VNC -ne $null) {Set-Alias vnc $VNC}
 
+# ログ閲覧
+Add-Path "$TOOLDIR\Log Parser 2.2"
+
+$LOGEXPERT_HOME = Get-LatestPath "$TOOLDIR\LogExpert*"
+Add-Path "$LOGEXPERT_HOME"
+
 # システム管理
 Add-Path "$TOOLDIR\SysinternalsSuite"
 
@@ -533,10 +516,10 @@ Add-Path "$TOOLDIR\rktools"
 
 Add-Path "$TOOLDIR\SUPPORT"
 
-Add-Path "$TOOLDIR\Log Parser 2.2"
-
-$LOGEXPERT_HOME = Get-LatestPath "$TOOLDIR\LogExpert*"
-Add-Path "$LOGEXPERT_HOME"
+# バイナリエディタ
+Add-Path "$TOOLDIR\FavBinEdit"
+Set-Alias binedit "$TOOLDIR\FavBinEdit\FavBinEdit.exe"
+Set-Alias bingrep "$TOOLDIR\FavBinEdit\FavBinGrep.exe"
 
 # 構成管理
 Set-Alias fos "$TOOLDIR\fossil.exe"
@@ -563,16 +546,6 @@ Enable-GitColors
 $SVN_HOME = Get-LatestPath "$APPSDIR\svn*"
 Add-Path "$SVN_HOME\bin"
 
-$VERACITY_HOME = Get-LatestPath "$APPSDIR\veracity_*"
-Add-Path "$VERACITY_HOME"
-
-# データベース
-$MONGODB_HOME = Get-LatestPath "$APPSDIR\mongodb*"
-Add-Path "$MONGODB_HOME\bin"
-
-$NEO4J_HOME = Get-LatestPath "$APPSDIR\neo4j-community-*"
-Add-Path "$NEO4J_HOME\bin"
-
 # プログラミング
 $Env:JAVA_HOME = Get-LatestPath "$Env:ProgramFiles\Java\jdk*"
 #$Env:JAVA_OPTS = "-Dhttp.proxyHost=proxyhostURL -Dhttp.proxyPort=proxyPortNumber"
@@ -585,6 +558,24 @@ if ($Env:JAVA_HOME -eq $null -and $PLEIADES_HOME -ne $null) {
 if ($Env:JAVA_HOME -ne $null) {
     Add-Path "$Env:JAVA_HOME\bin"
     $Env:CLASS_PATH = "$Env:JAVA_HOME\lib\tools.jar"
+}
+
+"eclipse","pleiades" | %{
+    New-Item Function: -name $_ -force -value {
+        <#
+        .SYNOPSIS
+        eclipseを起動します。
+        #>
+        param(
+            $findword
+        )
+        $name = $MyInvocation.MyCommand.Name
+        ls "$APPSDIR\$name*" | ?{$_.name -match $findword} | select -last 1 | %{
+            $dir = "$($_.fullname)\eclipse"
+            "Starting $name in $dir" | out-host
+            start "$dir\eclipse.exe" -work $dir
+        }
+    } | out-null
 }
 
 $BTRACE_HOME = Get-LatestPath "$APPSDIR\btrace-*"
@@ -603,20 +594,23 @@ Function clojure {
     }
 }
 
-$GROOVY_HOME = Get-LatestPath "$APPSDIR\groovy*"
-Add-Path "$GROOVY_HOME\bin"
-
-$PYTHON_HOME = Get-LatestPath "$APPSDIR\python*"
-Add-Path "$PYTHON_HOME"
-Add-Path "$PYTHON_HOME\Scripts"
-
 $JYTHON_HOME = Get-LatestPath "$APPSDIR\jython*"
 Add-Path "$JYTHON_HOME"
 
 $RUBY_HOME = Get-LatestPath "$APPSDIR\ruby*"
 Add-Path "$RUBY_HOME\bin"
 
+$GROOVY_HOME = Get-LatestPath "$APPSDIR\groovy*"
+Add-Path "$GROOVY_HOME\bin"
+
 # ビルド管理
+$GRADLE_HOME = Get-LatestPath "$APPSDIR\gradle*"
+Add-Path "$GRADLE_HOME\bin"
+
+Add-Path "$Env:HOME\.sbt"
+
+Add-Path "$Env:HOME\.lein"
+
 $ANT_HOME = Get-LatestPath "$APPSDIR\apache-ant*"
 Add-Path "$ANT_HOME\bin"
 #$Env:ANT_OPTS = "-Dhttp.proxyHost=proxyhostURL -Dhttp.proxyPort=proxyPortNumber"
@@ -624,12 +618,12 @@ Add-Path "$ANT_HOME\bin"
 $MVN_HOME = Get-LatestPath "$APPSDIR\apache-maven*"
 Add-Path "$MVN_HOME\bin"
 
-$GRADLE_HOME = Get-LatestPath "$APPSDIR\gradle*"
-Add-Path "$GRADLE_HOME\bin"
+# データベース
+$MONGODB_HOME = Get-LatestPath "$APPSDIR\mongodb*"
+Add-Path "$MONGODB_HOME\bin"
 
-Add-Path "$Env:HOME\.sbt"
-
-Add-Path "$Env:HOME\.lein"
+$NEO4J_HOME = Get-LatestPath "$APPSDIR\neo4j-community-*"
+Add-Path "$NEO4J_HOME\bin"
 
 # その他
 $PANDOC_HOME = Get-LatestPath "$APPSDIR\pandoc*"
