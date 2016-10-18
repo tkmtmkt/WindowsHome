@@ -135,6 +135,14 @@ cd '$($PWD.ProviderPath)'
 
 <#
 .SYNOPSIS
+hostsファイルを編集します。
+#>
+function Edit-hosts {
+    start gvim $Env:SystemRoot\System32\drivers\etc\hosts -Verb RunAs
+}
+
+<#
+.SYNOPSIS
 管理者権限の有無を判定します。
 #>
 function IsAdministrator {
