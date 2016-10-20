@@ -2,7 +2,7 @@
 
 setLocal EnableExtensions EnableDelayedExpansion
 
-set LEIN_VERSION=2.6.1
+set LEIN_VERSION=2.7.1
 
 if "%LEIN_VERSION:~-9%" == "-SNAPSHOT" (
     set SNAPSHOT=YES
@@ -19,6 +19,9 @@ call :FIND_DIR_CONTAINING_UPWARDS project.clj
 if "%DIR_CONTAINING%" neq "" cd "%DIR_CONTAINING%"
 
 :: LEIN_JAR and LEIN_HOME variables can be set manually.
+:: Only set LEIN_JAR manually if you know what you are doing.
+:: Having LEIN_JAR pointing to one version of Leiningen as well as
+:: having a different version in PATH has been known to cause problems.
 
 if "x%LEIN_HOME%" == "x" (
     set LEIN_HOME=!USERPROFILE!\.lein
@@ -92,9 +95,9 @@ rem the paths inside the bootstrap file do not already contain double quotes but
     if "x!LEIN_LIBS!" == "x" goto NO_DEPENDENCIES
 
 
-	rem CLASSPATH must contain each path element double quoted and separated by semicolons ie. "c:\some folder";"c:\some other folder";"c:\semicolons;;;;in;name;work okay"
+	rem semicolons in pathes are not supported, spaces are supported by quoting CLASSPATH as a whole
 	rem (no end semicolon required)
-    set CLASSPATH=!LEIN_LIBS!;"!LEIN_ROOT!\src";"!LEIN_ROOT!\resources"
+    set CLASSPATH=!LEIN_LIBS!;!LEIN_ROOT!\src;!LEIN_ROOT!\resources
 
     :: Apply context specific CLASSPATH entries
     if exist "%~dp0..\.lein-classpath" (
@@ -377,7 +380,7 @@ set RC=0
 "%LEIN_JAVA_CMD%" -client %LEIN_JVM_OPTS% ^
  -Dclojure.compile.path="%DIR_CONTAINING%/target/classes" ^
  -Dleiningen.original.pwd="%ORIGINAL_PWD%" ^
- -cp %CLASSPATH% clojure.main -m leiningen.core.main %*
+ -cp "%CLASSPATH%" clojure.main -m leiningen.core.main %*
 SET RC=%ERRORLEVEL%
 if not %RC% == 0 goto EXITRC
 
