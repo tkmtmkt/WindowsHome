@@ -106,21 +106,21 @@ GitHubからファイルを取得します。
   [leiningen](http://leiningen.org/)
 
 * その他ツール：
-  [Pleiades - Eclipse プラグイン日本語化プラグイン](http://mergedoc.sourceforge.jp/),
-  [BTrace - a safe, dynamic tracing tool for the Java platform](https://github.com/btraceio/btrace),
+  [Pleiades](http://mergedoc.sourceforge.jp/),
+  [BTrace](https://github.com/btraceio/btrace),
   [XDoclet](http://xdoclet.sourceforge.net/xdoclet/index.html),
   [JDepend](http://clarkware.com/software/JDepend.html),
   [GNU GLOBAL](http://www.gnu.org/software/global/),
   [LFTP for Windows](https://nwgat.ninja/lftp-for-windows/),
-  [Gpg4win - Secure email and file encryption with GnuPG for Windows](http://www.gpg4win.de/index.html),
+  [Gpg4win](http://www.gpg4win.de/index.html),
   [Doxygen](http://www.doxygen.jp/),
-  [Graphviz | Graphviz - Graph Visualization Software](http://www.graphviz.org/),
-  [Sphinx-Users.jp — Python製ドキュメンテーションビルダー、Sphinxの日本ユーザ会](http://sphinx-users.jp/index.html),
-  [PlantUML : Open-source tool that uses simple textual descriptions to draw UML diagrams.](http://plantuml.com/),
+  [Graphviz](http://www.graphviz.org/),
+  [Sphinx-Users.jp](http://sphinx-users.jp/index.html),
+  [PlantUML](http://plantuml.com/),
   [RedPen](http://redpen.cc/),
   [pandoc](https://github.com/jgm/pandoc/releases),
   [BEITEL (バイト)](http://beitel.carabiner.jp/),
-  [GanttProject: free desktop project management app](https://www.ganttproject.biz/),
+  [GanttProject](https://www.ganttproject.biz/),
   [zeeta HP](https://sites.google.com/site/zeetahp/)
 
 
