@@ -72,8 +72,6 @@ set nrformats-=octal
 set timeoutlen=3500
 "編集結果非保存のバッファから、新しいバッファを開くときに警告を出さない
 set hidden
-"ヒストリの保存数
-set history=50
 "日本語の行の連結時には空白を入力しない
 set formatoptions+=mM
 "Visual blockモードでフリーカーソルを有効にする
@@ -87,7 +85,7 @@ set ambiwidth=double
 "コマンドライン補完するときに強化されたものを使う
 set wildmenu
 "ファイルエンコーディングの候補一覧
-set fileencodings=utf-8,iso-2022-jp,ucs-bom,euc-jp,cp932,utf-16,utf-16le
+set fileencodings=utf-8,ucs-bom,iso-2022-jp,euc-jp,cp932,utf-16,utf-16le
 "ファイルフォーマットの候補一覧
 set fileformats=unix,dos,mac
 "マウスを無効にする
@@ -114,6 +112,7 @@ set hlsearch
 "set iskeyword=a-z,A-Z,48-57,_,.,-,>
 "vimgrep をデフォルトのgrepとする場合internal
 "set grepprg=internal
+set grepprg=grep
 
 "----------------------------------------
 " 表示設定
@@ -130,14 +129,10 @@ set visualbell t_vb=
 set shellslash
 "行番号表示
 set number
-if version >= 703
-  "相対行番号表示(7.3)
-  "set relativenumber
-endif
 "括弧の対応表示時間
 set showmatch matchtime=1
 "タブを設定
-"set ts=4 sw=4 sts=4
+set ts=4 sw=4 sts=4
 "自動的にインデントする
 set autoindent
 "Cインデントの設定
