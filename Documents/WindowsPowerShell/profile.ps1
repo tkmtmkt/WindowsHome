@@ -10,6 +10,7 @@ if ($Env:HOME -eq $null) {
         $Env:HOME = $Env:HOME.TrimEnd("\")
     }
 }
+$Env:MY_PATH = "$Home\scripts"
 $TOOLDIR = "$Env:PUBLIC\tool"
 $APPSDIR = "$Env:PUBLIC\apps"
 $PROJDIR = "$Env:PUBLIC\projects"
@@ -407,9 +408,10 @@ Function Add-Path {
     )
 
     if ($Item -eq $null -or
+        $Env:MY_PATH.ToUpper().Contains($Item.ToUpper()) -or
         $Env:PATH.ToUpper().Contains($Item.ToUpper())) {return}
 
-    $Env:PATH += ";$Item"
+    $Env:MY_PATH += ";$Item"
 }
 
 <#
@@ -666,6 +668,6 @@ function zeeta {
     start run.bat -Work "$APPSDIR\Zeeta\startup"
 }
 
-Add-Path "$Home\scripts"
+$Env:PATH = "$Env:MY_PATH;$Env:PATH"
 
 # vim: set ft=ps1 ts=4 sw=4 et:
