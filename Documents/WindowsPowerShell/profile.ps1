@@ -542,8 +542,6 @@ Add-Path "$GIT_HOME\mingw64\bin"
 Add-Path "$GIT_HOME\usr\bin"
 Add-Path "$GIT_HOME\cmd"
 Add-Path "$GIT_HOME\bin"
-Import-Module posh-git
-Enable-GitColors
 
 $SVN_HOME = Get-LatestPath "$APPSDIR\svn*"
 Add-Path "$SVN_HOME\bin"
@@ -669,5 +667,7 @@ function zeeta {
 }
 
 $Env:PATH = "$Env:MY_PATH;$Env:PATH"
+Import-Module posh-git
+Enable-GitColors
 
 # vim: set ft=ps1 ts=4 sw=4 et:
