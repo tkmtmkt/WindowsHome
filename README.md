@@ -32,7 +32,7 @@ GitHubからファイルを取得します。
 `$TOOLDIR="$Env:PUBLIC\tool"`フォルダに基本的なツールを置きます。
 
 * アーカイバ：
-  [7-ZIP](http://sevenzip.sourceforge.jp/)
+  [7-ZIP](https://sevenzip.osdn.jp/)
 
 * エディタ：
   [KaoriYa](http://www.kaoriya.net/),
@@ -70,8 +70,7 @@ GitHubからファイルを取得します。
 
 * 構成管理：
   [git](https://github.com/git-for-windows/git/releases),
-  [Subversion for Windows](http://sourceforge.net/projects/win32svn/),
-  [Veracity](http://veracity-scm.com/)
+  [Subversion for Windows](http://sourceforge.net/projects/win32svn/)
 
 * データベース：
   [MongoDB](http://www.mongodb.org/),
@@ -99,7 +98,6 @@ GitHubからファイルを取得します。
 
 * ビルド管理：
   [Apache Ant](http://ant.apache.org/),
-  [Apache Ivy](http://ant.apache.org/ivy/),
   [Apache Maven](http://maven.apache.org/),
   [gradle](http://www.gradle.org/),
   [sbt](http://www.scala-sbt.org/),
@@ -128,10 +126,7 @@ GitHubからファイルを取得します。
 
 * memo - 作業記録用のテキストファイルを開きます。
 * last - ひとつ前の作業記録用のテキストファイルを開きます。
-* grep - UNIXのgrepぽいもの。
 * cap - クリップボード内の画像を`work:images\img000.png`に保管します。
-* md5sum - ファイルのMD5チェックサムを計算します。
-* sha1sum - ファイルのSHA1チェックサムを計算します。
 * Get-Assemblies - PowerShellセッションにロード済みのアセンブリを表示します。
 
 
@@ -222,26 +217,6 @@ TERATERM.INIを編集してメニューの日本語化、ウィンドウサイ�
 
 ### git設定
 
-日本語対応設定
-
-    arch:
-    cd \arch\git
-
-    zip e less-418-utf8.zip less-418-utf8-bin\less.exe
-    mv less.exe $GIT_HOME/bin
-
-    zip e nkfwin.zip 'vc2005\win32(98,Me,NT,2000,XP,Vista,7)Windows-31J\nkf32.exe'
-    mv nkf32.exe $GIT_HOME\bin
-
-git-bashのvimパスを変更
-
-    @"
-    #!/bin/sh
-    exec /c/Users/Public/tool/vim/vim "$@"
-    "@ | sc $GIT_HOME\bin\vim
-
-    cp $GIT_HOME\bin\vim $GIT_HOME\bin\vi
-
 設定ファイルを編集する。
 
     git config --global -e
@@ -252,40 +227,6 @@ git-bashのvimパスを変更
 設定ファイルを編集する。
 
     gvim $Env:APPDATA\Subversion\config
-
-
-### Veracity設定
-
-BTSサーバを起動するために必要な設定を行う。
-
-    vv config set server/files $VERACITY_HOME\server_files
-
-リポジトリを作成する。(方法1)
-
-    vv repo new REPO_NAME
-    vv checkout REPO_NEM WORK_DIR
-
-リポジトリを作成する。(方法2)
-
-    vv init REPO_NAME WORK_DIR
-
-ユーザ名を設定する。
-
-    vv whoami --create USERNAME
-
-参考：設定情報は以下のファイルに保管される。（ファイルはsqlite3データベース）
-
-    $Env:LOCALAPPDATA\.sgcloset\settings.jsondb
-
-参考：リポジトリは以下のフォルダ内に作成される。
-
-    $Env:LOCALAPPDATA\.sgcloset\repo
-
-
-### mavenリポジトリリスト
-
-    # The MongoDB Java driver
-    "org.mongodb" % "mongo-java-driver" % "2.11.3"
 
 
 ### GLOBALを使用したタグ生成
@@ -301,28 +242,13 @@ BTSサーバを起動するために必要な設定を行う。
     $ git clone https://github.com/sbt/sbt.git
     $ cd sbt
 
-Java8でコンパイルするための設定
-
-```diff
---- a/project/Release.scala
-+++ b/project/Release.scala
-@@ -17,6 +17,6 @@ object Release {
-   )
-
-   def javaVersionCheckSettings = Seq(
--    javaVersionPrefix in javaVersionCheck := Some("1.6")
-+    javaVersionPrefix in javaVersionCheck := Some("1.8")
-   )
- }
-```
-
 コンパイル
 
     $ sbt clean update compile
 
 パッケージ
 
-    $ sbt bundledLauncherProj/sbtLaunchJar
+    $ sbt package
 
 以下のファイルを出力
 
