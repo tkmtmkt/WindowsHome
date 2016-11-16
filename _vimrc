@@ -17,10 +17,10 @@ scriptencoding utf-8
 ":echo $MY_VIMRUNTIMEで実際のパスを確認できます。
 if isdirectory($HOME . '/.vim')
   let $MY_VIMRUNTIME = $HOME.'/.vim'
-elseif isdirectory($HOME . '\vimfiles')
-  let $MY_VIMRUNTIME = $HOME.'\vimfiles'
-elseif isdirectory($VIM . '\vimfiles')
-  let $MY_VIMRUNTIME = $VIM.'\vimfiles'
+elseif isdirectory($HOME . '/vimfiles')
+  let $MY_VIMRUNTIME = $HOME.'/vimfiles'
+elseif isdirectory($VIM . '/vimfiles')
+  let $MY_VIMRUNTIME = $VIM.'/vimfiles'
 endif
 
 "ランタイムパスを通す必要のあるプラグインを使用する場合、
