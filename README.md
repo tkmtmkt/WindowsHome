@@ -35,7 +35,7 @@ GitHubからファイルを取得します。
   [7-ZIP](https://sevenzip.osdn.jp/)
 
 * エディタ：
-  [KaoriYa](http://www.kaoriya.net/),
+  [vim-kaoriya](https://github.com/koron/vim-kaoriya/releases),
   [MarkDown#Editor](http://hibara.org/software/markdownsharpeditor/),
   [FavBinEdit](http://tech2assist.web.fc2.com/FavBinEdit/),
   [zeeta](https://sites.google.com/site/zeetahp/)
@@ -51,12 +51,12 @@ GitHubからファイルを取得します。
 
 * システム管理：
   [SysinternalsSuite](http://technet.microsoft.com/ja-jp/sysinternals/bb842062.aspx),
-  [Windows Server 2003 Resource Kit Tools](http://www.microsoft.com/en-us/download/details.aspx?id=17657),
-  [Windows Server 2003 Service Pack 2 32-bit Support Tools](http://www.microsoft.com/en-us/download/details.aspx?id=15326),
+  [Log Parser](http://technet.microsoft.com/ja-jp/scriptcenter/dd919274.aspx),
+  [LogExpert](http://www.log-expert.de/),
   [Intel vPro Technology Modules for Microsoft Windows PowerShell](http://www.intel.com/content/www/us/en/remote-support/vpro-technology-module-for-microsoft-windows-powershell.html),
   [ドライバーおよびソフトウェア](https://downloadcenter.intel.com/ja/search?keyword=vPro+PowerShell),
-  [Log Parser](http://technet.microsoft.com/ja-jp/scriptcenter/dd919274.aspx),
-  [LogExpert](http://www.log-expert.de/)
+  [Windows Server 2003 Resource Kit Tools](http://www.microsoft.com/en-us/download/details.aspx?id=17657),
+  [Windows Server 2003 Service Pack 2 32-bit Support Tools](http://www.microsoft.com/en-us/download/details.aspx?id=15326)
 
 * 構成管理：
   [Fossil](http://www.fossil-scm.org/)
@@ -80,6 +80,7 @@ GitHubからファイルを取得します。
   [RubyInsaller for Windows](http://rubyinstaller.org/),
   [Anaconda - Open Data Science Core](https://www.continuum.io/),
   [elixir](http://elixir-lang.org/),
+  [Nodist](https://github.com/marcelklehr/nodist/releases),
   [Java SE](http://www.oracle.com/technetwork/java/javase/downloads/index.html),
   [Scala](http://www.scala-lang.org/),
   [Kotlin](https://kotlinlang.org/),
@@ -97,9 +98,9 @@ GitHubからファイルを取得します。
   [.NET Framework と .NET SDK ダウンロード](https://msdn.microsoft.com/ja-jp/aa496123)
 
 * ビルド管理：
+  [gradle](http://www.gradle.org/),
   [Apache Ant](http://ant.apache.org/),
   [Apache Maven](http://maven.apache.org/),
-  [gradle](http://www.gradle.org/),
   [sbt](http://www.scala-sbt.org/),
   [leiningen](http://leiningen.org/)
 
