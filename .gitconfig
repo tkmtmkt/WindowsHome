@@ -12,6 +12,8 @@
 
 [color]
 	# colorの設定(以下のコマンドは自動で色つける)
+	# 色  : normal, black, red, green, yellow, blue, magenta, cyan, white
+	# 属性: bold, dim, ul, blink, reverse
 	diff = auto
 	status = auto
 	branch = auto
@@ -70,12 +72,12 @@
 	ls = log --stat          # logに変更されたファイルも一緒に出す
 	lp = log -p              # diffも一緒に出す
 	la = log --pretty=\"format:%ad %h (%an): %s\" --date=short  # ざっくりログ出す
-	ll = log --pretty=\"format:%Cblue%ai %h %Cgreen%<(20,trunc)%an%Creset %d %s\" --decorate
+	ll = log --pretty=\"format:%Cgreen%ai %h %Cblue%<(20,trunc)%an%Creset %d %s\" --decorate
 	lr = log origin          # originのlog
 	oneline = log --oneline --decorate
 	ranking = shortlog -s -n --no-merges
 	# logをtree表示
-	log-graph = log --graph --date=short --pretty=format:'%Cgreen%h %cd %Cblue%cn %Creset%s'
+	log-graph = log --graph --date=short --pretty=format:'%Cgreen%cd %h %Cblue%cn %Creset%s'
 	log-all = log --graph --all --color --pretty='%x09%h %cn%x09%s %Cred%d%Creset'
 	# reset
 	rhs  = reset --soft HEAD
