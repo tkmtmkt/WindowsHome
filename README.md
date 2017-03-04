@@ -31,96 +31,92 @@ GitHubからファイルを取得します。
 ### ツール（基本）
 `$TOOLDIR="$Env:PUBLIC\tool"`フォルダに基本的なツールを置きます。
 
-* アーカイバ：
-  [7-ZIP](https://sevenzip.osdn.jp/)
-
-* エディタ：
-  [vim-kaoriya](https://github.com/koron/vim-kaoriya/releases),
-  [MarkDown#Editor](http://hibara.org/software/markdownsharpeditor/),
-  [FavBinEdit](http://tech2assist.web.fc2.com/FavBinEdit/),
-  [zeeta](https://sites.google.com/site/zeetahp/)
-
-* 差分ツール：
-  [WinMerge](http://www.geocities.co.jp/SiliconValley-SanJose/8165/winmerge.html)
-
-* リモート接続：
-  [Tera Term](http://sourceforge.jp/projects/ttssh2/),
-  [WinSCP](http://winscp.net/eng/docs/lang:jp),
-  [RealVNC](http://www.realvnc.com/),
-  [ConEmu](http://sourceforge.jp/projects/conemu/)
-
-* システム管理：
-  [SysinternalsSuite](http://technet.microsoft.com/ja-jp/sysinternals/bb842062.aspx),
-  [Log Parser](http://technet.microsoft.com/ja-jp/scriptcenter/dd919274.aspx),
-  [LogExpert](http://www.log-expert.de/),
-  [Intel vPro Technology Modules for Microsoft Windows PowerShell](http://www.intel.com/content/www/us/en/remote-support/vpro-technology-module-for-microsoft-windows-powershell.html),
-  [ドライバーおよびソフトウェア](https://downloadcenter.intel.com/ja/search?keyword=vPro+PowerShell),
-  [Windows Server 2003 Resource Kit Tools](http://www.microsoft.com/en-us/download/details.aspx?id=17657),
-  [Windows Server 2003 Service Pack 2 32-bit Support Tools](http://www.microsoft.com/en-us/download/details.aspx?id=15326)
-
-* 構成管理：
-  [Fossil](http://www.fossil-scm.org/)
-
-* データベース：
-  [SQLite](http://www.sqlite.org/)
+* アーカイバ
+  * [7-ZIP](https://sevenzip.osdn.jp/)
+* エディタ
+  * [vim-kaoriya](https://github.com/koron/vim-kaoriya/releases)
+  * [FavBinEdit](http://tech2assist.web.fc2.com/FavBinEdit/)
+  * [MarkDown#Editor](http://hibara.org/software/markdownsharpeditor/)
+  * [zeeta](https://sites.google.com/site/zeetahp/)
+* 差分ツール
+  * [WinMerge](http://www.geocities.co.jp/SiliconValley-SanJose/8165/winmerge.html)
+* リモート接続
+  * [Tera Term](http://sourceforge.jp/projects/ttssh2/)
+  * [WinSCP](http://winscp.net/eng/docs/lang:jp)
+  * [RealVNC](http://www.realvnc.com/)
+* システム管理
+  * [SysinternalsSuite](http://technet.microsoft.com/ja-jp/sysinternals/bb842062.aspx)
+  * [LogExpert](http://www.log-expert.de/)
+  * [Log Parser](http://technet.microsoft.com/ja-jp/scriptcenter/dd919274.aspx)
+  * [Intel vPro Technology Modules for Microsoft Windows PowerShell](http://www.intel.com/content/www/us/en/remote-support/vpro-technology-module-for-microsoft-windows-powershell.html)
+  * [ドライバーおよびソフトウェア](https://downloadcenter.intel.com/ja/search?keyword=vPro+PowerShell)
+  * [Windows Server 2003 Resource Kit Tools](http://www.microsoft.com/en-us/download/details.aspx?id=17657)
+  * [Windows Server 2003 Service Pack 2 32-bit Support Tools](http://www.microsoft.com/en-us/download/details.aspx?id=15326)
+* 構成管理
+  * [Fossil](http://www.fossil-scm.org/)
+* データベース
+  * [SQLite](http://www.sqlite.org/)
+  * [DB Browser for SQLite](http://sqlitebrowser.org/)
 
 
 ### ツール（オプション）
 `$APPSDIR="$Env:PUBLIC\apps"`フォルダに追加のツールを置きます。
 
-* 構成管理：
-  [git](https://github.com/git-for-windows/git/releases),
-  [Subversion for Windows](http://sourceforge.net/projects/win32svn/)
+* 構成管理
+  * [git](https://github.com/git-for-windows/git/releases)
+  * [Subversion for Windows](http://sourceforge.net/projects/win32svn/)
+* プログラミング
+  * [Anaconda - Open Data Science Core](https://www.continuum.io/)
+  * [RubyInsaller for Windows](http://rubyinstaller.org/)
+  * [elixir](http://elixir-lang.org/)
+  * [Nodist](https://github.com/marcelklehr/nodist/releases)
+  * [.NET Framework と .NET SDK ダウンロード](https://msdn.microsoft.com/ja-jp/aa496123)
+* プログラミング（JVM系）
+  * [Java SE](http://www.oracle.com/technetwork/java/javase/downloads/index.html)
+  * [Scala](http://www.scala-lang.org/)
+  * [Kotlin](https://kotlinlang.org/)
+  * [Clojure](http://clojure.org/)
+  * [Groovy](http://www.groovy-lang.org/)
+  * [Jython](http://www.jython.org/)
+  * [JUnit](http://junit.org/)
+  * [AssertJ](http://joel-costigliola.github.io/assertj/index.html)
+  * [Mockito](http://mockito.org/)
+  * [checkstyle](http://checkstyle.sourceforge.net/)
+  * [findbugs](http://findbugs.sourceforge.net/)
+  * [jacoco](http://www.eclemma.org/jacoco/)
+  * [pmd](http://pmd.sourceforge.net/)
+  * [javancss](http://www.kclee.de/clemens/java/javancss/)
+  * [Pleiades](http://mergedoc.sourceforge.jp/)
+  * [BTrace](https://github.com/btraceio/btrace)
+  * [XDoclet](http://xdoclet.sourceforge.net/xdoclet/index.html)
+  * [JDepend](http://clarkware.com/software/JDepend.html)
+* ビルド管理
+  * [gradle](http://www.gradle.org/)
+  * [sbt](http://www.scala-sbt.org/)
+  * [leiningen](http://leiningen.org/)
+  * [Apache Maven](http://maven.apache.org/)
+  * [Apache Ant](http://ant.apache.org/)
+* ドキュメント作成
+  * [Doxygen](http://www.doxygen.jp/)
+  * [Graphviz](http://www.graphviz.org/)
+  * [PlantUML](http://plantuml.com/)
+  * [pandoc](https://github.com/jgm/pandoc/releases)
+  * [RedPen](http://redpen.cc/)
+* その他ツール
+  * [BEITEL (バイト)](http://beitel.carabiner.jp/)
+  * [GanttProject](https://www.ganttproject.biz/)
+  * [Gpg4win](http://www.gpg4win.de/index.html)
+  * [GNU GLOBAL](http://www.gnu.org/software/global/)
+  * [LFTP for Windows](https://nwgat.ninja/lftp-for-windows/)
+  * [zeeta HP](https://sites.google.com/site/zeetahp/)
 
-* データベース：
-  [MongoDB](http://www.mongodb.org/),
-  [neo4j](https://neo4j.com/)
 
-* プログラミング：
-  [RubyInsaller for Windows](http://rubyinstaller.org/),
-  [Anaconda - Open Data Science Core](https://www.continuum.io/),
-  [elixir](http://elixir-lang.org/),
-  [Nodist](https://github.com/marcelklehr/nodist/releases),
-  [Java SE](http://www.oracle.com/technetwork/java/javase/downloads/index.html),
-  [Scala](http://www.scala-lang.org/),
-  [Kotlin](https://kotlinlang.org/),
-  [Clojure](http://clojure.org/),
-  [Groovy](http://www.groovy-lang.org/),
-  [Jython](http://www.jython.org/),
-  [JUnit](http://junit.org/),
-  [AssertJ](http://joel-costigliola.github.io/assertj/index.html),
-  [Mockito](http://mockito.org/),
-  [checkstyle](http://checkstyle.sourceforge.net/),
-  [findbugs](http://findbugs.sourceforge.net/),
-  [jacoco](http://www.eclemma.org/jacoco/),
-  [pmd](http://pmd.sourceforge.net/),
-  [javancss](http://www.kclee.de/clemens/java/javancss/),
-  [.NET Framework と .NET SDK ダウンロード](https://msdn.microsoft.com/ja-jp/aa496123)
+### サービス（オプション）
+`$SVCSDIR="$Env:PUBLIC\svcs"`フォルダに置きます。
 
-* ビルド管理：
-  [gradle](http://www.gradle.org/),
-  [Apache Ant](http://ant.apache.org/),
-  [Apache Maven](http://maven.apache.org/),
-  [sbt](http://www.scala-sbt.org/),
-  [leiningen](http://leiningen.org/)
-
-* その他ツール：
-  [Pleiades](http://mergedoc.sourceforge.jp/),
-  [BTrace](https://github.com/btraceio/btrace),
-  [XDoclet](http://xdoclet.sourceforge.net/xdoclet/index.html),
-  [JDepend](http://clarkware.com/software/JDepend.html),
-  [GNU GLOBAL](http://www.gnu.org/software/global/),
-  [LFTP for Windows](https://nwgat.ninja/lftp-for-windows/),
-  [Gpg4win](http://www.gpg4win.de/index.html),
-  [Doxygen](http://www.doxygen.jp/),
-  [Graphviz](http://www.graphviz.org/),
-  [Sphinx-Users.jp](http://sphinx-users.jp/index.html),
-  [PlantUML](http://plantuml.com/),
-  [RedPen](http://redpen.cc/),
-  [pandoc](https://github.com/jgm/pandoc/releases),
-  [BEITEL (バイト)](http://beitel.carabiner.jp/),
-  [GanttProject](https://www.ganttproject.biz/),
-  [zeeta HP](https://sites.google.com/site/zeetahp/)
+* データベース
+  * [MongoDB](http://www.mongodb.org/)
+  * [neo4j](https://neo4j.com/)
 
 
 ### 関数定義
