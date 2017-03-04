@@ -13,6 +13,7 @@ if ($Env:HOME -eq $null) {
 $Env:MY_PATH = "$Home\scripts"
 $TOOLDIR = "$Env:PUBLIC\tool"
 $APPSDIR = "$Env:PUBLIC\apps"
+$SVCSDIR = "$Env:PUBLIC\svcs"
 $PROJDIR = "$Env:PUBLIC\projects"
 $REPODIR = "$Env:PUBLIC\repos"
 function Get-TodayPath {"$Env:HOME\work\$(Get-Date (Get-Date).AddHours(-5) -f 'yyyy\\MM\\dd')"}
@@ -80,12 +81,10 @@ $drives = @{
     HOME = "$Env:HOME"
     TOOL = "$TOOLDIR"
     APPS = "$APPSDIR"
+    SVCS = "$SVCSDIR"
     PROJ = "$PROJDIR"
     GIT  = "$REPODIR\git"
     SVN  = "$REPODIR\svn"
-    HG   = "$REPODIR\hg"
-    VZR  = "$REPODIR\vzr"
-    VV   = "$REPODIR\veracity"
     FOS  = "$REPODIR\fossil"
     WORK = "$WORKDIR"
     WKSP = "$Env:PUBLIC\workspace"
@@ -392,7 +391,7 @@ function Get-LatestPath {
     )
 
     if (test-path $Path) {
-        @(ls $Path -ea:SilentlyContinue | sort -desc)[0].fullname
+        @(ls $Path -dir -ea:SilentlyContinue | sort -desc)[0].fullname
     }
 }
 
@@ -579,9 +578,6 @@ if ($Env:JAVA_HOME -ne $null) {
     } | out-null
 }
 
-$BTRACE_HOME = Get-LatestPath "$APPSDIR\btrace-*"
-Add-Path "$BTRACE_HOME\bin"
-
 $SCALA_HOME = Get-LatestPath "$APPSDIR\scala*"
 Add-Path "$SCALA_HOME\bin"
 
@@ -594,9 +590,6 @@ Function clojure {
         start java $argList -NoNewWindow -Wait
     }
 }
-
-$JYTHON_HOME = Get-LatestPath "$APPSDIR\jython*"
-Add-Path "$JYTHON_HOME"
 
 $RUBY_HOME = Get-LatestPath "$APPSDIR\ruby*"
 Add-Path "$RUBY_HOME\bin"
@@ -619,22 +612,29 @@ Add-Path "$ANT_HOME\bin"
 $MVN_HOME = Get-LatestPath "$APPSDIR\apache-maven*"
 Add-Path "$MVN_HOME\bin"
 
-# データベース
-$MONGODB_HOME = Get-LatestPath "$APPSDIR\mongodb*"
-Add-Path "$MONGODB_HOME\bin"
+# テスト／デバッグ用ツール
+$Env:GATLING_HOME = Get-LatestPath "$APPSDIR\gatling-*"
+Add-Path "$Env:GATLING_HOME\bin"
 
-$NEO4J_HOME = Get-LatestPath "$APPSDIR\neo4j-community-*"
-Add-Path "$NEO4J_HOME\bin"
-
-# その他
-$PANDOC_HOME = Get-LatestPath "$APPSDIR\pandoc*"
-Add-Path "$PANDOC_HOME\bin"
-
-$GRAPHVIZ_HOME = Get-LatestPath "$APPSDIR\graphviz-*"
-Add-Path "$GRAPHVIZ_HOME\bin"
+$BTRACE_HOME = Get-LatestPath "$APPSDIR\btrace-*"
+Add-Path "$BTRACE_HOME\bin"
 
 $PHANTOMJS_HOME = Get-LatestPath "$APPSDIR\phantomjs-*"
 Add-Path "$PHANTOMJS_HOME\bin"
+
+# ドキュメント作成
+$GRAPHVIZ_HOME = Get-LatestPath "$APPSDIR\graphviz-*"
+Add-Path "$GRAPHVIZ_HOME\bin"
+
+$PANDOC_HOME = Get-LatestPath "$APPSDIR\pandoc*"
+Add-Path "$PANDOC_HOME\bin"
+
+# その他
+$BEITEL_HOME = Get-LatestPath "$APPSDIR\beitel-*"
+Add-Path "$BEITEL_HOME"
+
+$GANTT_HOME = Get-LatestPath "$APPSDIR\ganttproject-*"
+Add-Path "$GANTT_HOME"
 
 $GLOBAL_HOME = Get-LatestPath "$APPSDIR\global*"
 Add-Path "$GLOBAL_HOME\bin"
@@ -644,13 +644,9 @@ Add-Path "$LFTP_HOME\bin"
 
 Add-Path "$APPSDIR\astah_community"
 
-Add-Path "$APPSDIR\playframework"
-
-$BEITEL_HOME = Get-LatestPath "$APPSDIR\beitel-*"
-Add-Path "$BEITEL_HOME"
-
-$GANTT_HOME = Get-LatestPath "$APPSDIR\ganttproject-*"
-Add-Path "$GANTT_HOME"
+function zeeta {
+    start run.bat -Work "$APPSDIR\Zeeta\startup"
+}
 
 function memo-monthly {
     $dir  = "$Env:HOME\work\$(Get-Date -f 'yyyy\\MM')"
@@ -661,10 +657,6 @@ function memo-monthly {
     } else {
         start beitel -Work "$dir"
     }
-}
-
-function zeeta {
-    start run.bat -Work "$APPSDIR\Zeeta\startup"
 }
 
 $Env:PATH = "$Env:MY_PATH;$Env:PATH"

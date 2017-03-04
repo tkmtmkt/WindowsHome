@@ -87,7 +87,6 @@ GitHubからファイルを取得します。
   * [pmd](http://pmd.sourceforge.net/)
   * [javancss](http://www.kclee.de/clemens/java/javancss/)
   * [Pleiades](http://mergedoc.sourceforge.jp/)
-  * [BTrace](https://github.com/btraceio/btrace)
   * [XDoclet](http://xdoclet.sourceforge.net/xdoclet/index.html)
   * [JDepend](http://clarkware.com/software/JDepend.html)
 * ビルド管理
@@ -96,6 +95,10 @@ GitHubからファイルを取得します。
   * [leiningen](http://leiningen.org/)
   * [Apache Maven](http://maven.apache.org/)
   * [Apache Ant](http://ant.apache.org/)
+* テスト／デバッグ用ツール
+  * [Gatling Load and Performance testing](http://gatling.io/)
+  * [BTrace](https://github.com/btraceio/btrace)
+  * [PhantomJS | PhantomJS](http://phantomjs.org/)
 * ドキュメント作成
   * [Doxygen](http://www.doxygen.jp/)
   * [Graphviz](http://www.graphviz.org/)
