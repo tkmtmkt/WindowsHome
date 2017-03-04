@@ -528,6 +528,7 @@ Set-Alias fos "$TOOLDIR\fossil.exe"
 
 # データベース
 Set-Alias sql "$TOOLDIR\sqlite3.exe"
+Set-Alias sqlw "$TOOLDIR\SQLiteDatabaseBrowserPortable\SQLiteDatabaseBrowserPortable.exe"
 
 
 ############################################################
