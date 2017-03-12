@@ -7,7 +7,7 @@
 	filemode = false
 	autocrlf = false
 	safecrlf = true
-	editor = vi +1 -c \"set fenc=utf-8 ff=unix\"
+	editor = vim -c \"set fenc=utf-8 ff=unix\"
 	quotepath = false
 
 [color]
@@ -71,14 +71,14 @@
 	wc = whatchanged         # logに変更されたファイルも一緒に出す
 	ls = log --stat          # logに変更されたファイルも一緒に出す
 	lp = log -p              # diffも一緒に出す
-	la = log --pretty=\"format:%ad %h (%an): %s\" --date=short  # ざっくりログ出す
-	ll = log --pretty=\"format:%Cgreen%ai %h %Cblue%<(20,trunc)%an%Creset %d %s\" --decorate
+	la = log --pretty=\"format:%ad (%an): %h %s\" --date=short  # ざっくりログ出す
+	ll = log --pretty=\"format:%Cgreen%ai %Cblue%<(20,trunc)%an%Creset %h %d %s\" --decorate
 	lr = log origin          # originのlog
 	oneline = log --oneline --decorate
 	ranking = shortlog -s -n --no-merges
 	# logをtree表示
-	log-graph = log --graph --date=short --pretty=format:'%Cgreen%cd %h %Cblue%cn %Creset%s'
-	log-all = log --graph --all --color --pretty='%x09%h %cn%x09%s %Cred%d%Creset'
+	log-graph = log --graph --date=short --pretty=format:'%Cgreen%cd %Cblue%cn %Creset%h %s'
+	log-all = log --graph --all --color --pretty='%x09%cn%x09%h %s %Cred%d%Creset'
 	# reset
 	rhs  = reset --soft HEAD
 	rhs1 = reset --soft HEAD~
