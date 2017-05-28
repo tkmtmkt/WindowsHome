@@ -151,6 +151,12 @@ TERATERM.INIを編集してメニューの日本語化、ウィンドウサイ�
 
     UnicodeToDecSpMapping=2
 
+SSH認証ダイアログの初期値を設定する。
+
+    DefaultRSAPrivateKeyFile=${ホームディレクトリ}\.ssh\id_rsa
+    DefaultAuthMethod=2
+
+
 ### BGInfo設定
 
     > console -a
