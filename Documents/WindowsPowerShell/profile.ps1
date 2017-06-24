@@ -10,6 +10,7 @@ if ($Env:HOME -eq $null) {
         $Env:HOME = $Env:HOME.TrimEnd("\")
     }
 }
+$Env:LANG = "ja_JP.UTF-8"
 $Env:MY_PATH = "$Home\scripts"
 $TOOLDIR = "$Env:PUBLIC\tool"
 $APPSDIR = "$Env:PUBLIC\apps"
