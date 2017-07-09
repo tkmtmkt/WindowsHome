@@ -48,6 +48,8 @@ GitHubからファイルを取得します。
   * [SysinternalsSuite](http://technet.microsoft.com/ja-jp/sysinternals/bb842062.aspx)
   * [LogExpert](http://www.log-expert.de/)
   * [Log Parser](http://technet.microsoft.com/ja-jp/scriptcenter/dd919274.aspx)
+  * [Windows Management Framework (WMF)](https://msdn.microsoft.com/ja-jp/powershell/wmf/readme)
+  * [.NET Framework と .NET SDK ダウンロード](https://msdn.microsoft.com/ja-jp/aa496123)
   * [Intel vPro Technology Modules for Microsoft Windows PowerShell](http://www.intel.com/content/www/us/en/remote-support/vpro-technology-module-for-microsoft-windows-powershell.html)
   * [ドライバーおよびソフトウェア](https://downloadcenter.intel.com/ja/search?keyword=vPro+PowerShell)
   * [Windows Server 2003 Resource Kit Tools](http://www.microsoft.com/en-us/download/details.aspx?id=17657)
@@ -70,7 +72,6 @@ GitHubからファイルを取得します。
   * [RubyInsaller for Windows](http://rubyinstaller.org/)
   * [elixir](http://elixir-lang.org/)
   * [Nodist](https://github.com/marcelklehr/nodist/releases)
-  * [.NET Framework と .NET SDK ダウンロード](https://msdn.microsoft.com/ja-jp/aa496123)
 * プログラミング（JVM系）
   * [Java SE](http://www.oracle.com/technetwork/java/javase/downloads/index.html)
   * [Scala](http://www.scala-lang.org/)
