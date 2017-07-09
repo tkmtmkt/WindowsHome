@@ -472,6 +472,15 @@ function Get-RestartLog {
     } | select Time,EventId,シャットダウンの種類,理由,理由コード,コメント
 }
 
+<#
+.SYNOPSIS
+\.NET Frameworkのバージョン情報を取得する。
+#>
+Function Get-NETFrameworkVersion {
+    ls 'HKLM:\SOFTWARE\Microsoft\NET Framework Setup\NDP\v[23]*',
+       'HKLM:\SOFTWARE\Microsoft\NET Framework Setup\NDP\v4'
+}
+
 
 ############################################################
 #
