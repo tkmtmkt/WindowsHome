@@ -557,6 +557,11 @@ $SVN_HOME = Get-LatestPath "$APPSDIR\svn*"
 Add-Path "$SVN_HOME\bin"
 
 # プログラミング
+$ANACONDA_HOME = Get-LatestPath "$APPSDIR\Anaconda*"
+Add-Path "$ANACONDA_HOME"
+Add-Path "$ANACONDA_HOME\Scripts"
+Add-Path "$ANACONDA_HOME\Library\bin"
+
 $Env:JAVA_HOME = Get-LatestPath "$Env:ProgramFiles\Java\jdk*"
 #$Env:JAVA_OPTS = "-Dhttp.proxyHost=proxyhostURL -Dhttp.proxyPort=proxyPortNumber"
 
@@ -588,8 +593,11 @@ if ($Env:JAVA_HOME -ne $null) {
     } | out-null
 }
 
-$SCALA_HOME = Get-LatestPath "$APPSDIR\scala*"
+$SCALA_HOME = Get-LatestPath "$APPSDIR\scala-*"
 Add-Path "$SCALA_HOME\bin"
+
+$KOTLIN_HOME = Get-LatestPath "$APPSDIR\kotlin-*"
+Add-Path "$KOTLIN_HOME\bin"
 
 Function clojure {
     $clojure = Get-LatestPath "$APPSDIR\clojure*\clojure*.jar"
@@ -601,17 +609,23 @@ Function clojure {
     }
 }
 
+$GROOVY_HOME = Get-LatestPath "$APPSDIR\groovy*"
+Add-Path "$GROOVY_HOME\bin"
+
 $RUBY_HOME = Get-LatestPath "$APPSDIR\ruby*"
 Add-Path "$RUBY_HOME\bin"
 
-$GROOVY_HOME = Get-LatestPath "$APPSDIR\groovy*"
-Add-Path "$GROOVY_HOME\bin"
+$Env:NODE_PATH = Get-LatestPath "$APPSDIR\Nodist"
+$Env:NODIST_PREFIX = "$APPSDIR"
+$Env:NODIST_X64 = 1
+Add-Path "$Env:NODE_PATH\bin"
 
 # ビルド管理
 $GRADLE_HOME = Get-LatestPath "$APPSDIR\gradle*"
 Add-Path "$GRADLE_HOME\bin"
 
-Add-Path "$Env:HOME\.sbt"
+$SBT_HOME = Get-LatestPath "$APPSDIR\sbt-*"
+Add-Path "$SBT_HOME\bin"
 
 Add-Path "$Env:HOME\.lein"
 
