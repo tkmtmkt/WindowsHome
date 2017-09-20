@@ -52,8 +52,10 @@ scriptencoding utf-8
 "set writebackupを指定してもオプション 'backup' がオンでない限り、
 "バックアップは上書きに成功した後に削除される。
 set writebackup
-"バックアップ/スワップファイルを作成する/しない
+"バックアップを作成する/しない
 set backup
+set backupdir=$TEMP
+"スワップファイルを作成する/しない
 set swapfile
 set directory=$TEMP
 if version >= 703
