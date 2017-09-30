@@ -562,12 +562,12 @@ Add-Path "$ANACONDA_HOME"
 Add-Path "$ANACONDA_HOME\Scripts"
 Add-Path "$ANACONDA_HOME\Library\bin"
 
-$Env:JAVA_HOME = Get-LatestPath "$Env:ProgramFiles\Java\jdk*"
+$Env:JAVA_HOME = Get-LatestPath "$Env:ProgramFiles\Java\jdk1.8.0*"
 #$Env:JAVA_OPTS = "-Dhttp.proxyHost=proxyhostURL -Dhttp.proxyPort=proxyPortNumber"
 
 $PLEIADES_HOME = Get-LatestPath "$APPSDIR\pleiades*"
 if ($Env:JAVA_HOME -eq $null -and $PLEIADES_HOME -ne $null) {
-    $Env:JAVA_HOME = "$PLEIADES_HOME\java\7"
+    $Env:JAVA_HOME = "$PLEIADES_HOME\java\8"
 }
 
 if ($Env:JAVA_HOME -ne $null) {
@@ -592,6 +592,9 @@ if ($Env:JAVA_HOME -ne $null) {
         }
     } | out-null
 }
+
+$IDEA_HOME = Get-LatestPath "$APPSDIR\ideaIC-*"
+Add-Path "$IDEA_HOME\bin"
 
 $SCALA_HOME = Get-LatestPath "$APPSDIR\scala-*"
 Add-Path "$SCALA_HOME\bin"
