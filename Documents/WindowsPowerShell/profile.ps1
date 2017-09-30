@@ -684,7 +684,6 @@ function memo-monthly {
 }
 
 $Env:PATH = "$Env:MY_PATH;$Env:PATH"
-Import-Module posh-git
-Enable-GitColors
+Import-Module "$($Env:PSModulePath.Split(";")[0])\posh-git\src\posh-git.psd1"
 
 # vim: set ft=ps1 ts=4 sw=4 et:
