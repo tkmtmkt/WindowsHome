@@ -19,15 +19,3 @@
 !/README.md
 !/_gvimrc
 !/_vimrc
-
-# sbt specific
-!.sbt
-.sbt/boot/
-.sbt/repository/*
-!.sbt/repository/local
-.sbt/repository/local/org.scala-sbt/
-target
-
-# lein specific
-!.lein
-.lein/self-installs/
