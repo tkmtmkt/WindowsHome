@@ -596,6 +596,9 @@ if ($Env:JAVA_HOME -ne $null) {
 $IDEA_HOME = Get-LatestPath "$APPSDIR\ideaIC-*"
 Add-Path "$IDEA_HOME\bin"
 
+$ACTIVATOR_HOME = Get-LatestPath "$APPSDIR\activator-*"
+Add-Path "$ACTIVATOR_HOME\bin"
+
 $SCALA_HOME = Get-LatestPath "$APPSDIR\scala-*"
 Add-Path "$SCALA_HOME\bin"
 
