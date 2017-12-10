@@ -696,4 +696,8 @@ if (Test-Path $POSH_GIT_PATH) {
     Import-Module $POSH_GIT_PATH
 }
 
+if ((Get-Module -ListAvailable PSReadline) -ne $null) {
+    Import-Module PSReadline
+}
+
 # vim: set ft=ps1 ts=4 sw=4 et:

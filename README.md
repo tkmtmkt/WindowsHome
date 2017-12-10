@@ -140,6 +140,21 @@ GitHubからファイルを取得します。
 * [MacType](https://code.google.com/p/mactype/)
 
 
+### PowerShell設定
+
+PsGetインストール
+
+```sh
+PS> (new-object Net.WebClient).DownloadString("http://psget.net/GetPsGet.ps1") | iex
+```
+
+PSReadLineインストール
+
+```sh
+PS> Install-Module PSReadLine
+```
+
+
 ### TeraTerm設定
 
 TERATERM.INIを編集してメニューの日本語化、ウィンドウサイズ、色を設定する。
