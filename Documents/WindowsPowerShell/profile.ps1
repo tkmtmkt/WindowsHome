@@ -690,6 +690,10 @@ function memo-monthly {
 }
 
 $Env:PATH = "$Env:MY_PATH;$Env:PATH"
-Import-Module "$($Env:PSModulePath.Split(";")[0])\posh-git\src\posh-git.psd1"
+
+$POSH_GIT_PATH = "$($Env:PSModulePath.Split(";")[0])\posh-git\src\posh-git.psd1"
+if (Test-Path $POSH_GIT_PATH) {
+    Import-Module $POSH_GIT_PATH
+}
 
 # vim: set ft=ps1 ts=4 sw=4 et:
