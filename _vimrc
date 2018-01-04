@@ -4,6 +4,9 @@
 "  Last Modified: 0000-00-00 07:03
 "        Version: 0.00
 "=============================================================================
+if &compatible
+  set nocompatible
+endif
 scriptencoding utf-8
 "scriptencodingと、このファイルのエンコーディングが一致するよう注意！
 "scriptencodingは、vimの内部エンコーディングと同じものを推奨します。
@@ -377,35 +380,45 @@ endif
 
 filetype off
 
-if has('vim_starting')
-  set runtimepath+=$MY_VIMRUNTIME/bundle/neobundle.vim/
-  call neobundle#begin(expand($MY_VIMRUNTIME . '/bundle/'))
+set runtimepath+=$MY_VIMRUNTIME/dein/dein.vim
+
+if dein#load_state(expand($MY_VIMRUNTIME . '/dein'))
+  call dein#begin(expand($MY_VIMRUNTIME . '/dein'))
+  call dein#add(expand($MY_VIMRUNTIME . '/dein/dein.vim'))
+
+  " recommended to install
+  call dein#add('Shougo/vimproc.vim')
+  " after install, turn shell ~/.vim/dein/repos/github.com/Shougo/vimproc.vim/, (n,g)make -f your_machines_makefile
+  call dein#add('Shougo/vimshell.vim')
+  " for editor
+  call dein#add('Shougo/unite.vim')
+  call dein#add('Shougo/deoplete.nvim')
+  if !has('nvim')
+    call dein#add('roxma/nvim-yarp')
+    call dein#add('roxma/vim-hug-neovim-rpc')
+  endif
+  call dein#add('scrooloose/syntastic')
+  call dein#add('editorconfig/editorconfig-vim')
+  " language
+  call dein#add('PProvost/vim-ps1')
+  call dein#add('derekwyatt/vim-scala')
+  call dein#add('udalov/kotlin-vim')
+  call dein#add('vim-scripts/VimClojure')
+  call dein#add('elixir-lang/vim-elixir')
+  call dein#add('kchmck/vim-coffee-script')
+  call dein#add('slim-template/vim-slim')
+  call dein#add('Rykka/riv.vim')
+  " utility
+  call dein#add('martintreurnicht/vim-gradle')
+  call dein#add('ekalinin/Dockerfile.vim')
+  call dein#add('vim-scripts/gtags.vim')
+  call dein#add('vim-scripts/sudo.vim')
+  call dein#add('cohama/agit.vim')
+  call dein#add('tpope/vim-git')
+
+  call dein#end()
+  call dein#save_state()
 endif
-
-" recommended to install
-NeoBundle 'Shougo/vimproc.vim'
-" after install, turn shell ~/.vim/bundle/vimproc, (n,g)make -f your_machines_makefile
-NeoBundle 'Shougo/vimshell.vim'
-" for editor
-NeoBundle 'Shougo/unite.vim'
-NeoBundle 'Shougo/neocomplcache.vim'
-NeoBundle 'scrooloose/syntastic'
-" language
-NeoBundle 'PProvost/vim-ps1'
-NeoBundle 'derekwyatt/vim-scala'
-NeoBundle 'udalov/kotlin-vim'
-NeoBundle 'vim-scripts/VimClojure'
-NeoBundle 'elixir-lang/vim-elixir'
-NeoBundle 'kchmck/vim-coffee-script'
-NeoBundle 'slim-template/vim-slim'
-NeoBundle 'Rykka/riv.vim'
-" utility
-NeoBundle 'martintreurnicht/vim-gradle'
-NeoBundle 'vim-scripts/gtags.vim'
-NeoBundle 'cohama/agit.vim'
-NeoBundle 'tpope/vim-git'
-
-call neobundle#end()
 
 "pluginを使用可能にする
 filetype plugin indent on
