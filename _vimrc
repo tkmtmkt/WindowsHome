@@ -381,10 +381,11 @@ endif
 filetype off
 
 set runtimepath+=$MY_VIMRUNTIME/dein/dein.vim
+let s:dein_dir = $MY_VIMRUNTIME . '/dein'
 
-if dein#load_state(expand($MY_VIMRUNTIME . '/dein'))
-  call dein#begin(expand($MY_VIMRUNTIME . '/dein'))
-  call dein#add(expand($MY_VIMRUNTIME . '/dein/dein.vim'))
+if dein#load_state(s:dein_dir)
+  call dein#begin(s:dein_dir)
+  call dein#add(s:dein_dir . '/dein.vim')
 
   " recommended to install
   call dein#add('Shougo/vimproc.vim')
