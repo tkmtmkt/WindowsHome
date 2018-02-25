@@ -382,6 +382,8 @@ filetype off
 
 set runtimepath+=$MY_VIMRUNTIME/dein/dein.vim
 let s:dein_dir = $MY_VIMRUNTIME . '/dein'
+let s:cache_home = expand('~/.cache')
+let g:dein#cache_directory = s:cache_home . '/dein'
 
 if dein#load_state(s:dein_dir)
   call dein#begin(s:dein_dir)
