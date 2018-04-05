@@ -56,7 +56,7 @@ cat C:\Windows\system32\drivers\etc\hosts |
         param([string]$user = $Env:USERNAME)
         $hostname = ($MyInvocation.MyCommand.Name -split "-",2)[1]
         ttermpro ssh://$user@$hostname /auth=publickey /keyfile="$Home\.ssh\id_rsa" /ask4passwd /L="$(log "${hostname}-")"
-    } | out-null
+    } -ea:SilentlyContinue | out-null
 }
 function ssh-sakura {ttermpro ssh://$Env:USERNAME@www.sakura.ne.jp /auth=publickey /keyfile="$Home\.ssh\id_rsa" /L=$(log "sakura-")}
 
@@ -65,7 +65,7 @@ function ssh-sakura {ttermpro ssh://$Env:USERNAME@www.sakura.ne.jp /auth=publick
     new-item function: -name "vmx-$($_.basename)" -value {
         $vmx_file = $(ls $Home\Documents "$(($MyInvocation.MyCommand.Name -split '-',2)[1]).vmx" -r).fullname
         start "$vmx_file"
-    } | out-null
+    } -ea:SilentlyContinue | out-null
 }
 
 # ショートカット：RDP接続
@@ -73,7 +73,7 @@ function ssh-sakura {ttermpro ssh://$Env:USERNAME@www.sakura.ne.jp /auth=publick
     new-item function: -name "rdp-$($_.basename)" -value {
         $rdp_file = "$Home\Documents\$(($MyInvocation.MyCommand.Name -split '-',2)[1]).rdp"
         mstsc "$rdp_file"
-    } | out-null
+    } -ea:SilentlyContinue | out-null
 }
 
 # ショートカット：ドライブ指定
@@ -107,7 +107,7 @@ $drives.Keys | %{
             New-PSDrive $name FileSystem $path -Scope Global | Out-Null
         }
         cd $drive
-    } | Out-Null
+    } -ea:SilentlyContinue | Out-Null
 }
 
 
