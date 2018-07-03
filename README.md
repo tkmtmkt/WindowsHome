@@ -48,6 +48,8 @@ GitHubからファイルを取得します。
   * [SysinternalsSuite](http://technet.microsoft.com/ja-jp/sysinternals/bb842062.aspx)
   * [LogExpert](http://www.log-expert.de/)
   * [Log Parser](http://technet.microsoft.com/ja-jp/scriptcenter/dd919274.aspx)
+  * [Office Log Parser Studio](https://gallery.technet.microsoft.com/office/Log-Parser-Studio-cd458765)
+  * [概要: Log Parser Studio – (旧) Exchange Team Blog 日本語版](https://blogs.technet.microsoft.com/exchange_jp/2012/04/24/log-parser-studio/)
   * [Windows Management Framework (WMF)](https://msdn.microsoft.com/ja-jp/powershell/wmf/readme)
   * [.NET Framework と .NET SDK ダウンロード](https://msdn.microsoft.com/ja-jp/aa496123)
   * [Intel vPro Technology Modules for Microsoft Windows PowerShell](http://www.intel.com/content/www/us/en/remote-support/vpro-technology-module-for-microsoft-windows-powershell.html)
