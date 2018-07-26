@@ -1,4 +1,4 @@
-﻿"=============================================================================
+"=============================================================================
 "    Description: .vimrcサンプル設定
 "         Author: anonymous
 "  Last Modified: 0000-00-00 07:03
@@ -389,38 +389,19 @@ if dein#load_state(s:dein_dir)
   call dein#begin(s:dein_dir)
   call dein#add(s:dein_dir . '/dein.vim')
 
-  " recommended to install
-  call dein#add('Shougo/vimproc.vim')
-  " after install, turn shell ~/.vim/dein/repos/github.com/Shougo/vimproc.vim/, (n,g)make -f your_machines_makefile
-  call dein#add('Shougo/vimshell.vim')
-  " for editor
-  call dein#add('Shougo/unite.vim')
-  call dein#add('Shougo/deoplete.nvim')
-  if !has('nvim')
-    call dein#add('roxma/nvim-yarp')
-    call dein#add('roxma/vim-hug-neovim-rpc')
-  endif
-  call dein#add('scrooloose/syntastic')
-  call dein#add('editorconfig/editorconfig-vim')
-  " language
-  call dein#add('PProvost/vim-ps1')
-  call dein#add('derekwyatt/vim-scala')
-  call dein#add('udalov/kotlin-vim')
-  call dein#add('vim-scripts/VimClojure')
-  call dein#add('elixir-lang/vim-elixir')
-  call dein#add('kchmck/vim-coffee-script')
-  call dein#add('slim-template/vim-slim')
-  call dein#add('Rykka/riv.vim')
-  " utility
-  call dein#add('martintreurnicht/vim-gradle')
-  call dein#add('ekalinin/Dockerfile.vim')
-  call dein#add('vim-scripts/gtags.vim')
-  call dein#add('vim-scripts/sudo.vim')
-  call dein#add('tpope/vim-fugitive')
-  call dein#add('cohama/agit.vim')
+  " 設定ファイル格納ディレクトリ
+  let s:dein_conf_dir = s:dein_dir . '/config'
+
+  " プラグイン読み込み
+  call dein#load_toml(s:dein_conf_dir . '/dein.toml',      {'lazy': 0})
+  call dein#load_toml(s:dein_conf_dir . '/dein_lazy.toml', {'lazy': 1})
 
   call dein#end()
   call dein#save_state()
+endif
+
+if dein#check_install()
+  call dein#install()
 endif
 
 "pluginを使用可能にする

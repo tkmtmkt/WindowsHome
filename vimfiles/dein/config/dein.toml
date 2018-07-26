@@ -1,0 +1,106 @@
+[[plugins]]
+repo = 'vim-airline/vim-airline'
+hook_add = '''
+let g:airline_symbols_ascii = 1
+let g:airline_powerline_fonts = 0
+'''
+
+[[plugins]]
+repo = 'vim-airline/vim-airline-themes'
+hook_add = '''
+let g:airline_theme = 'dark'
+let g:airline_section_c = "%{expand('%:~:gs?\\?/?')} %M"
+if has('iconv')
+  let g:airline_section_z = '[0x%{FencB()}] %#__accent_bold#(%v,%l)/%L%#__restore__#%6P'
+else
+  let g:airline_section_z =                '%#__accent_bold#(%v,%l)/%L%#__restore__#%6P'
+endif
+'''
+
+[[plugins]]
+repo = 'Shougo/vimproc.vim'
+
+[[plugins]]
+repo = 'Shougo/vimshell.vim'
+# after install, turn shell ~/.vim/dein/repos/github.com/Shougo/vimproc.vim/, (n,g)make -f your_machines_makefile
+
+[[plugins]]
+repo = 'Shougo/unite.vim'
+
+[[plugins]]
+repo = 'Shougo/deoplete.nvim'
+if   = ''' has('nvim') || has('timers') && has('python3') && system('pip3 show neovim') !=# '' '''
+
+[[plugins]]
+repo = 'roxma/nvim-yarp'
+depends = ['/deoplete']
+if   = '''!has('nvim')'''
+
+[[plugins]]
+repo = 'roxma/vim-hug-neovim-rpc'
+depends = ['/deoplete']
+if   = '''!has('nvim')'''
+
+[[plugins]]
+repo = 'Shougo/neco-vim'
+depends = ['/deoplete']
+
+[[plugins]]
+repo = 'Shougo/neco-syntax'
+depends = ['/deoplete']
+
+[[plugins]]
+repo = 'ujihisa/neco-look'
+depends = ['/deoplete']
+
+[[plugins]]
+repo = 'Shougo/neocomplete.vim'
+hook_add = '''
+if dein#tap('deoplete.nvim')
+  let g:deoplete#enable_at_startup = 1
+elseif dein#tap('neocomplete.vim')
+  let g:neocomplete#enable_at_startup = 1
+endif
+'''
+
+[[plugins]]
+repo = 'Shougo/neosnippet.vim'
+
+[[plugins]]
+repo = 'Shougo/neosnippet-snippets'
+
+[[plugins]]
+repo = 'nathanaelkane/vim-indent-guides'
+
+[[plugins]]
+repo = 'scrooloose/nerdtree'
+
+[[plugins]]
+repo = 'scrooloose/syntastic'
+hook_add = '''
+let g:syntastic_check_on_wq = 0
+'''
+
+[[plugins]]
+repo = 'editorconfig/editorconfig-vim'
+
+[[plugins]]
+repo = 'tomtom/tcomment_vim'
+
+[[plugins]]
+repo = 'tpope/vim-surround'
+
+[[plugins]]
+repo = 't9md/vim-textmanip'
+
+[[plugins]]
+repo = 'vim-scripts/gtags.vim'
+
+[[plugins]]
+repo = 'vim-scripts/sudo.vim'
+
+[[plugins]]
+repo = 'tpope/vim-fugitive'
+
+[[plugins]]
+repo = 'cohama/agit.vim'

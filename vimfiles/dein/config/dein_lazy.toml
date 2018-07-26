@@ -1,0 +1,43 @@
+[[plugins]]
+repo = 'cespare/vim-toml'
+on_ft = ['toml']
+
+[[plugins]]
+repo = 'PProvost/vim-ps1'
+on_ft = ['ps1']
+
+[[plugins]]
+repo = 'derekwyatt/vim-scala'
+on_ft = ['scala']
+
+[[plugins]]
+repo = 'udalov/kotlin-vim'
+on_ft = ['kotlin']
+
+[[plugins]]
+repo = 'vim-scripts/VimClojure'
+on_ft = ['clojure']
+
+[[plugins]]
+repo = 'elixir-lang/vim-elixir'
+on_ft = ['elixir']
+
+[[plugins]]
+repo  = 'Quramy/tsuquyomi'
+on_ft = ['typescript']
+
+[[plugins]]
+repo = 'slim-template/vim-slim'
+on_ft = ['slim']
+
+[[plugins]]
+repo = 'Rykka/riv.vim'
+on_ft = ['rst']
+
+[[plugins]]
+repo = 'martintreurnicht/vim-gradle'
+on_ft = ['gradle']
+
+[[plugins]]
+repo = 'ekalinin/Dockerfile.vim'
+on_ft = ['Dockerfile']
