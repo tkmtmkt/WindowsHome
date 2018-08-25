@@ -247,6 +247,17 @@ SSH認証ダイアログの初期値を設定する。
     git config --global -e
 
 
+### vim設定
+
+vimproc設定
+
+`vimproc_win64.dll`をダウンロードして、
+`$HOME\vimfiles\dein\repos\github.com\Shougo\vimproc.vim\lib`
+にコピーする。
+
+* https://github.com/Shougo/vimproc.vim/releases
+
+
 ### Subversion設定
 
 設定ファイルを編集する。
