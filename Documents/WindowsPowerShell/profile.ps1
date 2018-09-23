@@ -17,7 +17,7 @@ $APPSDIR = "$Env:PUBLIC\apps"
 $SVCSDIR = "$Env:PUBLIC\svcs"
 $PROJDIR = "$Env:PUBLIC\projects"
 $REPODIR = "$Env:PUBLIC\repos"
-function Get-TodayPath {"$Env:HOME\work\$(Get-Date (Get-Date).AddHours(-5) -f 'yyyy\\MM\\dd')"}
+function Get-TodayPath {"$Env:HOME\journal\$(Get-Date (Get-Date).AddHours(-5) -f 'yyyy\\MM\\dd')"}
 $WORKDIR = $(Get-TodayPath)
 
 # ÉRÉìÉ\Å[Éãê›íË
