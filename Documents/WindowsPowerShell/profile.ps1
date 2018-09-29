@@ -22,9 +22,9 @@ $WORKDIR = $(Get-TodayPath)
 
 # ÉRÉìÉ\Å[Éãê›íË
 $Host.UI.RawUI | %{
-    $height = $_.MaxPhysicalWindowSize.Height - 2
+    $height = $_.MaxPhysicalWindowSize.Height * 2/3
     $width  = 120
-    $buffer = 3000
+    $buffer = 8192
     if ($_.BufferSize.Width -lt $width) {
         $_.BufferSize = new-object Management.Automation.Host.Size($width, $buffer)
         $_.WindowSize = new-object Management.Automation.Host.Size($width, $height)
