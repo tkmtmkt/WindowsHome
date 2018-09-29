@@ -163,8 +163,7 @@ endif
 
 "色テーマ設定
 "gvimの色テーマは.gvimrcで指定する
-"colorscheme default
-colorscheme torte
+colorscheme default
 
 """"""""""""""""""""""""""""""
 "ステータスラインに文字コード等表示
