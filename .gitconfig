@@ -25,11 +25,15 @@
 	encoding = utf-8
 	fontui = -family \"ＭＳ ゴシック\" -size 10 -weight normal -slant roman -underline 0 -overstrike 0
 
-[push]
-	default = simple
-
 [pull]
 	rebase = true            # git pull --rebase
+
+[diff]
+	algorithm = histogram    # git --diff-algorithm={patience|minimal|histogram|myers}
+	tool = winmerge
+
+[difftool "winmerge"]
+	cmd = WinMergeU.exe -e -ub -dl \"Base\" -dr \"Mine\" \"$LOCAL\" \"$REMOTE\"
 
 [merge]
 	ff = false               # git merge --no-ff
@@ -38,14 +42,9 @@
 [mergetool "winmerge"]
 	cmd = WinMergeU.exe -e -ub \"$LOCAL\" \"$BASE\" \"$REMOTE\" -o \"$MERGED\"
 
-[diff]
-	tool = winmerge
-
-[difftool "winmerge"]
-	cmd = WinMergeU.exe -e -ub -dl \"Base\" -dr \"Mine\" \"$LOCAL\" \"$REMOTE\"
-
 [alias]
 	st = status
+	stun = status --untracked-files=no
 	sh = show
 	so = remote show origin
 	ft = fetch
@@ -71,14 +70,14 @@
 	wc = whatchanged         # logに変更されたファイルも一緒に出す
 	ls = log --stat          # logに変更されたファイルも一緒に出す
 	lp = log -p              # diffも一緒に出す
-	la = log --pretty=\"format:%C(green)%ad %C(cyan)(%an): %C(yellow)%h%Creset %s\" --date=short  # ざっくりログ出す
-	ll = log --pretty=\"format:%C(green)%ai %C(cyan)%<(20,trunc)%an %C(yellow)%h%Creset %s %C(red)%d%Creset\" --decorate
+	la = log --pretty=\"format:%C(green)%ad %C(yellow)(%an): %C(cyan)%h%Creset %s\" --date=short  # ざっくりログ出す
+	ll = log --pretty=\"format:%C(green)%ai %C(yellow)%<(20,trunc)%an %C(cyan)%h%Creset %s %C(red)%d%Creset\" --decorate
 	lr = log origin          # originのlog
 	oneline = log --oneline --decorate
 	ranking = shortlog -s -n --no-merges
 	# logをtree表示
-	log-graph = log --graph --date=short --pretty=format:'%C(green)%cd %C(cyan)%cn %C(yellow)%h%Creset %s'
-	log-all = log --graph --all --color --pretty='%x09%C(cyan)%cn%x09%C(yellow)%h%Creset %s %C(red)%d%Creset'
+	log-graph = log --graph --date=short --pretty=format:'%C(green)%cd %C(yellow)%cn %C(cyan)%h%Creset %s'
+	log-all = log --graph --all --color --pretty='%x09%C(yellow)%cn%x09%C(cyan)%h%Creset %s %C(red)%d%Creset'
 	# reset
 	rhs  = reset --soft HEAD
 	rhs1 = reset --soft HEAD~
@@ -124,13 +123,7 @@
 [http]
 	sslVerify = false
 
-[tig "bind"]
-	generic = g move-first-line
-	generic = G move-last-line
-	generic = <Ctrl+F> move-page-down
-	generic = <Ctrl+B> move-page-up
-
 [help]
 	format = html
 
-# vim: set ts=4 sw=4 ft=gitconfig:
+# vim: set ft=gitconfig ts=4 sw=4 noet:
