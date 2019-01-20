@@ -20,10 +20,10 @@ scriptencoding utf-8
 ":echo $MY_VIMRUNTIMEで実際のパスを確認できます。
 if isdirectory($HOME . '/.vim')
   let $MY_VIMRUNTIME = $HOME.'/.vim'
-elseif isdirectory($HOME . '/vimfiles')
-  let $MY_VIMRUNTIME = $HOME.'/vimfiles'
-elseif isdirectory($VIM . '/vimfiles')
-  let $MY_VIMRUNTIME = $VIM.'/vimfiles'
+elseif isdirectory($HOME . '\vimfiles')
+  let $MY_VIMRUNTIME = $HOME.'\vimfiles'
+elseif isdirectory($VIM . '\vimfiles')
+  let $MY_VIMRUNTIME = $VIM.'\vimfiles'
 endif
 
 "ランタイムパスを通す必要のあるプラグインを使用する場合、
@@ -41,7 +41,6 @@ endif
 "silent! source $MY_VIMRUNTIME/pluginjp/encode.vim
 "scriptencodingと異なる内部エンコーディングに変更する場合、
 "変更後にもscriptencodingを指定しておくと問題が起きにくくなります。
-set encoding=utf-8
 scriptencoding utf-8
 
 "----------------------------------------
@@ -54,7 +53,7 @@ scriptencoding utf-8
 "ファイルの上書きの前にバックアップを作る/作らない
 "set writebackupを指定してもオプション 'backup' がオンでない限り、
 "バックアップは上書きに成功した後に削除される。
-set writebackup
+set nowritebackup
 "バックアップを作成する/しない
 set backup
 set backupdir=$TEMP
@@ -77,6 +76,8 @@ set nrformats-=octal
 set timeoutlen=3500
 "編集結果非保存のバッファから、新しいバッファを開くときに警告を出さない
 set hidden
+"ヒストリの保存数
+set history=50
 "日本語の行の連結時には空白を入力しない
 set formatoptions+=mM
 "Visual blockモードでフリーカーソルを有効にする
@@ -99,6 +100,8 @@ set mouse=
 "if has('mouse')
 "  set mouse=a
 "endif
+"pluginを使用可能にする
+filetype plugin indent on
 
 "----------------------------------------
 " 検索
@@ -117,7 +120,6 @@ set hlsearch
 "set iskeyword=a-z,A-Z,48-57,_,.,-,>
 "vimgrep をデフォルトのgrepとする場合internal
 "set grepprg=internal
-set grepprg=grep
 
 "----------------------------------------
 " 表示設定
@@ -134,6 +136,10 @@ set visualbell t_vb=
 set shellslash
 "行番号表示
 set number
+if version >= 703
+  "相対行番号表示(7.3)
+  "set relativenumber
+endif
 "括弧の対応表示時間
 set showmatch matchtime=1
 "タブを設定
@@ -160,10 +166,6 @@ set nowrap
 if &t_Co > 2 || has('gui_running')
   syntax on
 endif
-
-"色テーマ設定
-"gvimの色テーマは.gvimrcで指定する
-colorscheme default
 
 """"""""""""""""""""""""""""""
 "ステータスラインに文字コード等表示
@@ -263,6 +265,7 @@ nnoremap <F5> a<C-R>=strftime("%Y/%m/%d %H:%M")<CR><Esc>
 "   Ctrl-k カーソル以下の使用箇所を探す
 "   Ctrl-n 次の検索結果へジャンプする
 "   Ctrl-p 前の検索結果へジャンプする
+"----------------------------------------------------
 nnoremap <C-q> <C-w><C-w><C-w>q
 nnoremap <C-g> :Gtags -g
 nnoremap <C-l> :Gtags -f %<CR>
@@ -372,11 +375,28 @@ endif
 "  au BufEnter * execute ":silent! lcd " . escape(expand("%:p:h"), ' ')
 "endif
 
+""""""""""""""""""""""""""""""
+"Windowsで内部エンコーディングがcp932以外の場合
+"makeのメッセージが化けるのを回避
+""""""""""""""""""""""""""""""
+"if has('win32') || has('win64') || has('win95') || has('win16')
+"  au QuickfixCmdPost grep call QFixCnv('cp932')
+"endif
+"
+"function! QFixCnv(enc)
+"  if a:enc == &enc
+"    return
+"  endif
+"  let qflist = getqflist()
+"  for i in qflist
+"    let i.text = iconv(i.text, a:enc, &enc)
+"  endfor
+"  call setqflist(qflist)
+"endfunction
 
 "----------------------------------------
 " 各種プラグイン設定
 "----------------------------------------
-
 filetype off
 
 set runtimepath+=$MY_VIMRUNTIME/dein/dein.vim
@@ -406,4 +426,15 @@ endif
 "pluginを使用可能にする
 filetype plugin indent on
 
-let g:syntastic_check_on_wq = 0
+"色テーマ設定
+"gvimの色テーマは.gvimrcで指定する
+"colorscheme default
+"colorscheme hybrid
+"set background=dark
+if &diff
+  colorscheme railscasts
+else
+  colorscheme molokai
+endif
+
+" vim: set ft=vim ts=2 sw=2 et:
