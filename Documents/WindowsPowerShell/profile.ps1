@@ -39,11 +39,20 @@ $Host.UI.RawUI | %{
 
 # プロンプト設定
 function prompt {
+    # 実行結果ステータス
     write-host "=> $?,$LastExitCode" -ForegroundColor DarkMagenta
+    # 現在日時
     write-host "$(Get-Date -f 'yyyy-MM-dd HH:mm:ss zz00') " -NoNewline -ForegroundColor DarkGreen
-    write-host "${Env:USERDOMAIN}\${Env:USERNAME} " -NoNewline -ForegroundColor DarkYellow
+    # ログイン情報
+    if ($Env:USERDOMAIN -ne $Env:COMPUTERNAME) {
+        write-host "${Env:USERDOMAIN}" -NoNewline -ForegroundColor DarkYellow
+    }
+    write-host "${Env:USERNAME}@${Env:COMPUTERNAME} " -NoNewline -ForegroundColor DarkYellow
+    # カレントパス情報
     write-host "$PWD " -NoNewline -ForegroundColor DarkCyan
+    # git status
     if (!$PWD.ProviderPath.StartsWith($Home)) { Write-VcsStatus }
+    # プロンプト
     write-host ""
     $(if (test-path Variable:/PSDebugContext) { '[DBG]: ' } else { '' }) +
     "PS$('>' * ($NestedPromptLevel + 1)) "
