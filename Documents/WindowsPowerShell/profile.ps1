@@ -39,12 +39,14 @@ $Host.UI.RawUI | %{
 
 # プロンプト設定
 function prompt {
-    write-host "$Env:USERDOMAIN\$Env:USERNAME " -NoNewline -ForegroundColor "Green"
-    write-host "$PWD" -NoNewline -ForegroundColor "DarkCyan"
+    write-host "=> $?,$LastExitCode" -ForegroundColor DarkMagenta
+    write-host "$(Get-Date -f 'yyyy-MM-dd HH:mm:ss zz00') " -NoNewline -ForegroundColor DarkGreen
+    write-host "${Env:USERDOMAIN}\${Env:USERNAME} " -NoNewline -ForegroundColor DarkYellow
+    write-host "$PWD " -NoNewline -ForegroundColor DarkCyan
     if (!$PWD.ProviderPath.StartsWith($Home)) { Write-VcsStatus }
     write-host ""
     $(if (test-path Variable:/PSDebugContext) { '[DBG]: ' } else { '' }) +
-    "PS $(Get-Date -u '%T')$('>' * ($NestedPromptLevel + 1)) "
+    "PS$('>' * ($NestedPromptLevel + 1)) "
 }
 
 # ショートカット：SSH接続
