@@ -45,13 +45,19 @@ function prompt {
     write-host "$(Get-Date -f 'yyyy-MM-dd HH:mm:ss zz00') " -NoNewline -ForegroundColor DarkGreen
     # ログイン情報
     if ($Env:USERDOMAIN -ne $Env:COMPUTERNAME) {
-        write-host "${Env:USERDOMAIN}" -NoNewline -ForegroundColor DarkYellow
+        write-host "${Env:USERDOMAIN}\" -NoNewline -ForegroundColor DarkYellow
     }
     write-host "${Env:USERNAME}@${Env:COMPUTERNAME} " -NoNewline -ForegroundColor DarkYellow
     # カレントパス情報
-    write-host "$PWD " -NoNewline -ForegroundColor DarkCyan
+    if ($PWD.Path.StartsWith("Microsoft")) {
+        write-host $PWD.ProviderPath -NoNewline -ForegroundColor DarkCyan
+    } Else {
+        write-host $PWD -NoNewline -ForegroundColor DarkCyan
+    }
     # git status
-    if (!$PWD.ProviderPath.StartsWith($Home)) { Write-VcsStatus }
+    if (!$PWD.ProviderPath.ToLower().StartsWith($Home.ToLower())) {
+        Write-VcsStatus
+    }
     # プロンプト
     write-host ""
     $(if (test-path Variable:/PSDebugContext) { '[DBG]: ' } else { '' }) +
