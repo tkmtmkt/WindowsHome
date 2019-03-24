@@ -55,9 +55,7 @@ function prompt {
         write-host $PWD -NoNewline -ForegroundColor DarkCyan
     }
     # git status
-    if (!$PWD.ProviderPath.ToLower().StartsWith($Home.ToLower())) {
-        Write-VcsStatus
-    }
+    Write-VcsStatus
     # ÉvÉçÉìÉvÉg
     write-host ""
     $(if (test-path Variable:/PSDebugContext) { '[DBG]: ' } else { '' }) +
